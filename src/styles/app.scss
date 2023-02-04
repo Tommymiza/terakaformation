@@ -1,0 +1,39 @@
+@font-face {
+  font-family: "Open Sans";
+  src: url("./OpenSans-Regular.ttf");
+}
+* {
+  font-family: "Open Sans";
+}
+ul.navbar {
+  list-style: none;
+  li {
+    font-size: 17px;
+    a {
+      cursor: pointer;
+      color: black;
+      transition: 0.2s;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    & > a:hover {
+      color: white;
+    }
+  }
+}
+p.paragraphe{
+    font-size: 20px;
+}
+div.alert{
+  position: fixed;
+  top: 150px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+section{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+}
