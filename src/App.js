@@ -10,7 +10,7 @@ export const ActContext = createContext();
 function App() {
   const [user, setUser] = useState();
   const [alert, setAlert] = useState();
-  const server = "http://13.112.105.248:4422";
+  const server = "https://api.teraka.org";
   useEffect(()=>{
     if(alert){
       setTimeout(()=>{
