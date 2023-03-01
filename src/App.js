@@ -2,17 +2,17 @@ import React, { useEffect, createContext, useState } from "react";
 import Navbar from "./components/Navbar";
 import axios from "axios";
 import Formation from "./pages/Formation";
-import Connexion from "./components/Connexion";
 import Info from "./components/Info"
 import { CircularProgress } from "@mui/material";
+import Formulaire from "./components/Formulaire";
 
 export const ActContext = createContext();
 
 function App() {
   const [user, setUser] = useState();
   const [alert, setAlert] = useState();
-  const [loading, setLoading] = useState(true);
-  const server = "https://api.teraka.org";
+  const [loading, setLoading] = useState(false);
+  const server = "http://127.0.0.1:4422";
   useEffect(()=>{
     if(alert){
       setTimeout(()=>{
@@ -21,27 +21,27 @@ function App() {
     }
   }, [alert])
   useEffect(() => {
-    if (localStorage.getItem("session")) {
-      axios({
-        url: server + "/getuser",
-        method: "GET",
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("session"),
-        },
-      })
-        .then((res) => {
-          if (res.data.user) {
-            setUser(res.data.user);
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        }).finally(()=>{
-          setLoading(false);
-        })
-    }else{
-      setLoading(false)
-    }
+    // if (localStorage.getItem("session")) {
+    //   axios({
+    //     url: server + "/getuser",
+    //     method: "GET",
+    //     headers: {
+    //       Authorization: "Bearer " + localStorage.getItem("session"),
+    //     },
+    //   })
+    //     .then((res) => {
+    //       if (res.data.user) {
+    //         setUser(res.data.user);
+    //       }
+    //     })
+    //     .catch((err) => {
+    //       console.log(err);
+    //     }).finally(()=>{
+    //       setLoading(false);
+    //     })
+    // }else{
+    //   setLoading(false)
+    // }
   }, []);
   return (
     <div className="App">
@@ -54,7 +54,7 @@ function App() {
             <CircularProgress size={150} />
           </div>
         ) : (
-          <section>{user ? <Formation /> : <Connexion />}</section>
+          <section>{user ? <Formation /> : <Formulaire />}</section>
         )}
       </ActContext.Provider>
       {alert && <Info type={alert.type} message={alert.message} />}
