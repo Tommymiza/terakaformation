@@ -12,7 +12,7 @@ function App() {
   const [user, setUser] = useState();
   const [alert, setAlert] = useState();
   const [loading, setLoading] = useState(false);
-  const server = "http://127.0.0.1:4422";
+  const server = "https://api.teraka.org";
   useEffect(()=>{
     if(alert){
       setTimeout(()=>{
