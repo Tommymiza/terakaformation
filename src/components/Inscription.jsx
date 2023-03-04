@@ -11,7 +11,7 @@ import { lieu } from "./lieu";
 import { ActContext } from "../App";
 
 export default function Inscription({ setType }) {
-  const { server, setAlert } = useContext(ActContext);
+  const { server, setAlert, setUser } = useContext(ActContext);
   const form = useRef();
   const [loading, setLoading] = useState(false);
   const [lang, setLang] = useState();
@@ -77,11 +77,13 @@ export default function Inscription({ setType }) {
     })
       .then((res) => {
         setAlert({ type: "success", message: res.data.message });
+        localStorage.setItem("token", res.data.token);
+        setUser(res.data.user);
       })
       .catch((err) => {
         if (err.response) {
           console.log(err.response);
-          setAlert({ type: "error", message: err.response.data.error });
+          setAlert({ type: "error", message: err.response.data.sqlMessage ? err.response.data.sqlMessage : err.response.data.error });
         } else {
           setAlert({
             type: "error",

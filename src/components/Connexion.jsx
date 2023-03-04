@@ -17,14 +17,15 @@ export default function Connexion({ setType }) {
       method: "POST",
       url: server + "/login",
       data: {
-        pseudo: formCurrent.email.value,
+        pseudo: formCurrent.pseudo.value,
         password: formCurrent.password.value,
       },
     })
       .then((res) => {
         if (res.data.user) {
           setUser(res.data.user);
-          localStorage.setItem("session", res.data.token);
+          localStorage.setItem("token", res.data.token);
+          setAlert({ type: "success", message: res.data.message });
         } else {
           setAlert({ type: "error", message: res.data.message });
         }
