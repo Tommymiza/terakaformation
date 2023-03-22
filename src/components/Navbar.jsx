@@ -37,7 +37,7 @@ export default function Navbar() {
     <header>
       <div
         style={{ cursor: "pointer" }}
-        onClick={() => window.open("https://teraka.org", "_self")}
+        onClick={() => window.open("https://teraka.org", "_blank")}
       >
         <img
           src="/logo.png"
