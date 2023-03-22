@@ -1,51 +1,53 @@
 import { Avatar, Menu, MenuItem } from "@mui/material";
 import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ActContext } from "../App";
-import { BookRounded, LogoutRounded } from "@mui/icons-material";
+import { FavoriteBorderRounded, LogoutRounded } from "@mui/icons-material";
 import axios from "axios";
 
 export default function Navbar() {
+  const navigate = useNavigate();
   const [anchor, setAnchor] = useState(null);
-  const { user, setUser, server, setAlert } = useContext(ActContext);
+  const { user, setUser, server, setAlert, setLoad } = useContext(ActContext);
   const logout = () => {
+    setLoad(true);
     axios({
       url: server + "/logout",
       method: "POST",
       headers: {
-        Authorization: "Bearer " + localStorage.getItem("token"),
+        Authorization: "Bearer " + localStorage.getItem("accessKey"),
       },
       data: {
         id: user.id,
       },
     })
       .then(() => {
-        localStorage.removeItem("token");
+        localStorage.removeItem("accessKey");
         setUser();
       })
       .catch((err) => {
-        setAlert({type: "error", message: err.response.data.error})
-      });
+        setAlert({
+          type: "error",
+          message: err.response.data.error || "Erreur de connexion!",
+        });
+      })
+      .finally(() => setLoad(false));
   };
   return (
     <header>
-      <div id="logo">
+      <div
+        style={{ cursor: "pointer" }}
+        onClick={() => window.open("https://teraka.org", "_self")}
+      >
         <img
-          src="logo.png"
-          alt="Teraka logo"
-          style={{ width: 100 }}
-          onClick={() => window.open("https://www.teraka.org", "_self")}
+          src="/logo.png"
+          style={{ height: 100, objectFit: "contain" }}
+          alt="Logo"
         />
       </div>
       <ul>
-        <li title="Page d'accueil">
-          <a href="https://www.teraka.org">Accueil</a>
-        </li>
-        <li title="Le programme TERAKA">
-          <a href="https://programme.teraka.org">Programme</a>
-        </li>
-        <li title="Page des formations">
-          <a href="https://formation.teraka.org">Formation</a>
-        </li>
+        <li title="Page d'accueil" onClick={()=>navigate("/")}>Accueil</li>
+        <li title="Le programme TERAKA" onClick={()=>navigate("/cours")}>Cours TERAKA</li>
         {user && (
           <li>
             <Avatar
@@ -76,7 +78,8 @@ export default function Navbar() {
                   fontFamily: "Open Sans",
                 }}
               >
-                <BookRounded /> Formation suivi
+                <FavoriteBorderRounded />
+                Favoris
               </MenuItem>
               <MenuItem
                 sx={{
@@ -95,6 +98,40 @@ export default function Navbar() {
           </li>
         )}
       </ul>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          alignItems: "center",
+          margin: "0px 20px",
+          gap: "20px",
+          flexWrap: "nowrap",
+          background: "transparent",
+          position: "fixed",
+          top: "140px",
+          zIndex: "2",
+        }}
+      >
+        <button
+          className="nav-btn"
+          style={{ padding: "10px 0", fontSize: "16px", width: "180px" }}
+          onClick={() => {
+            window.open("https://rejoindre.teraka.org", "_self");
+          }}
+        >
+          Rejoindre TERAKA
+        </button>
+        <button
+          className="nav-btn"
+          style={{ padding: "10px 0", fontSize: "16px", width: "180px" }}
+          onClick={() => {
+            window.open("https://programme.teraka.org", "_self");
+          }}
+        >
+          Programme TERAKA
+        </button>
+      </div>
     </header>
   );
 }
