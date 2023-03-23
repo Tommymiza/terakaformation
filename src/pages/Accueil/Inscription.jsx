@@ -28,7 +28,7 @@ export default function Inscription({ setState }) {
   const [role, setRole] = useState("Membre potentiel de TERAKA");
   const [is_pg, setIspg] = useState("Oui");
   const [commune, setCommune] = useState("");
-  const [phone, setPhone] = useState("");
+  // const [phone, setPhone] = useState("");
   const [accept, setAccept] = useState(false);
   const [com, setCom] = useState([
     "Ambohidratrimo",
@@ -242,25 +242,25 @@ export default function Inscription({ setState }) {
     "Leader",
     "Autre...",
   ];
-  const formatPhone = (e) => {
-    if (e.key === "Backspace") {
-      // if ([4, 7, 11].includes(phone.length)) {
-        // setPhone(phone.substring(0, phone.length - 2));
-      // } else {
-        setPhone(phone.substring(0, phone.length - 1));
-      // }
-      return;
-    }
-    const value = parseInt(e.key);
-    if (!isNaN(value)) {
-      // if ([2, 5, 9].includes(phone.length)) {
-        // setPhone(phone + " " + e.key);
-      // } else {
-        setPhone(phone + e.key);
-      // }
-    }
-    return;
-  };
+  // const formatPhone = (e) => {
+  //   if (e.key === "Backspace") {
+  //     // if ([4, 7, 11].includes(phone.length)) {
+  //       // setPhone(phone.substring(0, phone.length - 2));
+  //     // } else {
+  //       setPhone(phone.substring(0, phone.length - 1));
+  //     // }
+  //     return;
+  //   }
+  //   const value = parseInt(e.key);
+  //   if (!isNaN(value)) {
+  //     // if ([2, 5, 9].includes(phone.length)) {
+  //       // setPhone(phone + " " + e.key);
+  //     // } else {
+  //       setPhone(phone + e.key);
+  //     // }
+  //   }
+  //   return;
+  // };
   const submit = (e) => {
     e.preventDefault();
     const f = form.current;
@@ -324,7 +324,7 @@ export default function Inscription({ setState }) {
       pseudo: f.pseudo.value,
       password: f.password.value,
       email: f.email.value !== "" ? f.email.value : null,
-      phone: phone !== "" ? phone : null,
+      phone: f.phone.value !== "" ? f.phone.value : null,
       ln: lang,
       adresse: {
         pays: nationalite,
@@ -429,8 +429,6 @@ export default function Inscription({ setState }) {
                   id="phone"
                   name="phone"
                   type="tel"
-                  value={phone}
-                  onKeyUp={formatPhone}
                   InputProps={{
                     style: {
                       height: "33px",
