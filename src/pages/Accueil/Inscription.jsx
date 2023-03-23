@@ -242,23 +242,23 @@ export default function Inscription({ setState }) {
     "Leader",
     "Autre...",
   ];
-  const formatPhone = (e) => {
-    if (e.key === "Backspace") {
-      if ([4, 7, 11].includes(phone.length)) {
-        setPhone(phone.substring(0, phone.length - 2));
-      } else {
-        setPhone(phone.substring(0, phone.length - 1));
-      }
-    }
-    const value = parseInt(e.key);
-    if (!isNaN(value) && phone.length < 12) {
-      if ([2, 5, 9].includes(phone.length)) {
-        setPhone(phone + " " + e.key);
-      } else {
-        setPhone(phone + e.key);
-      }
-    }
-  };
+  // const formatPhone = (e) => {
+  //   if (e.key === "Backspace") {
+  //     if ([4, 7, 11].includes(phone.length)) {
+  //       setPhone(phone.substring(0, phone.length - 2));
+  //     } else {
+  //       setPhone(phone.substring(0, phone.length - 1));
+  //     }
+  //   }
+  //   const value = parseInt(e.key);
+  //   if (!isNaN(value) && phone.length < 12) {
+  //     if ([2, 5, 9].includes(phone.length)) {
+  //       setPhone(phone + " " + e.key);
+  //     } else {
+  //       setPhone(phone + e.key);
+  //     }
+  //   }
+  // };
   const submit = (e) => {
     e.preventDefault();
     const f = form.current;
@@ -433,15 +433,11 @@ export default function Inscription({ setState }) {
                       height: "33px",
                       borderRadius: "7px",
                     },
-                    startAdornment: (
-                      <InputAdornment position="start">+261</InputAdornment>
-                    ),
                   }}
-                  onKeyUp={formatPhone}
                   inputProps={{
                     pattern: "[0-9]{2} [0-9]{2} [0-9]{3} [0-9]{2}",
                   }}
-                  placeholder="XX XX XXX XX"
+                  placeholder="+261 XX XX XXX XX"
                 />
               </ThemeProvider>
             </div>
