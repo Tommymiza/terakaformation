@@ -242,23 +242,25 @@ export default function Inscription({ setState }) {
     "Leader",
     "Autre...",
   ];
-  // const formatPhone = (e) => {
-  //   if (e.key === "Backspace") {
-  //     if ([4, 7, 11].includes(phone.length)) {
-  //       setPhone(phone.substring(0, phone.length - 2));
-  //     } else {
-  //       setPhone(phone.substring(0, phone.length - 1));
-  //     }
-  //   }
-  //   const value = parseInt(e.key);
-  //   if (!isNaN(value) && phone.length < 12) {
-  //     if ([2, 5, 9].includes(phone.length)) {
-  //       setPhone(phone + " " + e.key);
-  //     } else {
-  //       setPhone(phone + e.key);
-  //     }
-  //   }
-  // };
+  const formatPhone = (e) => {
+    if (e.key === "Backspace") {
+      // if ([4, 7, 11].includes(phone.length)) {
+        // setPhone(phone.substring(0, phone.length - 2));
+      // } else {
+        setPhone(phone.substring(0, phone.length - 1));
+      // }
+      return;
+    }
+    const value = parseInt(e.key);
+    if (!isNaN(value)) {
+      // if ([2, 5, 9].includes(phone.length)) {
+        // setPhone(phone + " " + e.key);
+      // } else {
+        setPhone(phone + e.key);
+      // }
+    }
+    return;
+  };
   const submit = (e) => {
     e.preventDefault();
     const f = form.current;
@@ -322,7 +324,7 @@ export default function Inscription({ setState }) {
       pseudo: f.pseudo.value,
       password: f.password.value,
       email: f.email.value !== "" ? f.email.value : null,
-      phone: phone !== "" ? "+261 " + phone : null,
+      phone: phone !== "" ? phone : null,
       ln: lang,
       adresse: {
         pays: nationalite,
@@ -428,14 +430,12 @@ export default function Inscription({ setState }) {
                   name="phone"
                   type="tel"
                   value={phone}
+                  onKeyUp={formatPhone}
                   InputProps={{
                     style: {
                       height: "33px",
                       borderRadius: "7px",
                     },
-                  }}
-                  inputProps={{
-                    pattern: "[0-9]{2} [0-9]{2} [0-9]{3} [0-9]{2}",
                   }}
                   placeholder="+261 XX XX XXX XX"
                 />
