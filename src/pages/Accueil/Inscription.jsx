@@ -4,7 +4,6 @@ import {
   ThemeProvider,
   TextField,
   Autocomplete,
-  InputAdornment,
   Checkbox,
   FormControlLabel,
   FormGroup,
@@ -311,7 +310,7 @@ export default function Inscription({ setState }) {
       });
       return;
     }
-    if(!accept){
+    if (!accept) {
       setAlert({
         type: "warning",
         message: "Veuillez accepter les conditions d'utilisation",
@@ -371,9 +370,13 @@ export default function Inscription({ setState }) {
     }
   }, [region]);
   return (
-    <form onSubmit={submit} ref={form} style={{ width: "100%", position: "relative" }}>
-      <div style={{position: "absolute", top: "10px", left: "10px"}}>
-        <IconButton onClick={()=>setState(0)}>
+    <form
+      onSubmit={submit}
+      ref={form}
+      style={{ width: "100%", position: "relative" }}
+    >
+      <div style={{ position: "absolute", top: "10px", left: "10px" }}>
+        <IconButton onClick={() => setState(0)}>
           <ArrowBack />
         </IconButton>
       </div>
@@ -432,6 +435,7 @@ export default function Inscription({ setState }) {
                   InputProps={{
                     style: {
                       height: "33px",
+                      width: "100%",
                       borderRadius: "7px",
                     },
                   }}
@@ -449,8 +453,18 @@ export default function Inscription({ setState }) {
                 <Autocomplete
                   options={ln}
                   defaultValue={"Malgache"}
-                  renderInput={(props) => <TextField {...props} />}
-                  sx={{ width: "100%", "& input": { height: "5px" } }}
+                  renderInput={(props) => (
+                    <TextField
+                      {...props}
+                      InputProps={{
+                        ...props.InputProps,
+                        style: {
+                          padding: "0px 65px 0px 7px",
+                        },
+                      }}
+                    />
+                  )}
+                  sx={{ width: "100%" }}
                   value={lang}
                   onChange={(e) => {
                     setLang(e.currentTarget?.innerText);
@@ -459,15 +473,26 @@ export default function Inscription({ setState }) {
               </ThemeProvider>
             </div>
             <div className="col-div" style={inputStyle}>
-              <label htmlFor="langage">
+              <label htmlFor="pays">
                 Pays: <Asterisk />
               </label>
               <ThemeProvider theme={theme}>
                 <Autocomplete
                   options={pays}
                   defaultValue={"Madagascar"}
-                  renderInput={(props) => <TextField {...props} />}
-                  sx={{ width: "100%", "& input": { height: "5px" } }}
+                  name="pays"
+                  renderInput={(props) => (
+                    <TextField
+                      {...props}
+                      InputProps={{
+                        ...props.InputProps,
+                        style: {
+                          padding: "0px 65px 0px 7px",
+                        },
+                      }}
+                    />
+                  )}
+                  sx={{ width: "100%" }}
                   value={nationalite}
                   onChange={(e) => {
                     setNationalite(e.currentTarget?.innerText);
@@ -485,8 +510,18 @@ export default function Inscription({ setState }) {
                     <Autocomplete
                       options={regions}
                       defaultValue={"ANALAMANGA"}
-                      renderInput={(props) => <TextField {...props} />}
-                      sx={{ width: "100%", "& input": { height: "5px" } }}
+                      renderInput={(props) => (
+                        <TextField
+                          {...props}
+                          InputProps={{
+                            ...props.InputProps,
+                            style: {
+                              padding: "0px 65px 0px 7px",
+                            },
+                          }}
+                        />
+                      )}
+                      sx={{ width: "100%" }}
                       value={region}
                       onChange={(e) => {
                         setRegion(e.currentTarget?.innerText);
@@ -503,8 +538,18 @@ export default function Inscription({ setState }) {
                       options={com}
                       disabled={!Boolean(region !== "")}
                       defaultValue={com[0]}
-                      renderInput={(props) => <TextField {...props} />}
-                      sx={{ width: "100%", "& input": { height: "5px" } }}
+                      renderInput={(props) => (
+                        <TextField
+                          {...props}
+                          InputProps={{
+                            ...props.InputProps,
+                            style: {
+                              padding: "0px 65px 0px 7px",
+                            },
+                          }}
+                        />
+                      )}
+                      sx={{ width: "100%" }}
                       value={commune}
                       onChange={(e) => {
                         setCommune(e.currentTarget?.innerText);
@@ -543,8 +588,18 @@ export default function Inscription({ setState }) {
                 <Autocomplete
                   options={roles}
                   defaultValue={"Membre potentiel de TERAKA"}
-                  renderInput={(props) => <TextField {...props} />}
-                  sx={{ width: "100%", "& input": { height: "5px" } }}
+                  renderInput={(props) => (
+                    <TextField
+                      {...props}
+                      InputProps={{
+                        ...props.InputProps,
+                        style: {
+                          padding: "0px 65px 0px 7px",
+                        },
+                      }}
+                    />
+                  )}
+                  sx={{ width: "100%" }}
                   value={role}
                   onChange={(e) => {
                     setRole(e.currentTarget?.innerText);
@@ -560,8 +615,18 @@ export default function Inscription({ setState }) {
                 <Autocomplete
                   options={["Oui", "Non"]}
                   defaultValue={"Oui"}
-                  renderInput={(props) => <TextField {...props} />}
-                  sx={{ width: "100%", "& input": { height: "5px" } }}
+                  renderInput={(props) => (
+                    <TextField
+                      {...props}
+                      InputProps={{
+                        ...props.InputProps,
+                        style: {
+                          padding: "0px 65px 0px 7px",
+                        },
+                      }}
+                    />
+                  )}
+                  sx={{ width: "100%" }}
                   value={is_pg}
                   onChange={(e) => {
                     setIspg(e.currentTarget?.innerText);
@@ -575,7 +640,12 @@ export default function Inscription({ setState }) {
           <ThemeProvider theme={theme}>
             <FormGroup>
               <FormControlLabel
-                control={<Checkbox checked={accept} onChange={()=>setAccept(!accept)} />}
+                control={
+                  <Checkbox
+                    checked={accept}
+                    onChange={() => setAccept(!accept)}
+                  />
+                }
                 label="J'accepte les conditions d'utilisation de ce site"
               />
             </FormGroup>
