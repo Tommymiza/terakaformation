@@ -6,7 +6,7 @@ import { theme } from "../../components/theme";
 import { ActContext } from "../../App";
 import axios from "axios";
 
-export default function Connexion() {
+export default function Connexion({setState}) {
   const { setAlert, server, setUser } = useContext(ActContext);
   const form = useRef();
   const [loading, setLoading] = useState(false);
@@ -58,6 +58,9 @@ export default function Connexion() {
         </div>
         <div className="col-div">
           <p className="underline" style={{fontSize: "15px"}}>Mot de passe oublié ?</p>
+        </div>
+        <div className="col-div">
+          <p className="underline" style={{fontSize: "15px"}} onClick={()=>setState(1)}>S'inscrire</p>
         </div>
         <div className="col-div">
           <ThemeProvider theme={theme}>

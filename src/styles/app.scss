@@ -83,11 +83,9 @@ section {
       font-size: 20px;
     }
     p > span {
-      font-weight: bolder;
       cursor: pointer;
-      transition: 0.4s;
+      color: blue;
       &:hover {
-        color: var(--active);
         text-decoration: underline;
       }
     }
@@ -124,6 +122,7 @@ div#alert {
 }
 .underline {
   cursor: pointer;
+  color: blue;
   &:hover {
     text-decoration: underline;
   }

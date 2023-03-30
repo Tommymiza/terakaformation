@@ -9,7 +9,7 @@ export default function Formulaire() {
       {state === 0 ? (
         <>
           <div>
-            <Connexion />
+            <Connexion setState={setState}/>
           </div>
           <div>
             <h2>Bienvenue au centre de formation TERAKA !</h2>

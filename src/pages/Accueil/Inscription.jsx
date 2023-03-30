@@ -287,15 +287,7 @@ export default function Inscription({ setState }) {
         });
         return;
       }
-    } else {
-      if (f.region.value === "" || f.commune.value === "") {
-        setAlert({
-          type: "warning",
-          message: "Les champs avec (*) sont obligatoires",
-        });
-        return;
-      }
-    }
+    } 
     if (f.password.value.length < 8) {
       setAlert({
         type: "warning",
@@ -308,6 +300,9 @@ export default function Inscription({ setState }) {
         type: "warning",
         message: "Les mots de passe ne sont pas identiques",
       });
+      return;
+    }
+    if (is_pg === "Oui" && f.id_pg.value === "") {
       return;
     }
     if (!accept) {
@@ -327,11 +322,12 @@ export default function Inscription({ setState }) {
       ln: lang,
       adresse: {
         pays: nationalite,
-        region,
-        commune,
+        region: nationalite === "Madagascar" ? region : null,
+        commune: nationalite === "Madagascar" ? commune : null,
       },
       role,
       is_pg,
+      id_pg: is_pg === "Oui" ? f.id_pg.value : null,
     };
     setLoading(true);
     axios({
@@ -500,7 +496,7 @@ export default function Inscription({ setState }) {
                 />
               </ThemeProvider>
             </div>
-            {nationalite === "Madagascar" ? (
+            {nationalite === "Madagascar" && (
               <>
                 <div className="col-div" style={inputStyle}>
                   <label htmlFor="langage">
@@ -556,24 +552,6 @@ export default function Inscription({ setState }) {
                       }}
                     />
                   </ThemeProvider>
-                </div>
-              </>
-            ) : (
-              <>
-                <div className="col-div" style={inputStyle}>
-                  <label htmlFor="region">
-                    Région: <Asterisk />
-                  </label>
-                  <input type="text" name="region" id="region" />
-                </div>
-                <div
-                  className="col-div"
-                  style={{ ...inputStyle, marginBottom: "15px" }}
-                >
-                  <label htmlFor="commune">
-                    Commune: <Asterisk />
-                  </label>
-                  <input type="text" name="commune" id="commune" />
                 </div>
               </>
             )}
@@ -634,6 +612,17 @@ export default function Inscription({ setState }) {
                 />
               </ThemeProvider>
             </div>
+            {is_pg === "Oui" && (
+              <div
+                className="col-div"
+                style={{ ...inputStyle, marginBottom: "15px" }}
+              >
+                <label htmlFor="id_pg">
+                  Quel est le numéro de votre petit groupe?: <Asterisk />
+                </label>
+                <input type="text" name="id_pg" id="id_pg" />
+              </div>
+            )}
           </div>
         </div>
         <div className="col-div">
