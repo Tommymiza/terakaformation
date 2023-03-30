@@ -14,12 +14,14 @@ import { ArrowBack, PersonAdd } from "@mui/icons-material";
 import { theme } from "../../components/theme";
 import { lieu } from "../../components/lieu";
 import axios from "axios";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const Asterisk = () => <span style={{ color: "red" }}>*</span>;
 
 export default function Inscription({ setState }) {
   const { server, setAlert, setUser } = useContext(ActContext);
   const form = useRef();
+  const [verified, setVerified] = useState(false);
   const [loading, setLoading] = useState(false);
   const [lang, setLang] = useState("Malgache");
   const [nationalite, setNationalite] = useState("Madagascar");
@@ -241,6 +243,13 @@ export default function Inscription({ setState }) {
     "Leader",
     "Autre...",
   ];
+  const verify = (value) => {
+    if (value) {
+      setVerified(true);
+    } else {
+      setVerified(false);
+    }
+  };
   // const formatPhone = (e) => {
   //   if (e.key === "Backspace") {
   //     // if ([4, 7, 11].includes(phone.length)) {
@@ -287,7 +296,7 @@ export default function Inscription({ setState }) {
         });
         return;
       }
-    } 
+    }
     if (f.password.value.length < 8) {
       setAlert({
         type: "warning",
@@ -303,12 +312,23 @@ export default function Inscription({ setState }) {
       return;
     }
     if (is_pg === "Oui" && f.id_pg.value === "") {
+      setAlert({
+        type: "warning",
+        message: "Les champs avec (*) sont obligatoires",
+      });
       return;
     }
     if (!accept) {
       setAlert({
         type: "warning",
         message: "Veuillez accepter les conditions d'utilisation",
+      });
+      return;
+    }
+    if(!verified){
+      setAlert({
+        type: "error",
+        message: "Erreur du captcha",
       });
       return;
     }
@@ -639,6 +659,12 @@ export default function Inscription({ setState }) {
               />
             </FormGroup>
           </ThemeProvider>
+        </div>
+        <div className="col-div">
+          <ReCAPTCHA
+            sitekey="6LdYHkMlAAAAAEU62b7unG0Pno8wvdorIrgqy_Uz"
+            onChange={verify}
+          />
         </div>
         <div className="col-div">
           <ThemeProvider theme={theme}>
