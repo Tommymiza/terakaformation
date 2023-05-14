@@ -1,5 +1,4 @@
 import React, { useEffect, createContext, useState } from "react";
-import Navbar from "./components/Navbar";
 import axios from "axios";
 import Info from "./components/Info";
 import { CircularProgress, ThemeProvider } from "@mui/material";
@@ -7,6 +6,8 @@ import { theme } from "./components/theme";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Accueil/Home";
 import Cours from "./pages/Formation/Cours";
+import Navbar from "./components/Navbar";
+import CoursContent from "./pages/Formation/CoursContent";
 
 export const ActContext = createContext();
 
@@ -51,36 +52,33 @@ function App() {
   }, []);
   return (
     <BrowserRouter>
-      <div className="App">
-        <ActContext.Provider
-          value={{ server, user, setUser, setAlert, setDialog, setLoad }}
-        >
-          <header className="">
-            <Navbar />
-          </header>
-          {load ? (
-            <div id="loading">
-              <ThemeProvider theme={theme}>
-                <CircularProgress size={150} />
-              </ThemeProvider>
+      <ActContext.Provider
+        value={{ server, user, setUser, setAlert, setDialog, setLoad }}
+      >
+        <Navbar />
+        {load ? (
+          <div id="loading">
+            <ThemeProvider theme={theme}>
+              <CircularProgress size={150} />
+            </ThemeProvider>
+          </div>
+        ) : (
+          <Routes>
+            <Route path="/" element={<Home user={user} />}></Route>
+            <Route path="/cours" element={<Cours user={user} />}></Route>
+            <Route path="/cours/:id" element={<CoursContent user={user}/>}></Route>
+          </Routes>
+        )}
+        {alert && <Info type={alert.type} message={alert.message} />}
+        {dialog && (
+          <div id="dialog">
+            <div className="dialog-container">
+              <div className="backdrop" onClick={() => setDialog()}></div>
+              {dialog}
             </div>
-          ) : (
-            <Routes>
-              <Route path="/" element={<Home user={user} />}></Route>
-              <Route path="/cours" element={<Cours user={user} />}></Route>
-            </Routes>
-          )}
-          {alert && <Info type={alert.type} message={alert.message} />}
-          {dialog && (
-            <div id="dialog">
-              <div className="dialog-container">
-                <div className="backdrop" onClick={() => setDialog()}></div>
-                {dialog}
-              </div>
-            </div>
-          )}
-        </ActContext.Provider>
-      </div>
+          </div>
+        )}
+      </ActContext.Provider>
     </BrowserRouter>
   );
 }

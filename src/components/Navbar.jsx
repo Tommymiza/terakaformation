@@ -34,20 +34,15 @@ export default function Navbar() {
       .finally(() => setLoad(false));
   };
   return (
-    <header>
-      <div
-        style={{ cursor: "pointer" }}
-        onClick={() => window.open("https://teraka.org", "_blank")}
-      >
-        <img
-          src="/logo.png"
-          style={{ height: 100, objectFit: "contain" }}
-          alt="Logo"
-        />
-      </div>
+    <header className="navbar">
+      <img src="/logo.png" id="logo" alt="Logo" />
       <ul>
-        <li title="Page d'accueil" onClick={()=>navigate("/")}>Accueil</li>
-        <li title="Le programme TERAKA" onClick={()=>navigate("/cours")}>Cours TERAKA</li>
+        <li title="Page d'accueil" onClick={() => navigate("/")}>
+          Accueil
+        </li>
+        <li title="Le programme TERAKA" onClick={() => navigate("/cours")}>
+          Cours TERAKA
+        </li>
         {user && (
           <li>
             <Avatar
@@ -110,7 +105,6 @@ export default function Navbar() {
           background: "transparent",
           position: "fixed",
           top: "140px",
-          zIndex: "2",
         }}
       >
         <button
