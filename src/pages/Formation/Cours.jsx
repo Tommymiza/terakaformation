@@ -6,18 +6,29 @@ import { Link } from "react-router-dom";
 
 export default function Cours({ user }) {
   const { setPath } = useContext(ActContext);
-  useEffect(()=>{
+  useEffect(() => {
     setPath(
-      <Link to={"/cours"} className="active">Mes cours</Link>
-    )
-  }, [])
+      <Link to={"/cours"} className="active">
+        Mes cours
+      </Link>
+    );
+  }, []);
   return (
     <section>
       {user ? (
-        <>
-          <Pathnav />
-          <List />
-        </>
+        !user.email ? (
+          <>
+            <Pathnav />
+            <List />
+          </>
+        ) : !user.is_verified ? (
+          <Sendemail />
+        ) : (
+          <>
+            <Pathnav />
+            <List />
+          </>
+        )
       ) : (
         <div className="col-div" style={{ marginTop: "140px" }}>
           <h1>Vous devez vous connecter pour accéder au cours</h1>
