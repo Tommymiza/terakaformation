@@ -3,6 +3,7 @@ import List from "./List";
 import Pathnav from "../../components/Pathnav";
 import { ActContext } from "../../App";
 import { Link } from "react-router-dom";
+import Sendemail from "../../components/Sendemail";
 
 export default function Cours({ user }) {
   const { setPath } = useContext(ActContext);
