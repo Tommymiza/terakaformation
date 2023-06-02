@@ -30,7 +30,7 @@ export default function Sendemail() {
       .finally(() => setLoading(false));
   };
   return (
-    <div className="col-div">
+    <div className="col-div" style={{marginTop: "300px"}}>
       <h1>Pour vérifier votre email, cliquez sur le bouton ci-dessous</h1>
       <ThemeProvider theme={theme}>
         <LoadingButton
