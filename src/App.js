@@ -8,6 +8,7 @@ import Home from "./pages/Accueil/Home";
 import Cours from "./pages/Formation/Cours";
 import Navbar from "./components/Navbar";
 import CoursContent from "./pages/Formation/CoursContent";
+import Content from "./pages/Formation/Content";
 
 export const ActContext = createContext();
 
@@ -17,6 +18,7 @@ function App() {
   const [dialog, setDialog] = useState();
   const [load, setLoad] = useState(true);
   const server = "https://api.teraka.org";
+  const [path, setPath] = useState(null);
   useEffect(() => {
     if (alert) {
       setTimeout(() => {
@@ -53,7 +55,7 @@ function App() {
   return (
     <BrowserRouter>
       <ActContext.Provider
-        value={{ server, user, setUser, setAlert, setDialog, setLoad }}
+        value={{ server, user, path, setUser, setAlert, setDialog, setLoad, setPath }}
       >
         <Navbar />
         {load ? (
@@ -66,7 +68,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home user={user} />}></Route>
             <Route path="/cours" element={<Cours user={user} />}></Route>
-            <Route path="/cours/:id" element={<CoursContent user={user}/>}></Route>
+            <Route path="/cours/:id" element={<CoursContent />}></Route>
+            <Route path="/cours/:id/:sid" element={<Content />}></Route>
           </Routes>
         )}
         {alert && <Info type={alert.type} message={alert.message} />}

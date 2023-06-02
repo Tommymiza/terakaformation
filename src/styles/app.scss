@@ -58,6 +58,7 @@ header.navbar {
   }
   &>#logo{
     width: 140px;
+    margin-left: 37px;
     object-fit: contain;
   }
 }
@@ -256,6 +257,16 @@ div#loading {
   }
   &:hover{
     box-shadow: 0 0 15px rgba($color: #000000, $alpha: 0.5);
+  }
+}
+#notFound{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  h1{
+    font-size: 25px;
+    color: #313d2f;
   }
 }
 @media screen and (max-width: 1300px) {

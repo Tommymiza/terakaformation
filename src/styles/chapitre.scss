@@ -1,0 +1,29 @@
+#chapitre{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 50px;
+    &>.chap-content{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        &>.row-list{
+            padding: 5px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 20px;
+            width: fit-content;
+            transition: .4s;
+            border-radius: 5px;
+            box-shadow:0 0 2px #afb0b1;
+            &>a{
+                text-decoration: none;
+            }
+            &:hover{
+                box-shadow:0 0 10px #afb0b1;
+            }
+        }
+    }
+}

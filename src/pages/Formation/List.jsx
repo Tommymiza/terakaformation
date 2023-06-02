@@ -1,94 +1,72 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useContext } from "react";
+import { ActContext } from "../../App";
 import { useNavigate } from "react-router";
+import { cours } from "./cours1";
+import { Visibility } from "@mui/icons-material";
+import { Rating } from "@mui/material";
 
 export default function List() {
-  const cours = [
-    {
-      id: 1,
-      title: "Titre",
-      description: "Description",
-      content: [
-        {
-          sousTitre: "Sous-titre 1",
-          content: "contenu 1",
-        },
-        {
-          sousTitre: "Sous-titre 2",
-          content: "contenu 2",
-        },
-        {
-          sousTitre: "Sous-titre 3",
-          content: "contenu 3",
-        },
-      ],
-    },
-    {
-      id: 2,
-      title: "Titre",
-      description: "Description",
-      content: [
-        {
-          sousTitre: "Sous-titre 1",
-          content: "contenu 1",
-        },
-        {
-          sousTitre: "Sous-titre 2",
-          content: "contenu 2",
-        },
-        {
-          sousTitre: "Sous-titre 3",
-          content: "contenu 3",
-        },
-      ],
-    },
-    {
-      id: 3,
-      title: "Titre",
-      description: "Description",
-      content: [
-        {
-          sousTitre: "Sous-titre 1",
-          content: "contenu 1",
-        },
-        {
-          sousTitre: "Sous-titre 2",
-          content: "contenu 2",
-        },
-        {
-          sousTitre: "Sous-titre 3",
-          content: "contenu 3",
-        },
-      ],
-    },
-  ];
+  const { user } = useContext(ActContext);
   const navigate = useNavigate();
   return (
-    <>
-      <h1>Liste:</h1>
-      <div className="grid">
-        {cours.map((item) => (
-          <motion.div
-            className="card"
-            key={item.id}
-            initial={{ opacity: 0, y: 200 }}
-            animate={{
-              opacity: 1,
-              y: 0,
-              transition: { duration: 1, delay: 0.3 * item.id, type: "spring" },
-            }}
-            onClick={()=> navigate("/cours/"+item.title + " " + item.id, {state: {
-              item
-            }})}
-          >
-            <img src="/images/flower_superba_ajj.jpg" alt="illustration" />
-            <div>
-              <h3>{item.title + " " + item.id}</h3>
-              <p>{item.description + " " + item.id}</p>
+    <div className="cours-container">
+      {cours.map((i) => {
+        return i.liste.map((item) => (
+          <div className="cours" key={item.id}>
+            <div className="img-container">
+              <img src={"/images/" + item.id + ".jpg"} alt={item.img} />
+              <div
+                onClick={() =>
+                  navigate(
+                    `/cours/${item.id.toString().substr(0, 1)}/${item.id
+                      .toString()
+                      .substr(1, 3)}`
+                  )
+                }
+              >
+                <p>
+                  <Visibility />
+                  <span>VOIR</span>
+                </p>
+              </div>
             </div>
-          </motion.div>
-        ))}
-      </div>
-    </>
+            <div className="cours-content">
+              <div>
+                <h5>
+                  {item.id.toString().substr(0, 1)}. {i.titre}
+                </h5>
+                <h4
+                  onClick={() =>
+                    navigate(
+                      `/cours/${item.id.toString().substr(0, 1)}/${item.id
+                        .toString()
+                        .substr(1, 3)}`
+                    )
+                  }
+                >
+                  {item.id.toString().substr(1, 3)}. {item.titre}
+                </h4>
+                <Rating disabled value={user.formation[item.id.toString()]?.rating || 0} />
+              </div>
+              <div className="progressbar">
+                <span
+                  className="progress"
+                  style={{
+                    width:
+                      user.formation[item.id.toString()]?.progress.toString() +
+                        "%" || 0 + "%",
+                  }}
+                ></span>
+                <p>
+                  {user.formation[item.id.toString()]?.progress.toFixed(1) ||
+                    "0.0"}
+                  % Terminé(s)
+                </p>
+              </div>
+            </div>
+          </div>
+        ));
+      })}
+    </div>
   );
 }
