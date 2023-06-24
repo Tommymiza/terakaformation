@@ -1,18 +1,6 @@
 import {
-  CloseRounded,
-  ControlPointRounded,
-  CopyAllRounded,
-  DeleteRounded,
-  EditRounded,
   LoginRounded,
   PersonAddRounded,
-  PersonRemoveRounded,
-  PhotoAlbumRounded,
-  PhotoCameraBackOutlined,
-  PhotoCameraBackRounded,
-  PhotoCameraFrontRounded,
-  RefreshRounded,
-  SearchRounded,
 } from "@mui/icons-material";
 import { LoadingButton } from "@mui/lab";
 import { Button, ThemeProvider } from "@mui/material";
@@ -99,7 +87,7 @@ export default function Connexion({ setState }) {
           <div className="col-div">
             <ThemeProvider theme={theme}>
               <Button
-                startIcon={<DeleteRounded />}
+                startIcon={<PersonAddRounded />}
                 sx={{
                   textTransform: "none",
                   fontWeight: "bolder",
