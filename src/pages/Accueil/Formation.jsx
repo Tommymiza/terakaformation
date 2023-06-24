@@ -1,18 +1,18 @@
 import React, { useContext } from "react";
 import { ActContext } from "../../App";
 import Sendemail from "../../components/Sendemail";
-import Accueil from "./Accueil";
+import Home from "./Home";
 
 export default function Formation() {
   const { user } = useContext(ActContext);
   return (
     <>
       {!user.email ? (
-        <Accueil />
+        <Home />
       ) : !user.is_verified ? (
         <Sendemail />
       ) : (
-        <Accueil />
+        <Home />
       )}
     </>
   );

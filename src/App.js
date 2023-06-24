@@ -3,12 +3,14 @@ import axios from "axios";
 import Info from "./components/Info";
 import { CircularProgress, ThemeProvider } from "@mui/material";
 import { theme } from "./components/theme";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Accueil/Home";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import Cours from "./pages/Formation/Cours";
 import Navbar from "./components/Navbar";
-import CoursContent from "./pages/Formation/CoursContent";
+import Accueil from "./pages/Accueil/Accueil";
+import Pathnav from "./components/Pathnav";
+import Inscription from "./components/Inscription";
 import Content from "./pages/Formation/Content";
+import Chapitre from "./pages/Formation/Chapitre";
 
 export const ActContext = createContext();
 
@@ -18,7 +20,8 @@ function App() {
   const [dialog, setDialog] = useState();
   const [load, setLoad] = useState(true);
   const server = "https://api.teraka.org";
-  const [path, setPath] = useState(null);
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (alert) {
       setTimeout(() => {
@@ -27,12 +30,12 @@ function App() {
     }
   }, [alert]);
   useEffect(() => {
-    if (localStorage.getItem("accessKey")) {
+    if (localStorage.getItem("token")) {
       axios({
         url: server + "/getuser",
         method: "GET",
         headers: {
-          Authorization: "Bearer " + localStorage.getItem("accessKey"),
+          Authorization: "Bearer " + localStorage.getItem("token"),
         },
       })
         .then((res) => {
@@ -43,7 +46,7 @@ function App() {
             type: "error",
             message: err.response.data.error || "Erreur de connexion!",
           });
-          localStorage.removeItem("accessKey");
+          localStorage.removeItem("token");
         })
         .finally(() => {
           setLoad(false);
@@ -51,38 +54,58 @@ function App() {
     } else {
       setLoad(false);
     }
+    if (!user) {
+      navigate("/");
+    }
+    // eslint-disable-next-line
   }, []);
+  useEffect(() => {
+    if (!user) {
+      navigate("/");
+    }
+    return;
+    // eslint-disable-next-line
+  }, [user]);
   return (
-    <BrowserRouter>
-      <ActContext.Provider
-        value={{ server, user, path, setUser, setAlert, setDialog, setLoad, setPath }}
-      >
-        <Navbar />
-        {load ? (
-          <div id="loading">
-            <ThemeProvider theme={theme}>
-              <CircularProgress size={150} />
-            </ThemeProvider>
-          </div>
-        ) : (
+    <ActContext.Provider
+      value={{
+        server,
+        user,
+        setUser,
+        setAlert,
+        setDialog,
+        setLoad,
+      }}
+    >
+      <Navbar />
+      <Pathnav />
+      {load ? (
+        <div id="loading">
+          <ThemeProvider theme={theme}>
+            <CircularProgress size={150} />
+          </ThemeProvider>
+        </div>
+      ) : (
+        <section>
           <Routes>
-            <Route path="/" element={<Home user={user} />}></Route>
-            <Route path="/cours" element={<Cours user={user} />}></Route>
-            <Route path="/cours/:id" element={<CoursContent />}></Route>
+            <Route path="/" element={<Accueil />}></Route>
+            <Route path="/sign up" element={<Inscription />}></Route>
+            <Route path="/cours" element={<Cours />}></Route>
+            <Route path="/cours/:id" element={<Chapitre />}></Route>
             <Route path="/cours/:id/:sid" element={<Content />}></Route>
           </Routes>
-        )}
-        {alert && <Info type={alert.type} message={alert.message} />}
-        {dialog && (
-          <div id="dialog">
-            <div className="dialog-container">
-              <div className="backdrop" onClick={() => setDialog()}></div>
-              {dialog}
-            </div>
+        </section>
+      )}
+      {alert && <Info type={alert.type} message={alert.message} />}
+      {dialog && (
+        <div id="dialog">
+          <div className="dialog-container">
+            <div className="backdrop" onClick={() => setDialog()}></div>
+            {dialog}
           </div>
-        )}
-      </ActContext.Provider>
-    </BrowserRouter>
+        </div>
+      )}
+    </ActContext.Provider>
   );
 }
 

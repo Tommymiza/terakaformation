@@ -1,9 +1,9 @@
 import React from 'react'
-import Formulaire from "./Formulaire";
-import Formation from "../Formation/Formation";
 
-export default function Home({user}) {
+export default function Home() {
   return (
-    <section>{user ? <Formation /> : <Formulaire />}</section>
+    <div id="accueil">
+        Accueil
+    </div>
   )
 }
