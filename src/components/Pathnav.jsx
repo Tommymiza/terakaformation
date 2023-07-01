@@ -17,7 +17,10 @@ export default function Pathnav() {
     if(arr[i - 2]?.titre === "cours"){
       return str + ". " + cours[parseInt(arr[i - 1].titre) - 1].liste[parseInt(str) - 1].titre
     }
-    return str === "" ? <HomeRounded sx={{fontSize: "25px"}}/> : str.replace("%20", " ");
+    if(str.length > 30){
+      return "";
+    }
+    return str === "" ? <HomeRounded sx={{fontSize: "25px"}}/> : str.replaceAll("%20", " ");
   };
   const createPath = (n, arr) => {
     var item_path = "";

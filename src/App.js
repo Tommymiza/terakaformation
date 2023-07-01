@@ -3,7 +3,7 @@ import axios from "axios";
 import Info from "./components/Info";
 import { CircularProgress, ThemeProvider } from "@mui/material";
 import { theme } from "./components/theme";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import Cours from "./pages/Formation/Cours";
 import Navbar from "./components/Navbar";
 import Accueil from "./pages/Accueil/Accueil";
@@ -11,6 +11,9 @@ import Pathnav from "./components/Pathnav";
 import Inscription from "./components/Inscription";
 import Content from "./pages/Formation/Content";
 import Chapitre from "./pages/Formation/Chapitre";
+import CompteLost from "./components/CompteLost";
+import MdpRenew from "./pages/Accueil/MdpRenew";
+import NotFound from "./components/NotFound";
 
 export const ActContext = createContext();
 
@@ -19,9 +22,9 @@ function App() {
   const [alert, setAlert] = useState();
   const [dialog, setDialog] = useState();
   const [load, setLoad] = useState(true);
-  const server = "https://api.teraka.org";
+  const server = "http://localhost:4422";
   const navigate = useNavigate();
-
+  const location = useLocation();
   useEffect(() => {
     if (alert) {
       setTimeout(() => {
@@ -54,16 +57,17 @@ function App() {
     } else {
       setLoad(false);
     }
-    if (!user) {
-      navigate("/");
-    }
     // eslint-disable-next-line
   }, []);
   useEffect(() => {
-    if (!user) {
+    if(location.pathname.includes("renew")){
+      return;
+    }
+    if (user) {
+      navigate("/cours");
+    } else {
       navigate("/");
     }
-    return;
     // eslint-disable-next-line
   }, [user]);
   return (
@@ -90,9 +94,12 @@ function App() {
           <Routes>
             <Route path="/" element={<Accueil />}></Route>
             <Route path="/sign up" element={<Inscription />}></Route>
+            <Route path="/reset password" element={<CompteLost />}></Route>
+            <Route path="/renew/:token" element={<MdpRenew />}></Route>
             <Route path="/cours" element={<Cours />}></Route>
             <Route path="/cours/:id" element={<Chapitre />}></Route>
             <Route path="/cours/:id/:sid" element={<Content />}></Route>
+            <Route path="*" element={<NotFound />}></Route>
           </Routes>
         </section>
       )}

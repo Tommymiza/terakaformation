@@ -19,7 +19,11 @@ import {
 
 export default function Cours() {
   const { user, setAlert } = useContext(ActContext);
-  const [grille, setGrille] = useState(eval(localStorage.getItem("grille")) ?? true);
+  // eslint-disable-next-line
+  const [grille, setGrille] = useState(
+    // eslint-disable-next-line
+    eval(localStorage.getItem("grille")) ?? true
+  );
   const navigate = useNavigate();
   const roman = {
     1: "I",
@@ -62,69 +66,86 @@ export default function Cours() {
       </div>
       {user &&
         (grille ? (
-          <div className="grid-container">
-            {cours.map((i) =>
-              i.liste.map((item) => (
-                <div className="cours" key={item.id}>
-                  <div className="img-container">
-                    <img src={"/images/" + item.id + ".jpg"} alt={item.img} />
-                    <div
-                      onClick={() =>
-                        navigate(
-                          `/cours/${item.id.toString().substr(0, 1)}/${item.id
-                            .toString()
-                            .substr(1, 3)}`
-                        )
-                      }
-                    >
-                      <p>
-                        <Visibility />
-                        <span>VOIR</span>
-                      </p>
-                    </div>
-                  </div>
-                  <div className="cours-content">
-                    <div>
-                      <h5>
-                        {roman[item.id.toString().substr(0, 1)]}. {i.titre}
-                      </h5>
-                      <h4
-                        onClick={() =>
-                          navigate(
-                            `/cours/${item.id.toString().substr(0, 1)}/${item.id
-                              .toString()
-                              .substr(1, 3)}`
-                          )
-                        }
-                      >
-                        {item.id.toString().substr(1, 3)}. {item.titre}
-                      </h4>
-                      <Rating
-                        disabled
-                        value={user.formation[item.id.toString()]?.rating || 0}
-                      />
-                    </div>
-                    <div className="progressbar">
-                      <span
-                        className="progress"
-                        style={{
-                          width:
-                            user.formation[
+          <div style={{display: "flex", flexDirection: "column", gap: "50px"}}>
+            {cours.map((i, index) => (
+              <div>
+                <h1 style={{cursor: "pointer", color: "var(--active)"}} className="underline" onClick={()=>navigate(`/cours/${(index + 1)}`)}>
+                  {roman[(index + 1).toString()]}. {i.titre} :
+                </h1>
+                <div className="grid-container">
+                  {i.liste.map((item) => (
+                    <div className="cours" key={item.id}>
+                      <div className="img-container">
+                        <img
+                          src={"/images/" + item.id + ".jpg"}
+                          alt={item.img}
+                        />
+                        <div
+                          onClick={() =>
+                            navigate(
+                              `/cours/${item.id
+                                .toString()
+                                .substr(0, 1)}/${item.id
+                                .toString()
+                                .substr(1, 3)}`
+                            )
+                          }
+                        >
+                          <p>
+                            <Visibility />
+                            <span>VOIR</span>
+                          </p>
+                        </div>
+                      </div>
+                      <div className="cours-content">
+                        <div>
+                          <h5>
+                            {roman[item.id.toString().substr(0, 1)]}. {i.titre}
+                          </h5>
+                          <h4
+                            onClick={() =>
+                              navigate(
+                                `/cours/${item.id
+                                  .toString()
+                                  .substr(0, 1)}/${item.id
+                                  .toString()
+                                  .substr(1, 3)}`
+                              )
+                            }
+                          >
+                            {roman[item.id.toString().substr(0, 1)]}-
+                            {item.id.toString().substr(2, 3)}. {item.titre}
+                          </h4>
+                          <Rating
+                            disabled
+                            value={
+                              user.formation[item.id.toString()]?.rating || 0
+                            }
+                          />
+                        </div>
+                        <div className="progressbar">
+                          <span
+                            className="progress"
+                            style={{
+                              width:
+                                user.formation[
+                                  item.id.toString()
+                                ]?.progress.toString() + "%" || 0 + "%",
+                            }}
+                          ></span>
+                          <p>
+                            {user.formation[
                               item.id.toString()
-                            ]?.progress.toString() + "%" || 0 + "%",
-                        }}
-                      ></span>
-                      <p>
-                        {user.formation[item.id.toString()]?.progress.toFixed(
-                          1
-                        ) || "0.0"}
-                        % Terminé(s)
-                      </p>
+                            ]?.progress.toFixed(1) || "0.0"}
+                            % Terminé(s)
+                          </p>
+                        </div>
+                      </div>
                     </div>
-                  </div>
+                  ))}
                 </div>
-              ))
-            )}
+              </div>
+            ))}
           </div>
         ) : (
           <div className="list-container">

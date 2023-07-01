@@ -9,51 +9,11 @@
   flex-direction: row;
   justify-content: space-between;
   background-color: white;
-  ul {
-    list-style: none;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 20px;
-    font-size: 17px;
-    li {
-      & > a {
-        cursor: pointer;
-        text-decoration: none;
-        color: var(--active);
-        &:hover{
-          font-weight: bold;
-        }
-      }
-    }
-  }
-  & > #logo {
+  align-items: center;
+  #logo {
     width: 100px;
     object-fit: contain;
     cursor: pointer;
-  }
-}
-#menu-col{
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  width: 260px;
-  ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    font-size: 17px;
-    li {
-      & > a {
-        cursor: pointer;
-        text-decoration: none;
-        color: var(--active);
-        &:hover{
-          font-weight: bold;
-        }
-      }
-    }
   }
 }
 #pathnav {

@@ -1,7 +1,4 @@
-import {
-  LoginRounded,
-  PersonAddRounded,
-} from "@mui/icons-material";
+import { LoginRounded, PersonAddRounded } from "@mui/icons-material";
 import { LoadingButton } from "@mui/lab";
 import { Button, ThemeProvider } from "@mui/material";
 import React, { useRef, useState, useContext } from "react";
@@ -9,6 +6,7 @@ import { theme } from "./theme";
 import { ActContext } from "../App";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Home from "../pages/Accueil/Home";
 
 export default function Connexion({ setState }) {
   const { setAlert, server, setUser } = useContext(ActContext);
@@ -51,56 +49,63 @@ export default function Connexion({ setState }) {
   };
   return (
     <div id="accueil">
-      <form onSubmit={submit} ref={form}>
-        <div className="col-div" style={{ gap: "10px" }}>
-          <h2>Connexion:</h2>
-          <div className="col-div" style={inputStyle}>
-            <label htmlFor="pseudo">Pseudo ou email: </label>
-            <input type="text" name="pseudo" id="pseudo" />
-          </div>
-          <div className="col-div" style={inputStyle}>
-            <label htmlFor="password">Mot de passe: </label>
-            <input type="password" name="password" id="password" />
-          </div>
-          <div className="col-div" style={{alignSelf: "flex-start"}}>
-            <p className="underline" style={{ fontSize: "15px" }}>
-              Détails du compte oublié?
-            </p>
-          </div>
-          <div className="col-div">
-            <ThemeProvider theme={theme}>
-              <LoadingButton
-                startIcon={<LoginRounded />}
-                variant="contained"
-                sx={{
-                  textTransform: "none",
-                  fontWeight: "bolder",
-                  fontFamily: "Open Sans",
-                }}
-                type="submit"
-                loading={loading}
+      <div className="row-content">
+        <form onSubmit={submit} ref={form}>
+          <div className="col-div" style={{ gap: "10px" }}>
+            <h2>Connexion:</h2>
+            <div className="col-div" style={inputStyle}>
+              <label htmlFor="pseudo">Nom d'utilisateur ou email: </label>
+              <input type="text" name="pseudo" id="pseudo" />
+            </div>
+            <div className="col-div" style={inputStyle}>
+              <label htmlFor="password">Mot de passe: </label>
+              <input type="password" name="password" id="password" />
+            </div>
+            <div className="col-div" style={{ alignSelf: "flex-start" }}>
+              <p
+                className="underline"
+                style={{ fontSize: "15px" }}
+                onClick={() => navigate("/reset password")}
               >
-                Connecter
-              </LoadingButton>
-            </ThemeProvider>
+                Détails du compte oublié?
+              </p>
+            </div>
+            <div className="col-div">
+              <ThemeProvider theme={theme}>
+                <LoadingButton
+                  startIcon={<LoginRounded />}
+                  variant="contained"
+                  sx={{
+                    textTransform: "none",
+                    fontWeight: "bolder",
+                    fontFamily: "Open Sans",
+                  }}
+                  type="submit"
+                  loading={loading}
+                >
+                  Connecter
+                </LoadingButton>
+              </ThemeProvider>
+            </div>
+            <div className="col-div">
+              <ThemeProvider theme={theme}>
+                <Button
+                  startIcon={<PersonAddRounded />}
+                  sx={{
+                    textTransform: "none",
+                    fontWeight: "bolder",
+                    fontFamily: "Open Sans",
+                  }}
+                  onClick={() => navigate("/sign up")}
+                >
+                  S'inscrire
+                </Button>
+              </ThemeProvider>
+            </div>
           </div>
-          <div className="col-div">
-            <ThemeProvider theme={theme}>
-              <Button
-                startIcon={<PersonAddRounded />}
-                sx={{
-                  textTransform: "none",
-                  fontWeight: "bolder",
-                  fontFamily: "Open Sans",
-                }}
-                onClick={()=>navigate("/sign up")}
-              >
-                S'inscrire
-              </Button>
-            </ThemeProvider>
-          </div>
-        </div>
-      </form>
+        </form>
+        <Home />
+      </div>
     </div>
   );
 }

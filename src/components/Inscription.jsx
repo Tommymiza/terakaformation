@@ -20,7 +20,7 @@ import { useNavigate } from "react-router";
 const Asterisk = () => <span style={{ color: "red" }}>*</span>;
 
 export default function Inscription() {
-  const { server, setAlert, setUser } = useContext(ActContext);
+  const { server, setAlert, setUser, user } = useContext(ActContext);
   const form = useRef();
   const [verified, setVerified] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -247,9 +247,10 @@ export default function Inscription() {
   const verify = (value) => {
     if (value) {
       setVerified(true);
-    } else {
-      setVerified(false);
+      return;
     }
+    setVerified(false);
+    return;
   };
   const submit = (e) => {
     e.preventDefault();
@@ -368,6 +369,12 @@ export default function Inscription() {
       setCom();
     }
   }, [region]);
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+    // eslint-disable-next-line
+  }, []);
   return (
     <div id="accueil">
       <form
@@ -401,7 +408,7 @@ export default function Inscription() {
               </div>
               <div className="col-div" style={inputStyle}>
                 <label htmlFor="pseudo">
-                  Pseudo: <Asterisk />
+                  Nom d'utilisateur: <Asterisk />
                 </label>
                 <input type="text" name="pseudo" id="pseudo" />
               </div>
