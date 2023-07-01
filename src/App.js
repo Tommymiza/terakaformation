@@ -22,7 +22,7 @@ function App() {
   const [alert, setAlert] = useState();
   const [dialog, setDialog] = useState();
   const [load, setLoad] = useState(true);
-  const server = "http://localhost:4422";
+  const server = "https://api.teraka.org";
   const navigate = useNavigate();
   const location = useLocation();
   useEffect(() => {
