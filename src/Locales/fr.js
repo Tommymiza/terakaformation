@@ -1,7 +1,7 @@
 export const fr = {
     login: {
         titre: ["Connexion", "Inscription", "Mot de passe oublié"],
-        label: ["Nom", "Prénoms", "Nom d'utilisateur", "Mot de passe", "Réécrire mot de passe", "Email", "Téléphone", "Langage", "Pays", "Région", "Commune", "Quel est votre rôle dans TERAKA ?", "Êtes-vous dans un petit groupe ?", "Quel est le numéro du petit groupe ?", "Accepter les termes et conditions d'utilisation", "Methode de récupération", "Envoyer un email", "Répondre au question", "Terminés"]
+        label: ["Nom", "Prénoms", "Nom d'utilisateur", "Mot de passe", "Réécrire mot de passe", "Email", "Téléphone", "Langage", "Pays", "Région", "Commune", "Quel est votre rôle dans TERAKA ?", "Êtes-vous dans un petit groupe ?", "Quel est le numéro du petit groupe ?", "Accepter les termes et conditions d'utilisation", "Methode de récupération", "Envoyer un email", "Répondre au question", "Terminés", "Nouveau mot de passe"]
     },
     button: ["Programme", "Rejoindre", "Mon compte", "Lexique", "F A Q", "Déconnexion", "Connexion", "S'inscrire", "Mot de passe oublié", "Rechercher", "Valider", "Voir", "Suite", "Terminer"],
     alert: ["Bienvenue à bord", "Félicitation!", "Vous avez fini cette leçon", "Les champs sont obligatoires!", "Minimum 8 caractères pour le mot de passe", "Les mots de passe ne sont pas identiques", "Veuillez accepter les conditions d'utilisation"],

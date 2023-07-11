@@ -146,12 +146,14 @@ export default function CompteLost() {
                   value={quest}
                   onChange={(e) => setQuest(e.target.value)}
                 >
-                  <FormControlLabel
-                    value="email"
-                    defaultChecked
-                    control={<Radio />}
-                    label={t("login.label.16")}
-                  />
+                  {userFind.email && (
+                    <FormControlLabel
+                      value="email"
+                      defaultChecked
+                      control={<Radio />}
+                      label={t("login.label.16")}
+                    />
+                  )}
                   <FormControlLabel
                     value="qst"
                     control={<Radio />}

@@ -9,7 +9,7 @@ import axios from "axios";
 import jwtDecode from "jwt-decode";
 
 export default function MdpRenew() {
-  const { setAlert, server } = useContext(ActContext);
+  const { setAlert, server, t } = useContext(ActContext);
   const [loading, setLoading] = useState(false);
   const [decToken, setDecToken] = useState(null);
   const navigate = useNavigate();
@@ -65,13 +65,13 @@ export default function MdpRenew() {
     <div id="accueil">
       <form ref={form} onSubmit={valider}>
         <div className="col-div" style={{ gap: "10px" }}>
-          <h2>Nouveau mot de passe</h2>
+          <h2>{t("login.label.19")}</h2>
           <div className="col-div" style={inputStyle}>
-            <label htmlFor="password">Nouveau:</label>
+            <label htmlFor="password">{t("login.label.3")}:</label>
             <input type="password" name="password" id="password" required />
           </div>
           <div className="col-div" style={inputStyle}>
-            <label htmlFor="rpassword">Réécrire:</label>
+            <label htmlFor="rpassword">{t("login.label.4")}:</label>
             <input type="password" name="rpassword" id="rpassword" required />
           </div>
           <ThemeProvider theme={theme}>
@@ -86,7 +86,7 @@ export default function MdpRenew() {
               type="submit"
               loading={loading}
             >
-              Valider
+              {t("button.10")}
             </LoadingButton>
           </ThemeProvider>
         </div>

@@ -1,7 +1,7 @@
 export const mg = {
     login: {
         titre: ["Hiditra", "Hamorona Kaonty", "Adino ny teny miafina"],
-        label: ["anarana", "fanampiny", "Kaonty", "Teny miafina", "Famerenana teny miafina", "Adiresy mailaka", "Finday", "Fiteny", "Firenena", "Faritra", "Kaominina", "Asanao ao amin'ny TERAKA ?", "Anaty Vondrona Madinika ve ?", "Laharana vondrona madinika ?", "Manaiky ny fepetra mifehy ny tranonkala", "Fomba hamerenana", "Alefa mailaka", "Hamaly fanontaniana", "Vita"]
+        label: ["anarana", "fanampiny", "Kaonty", "Teny miafina", "Famerenana teny miafina", "Adiresy mailaka", "Finday", "Fiteny", "Firenena", "Faritra", "Kaominina", "Asanao ao amin'ny TERAKA ?", "Anaty Vondrona Madinika ve ?", "Laharana vondrona madinika ?", "Manaiky ny fepetra mifehy ny tranonkala", "Fomba hamerenana", "Alefa mailaka", "Hamaly fanontaniana", "Vita", "Teny miafina vaovao"]
     },
     button: ["Programa", "Hiditra", "Kaonty", "Teny", "F A Q", "Hivoaka", "Hiditra", "Hamorona", "Teny miafina adino", "Tadiavo", "Alefa", "Hijery", "Tohiny", "Tapitra"],
     alert: ["Tongasoa indray", "Arabaina nahavita lesona", "Efa vitanao ito lesona ito", "Tsy maintsy fenoina", "Litera 8 farafahakeliny ny teny miafina", "Tsy mitovy ny teny miafina", "Ekeo ny fepetra"],

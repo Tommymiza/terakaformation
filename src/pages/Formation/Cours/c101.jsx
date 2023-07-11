@@ -86,9 +86,7 @@ export default function C101() {
             style={{ marginTop: "50px", width: "100%" }}
           >
             <h5>{t("c101.4")}</h5>
-            <p>
-            {t("c101.5")}
-            </p>
+            <p>{t("c101.5")}</p>
             <div className="image-center-column" style={{ marginTop: "0" }}>
               <img src="/images/101_3.png" width={"100%"} alt="nav" />
               <p>
@@ -101,9 +99,7 @@ export default function C101() {
             style={{ marginTop: "50px", width: "100%" }}
           >
             <h5>{t("c101.7")}</h5>
-            <p>
-            {t("c101.8")}
-            </p>
+            <p>{t("c101.8")}</p>
             <div className="image-center-column" style={{ marginTop: "0" }}>
               <img src="/images/101_2.png" width={"300px"} alt="nav" />
               <p>
@@ -116,9 +112,7 @@ export default function C101() {
             style={{ marginTop: "50px", width: "100%" }}
           >
             <h5>{t("c101.10")}</h5>
-            <p>
-            {t("c101.11")}
-            </p>
+            <p>{t("c101.11")}</p>
             <div className="image-center-column" style={{ marginTop: "0" }}>
               <img src="/images/101_15.png" width={"100%"} alt="nav" />
               <p>
@@ -128,7 +122,7 @@ export default function C101() {
           </div>
           <div className="action-center">
             <button className="nav-btn" onClick={() => valider()}>
-            {t("button.12")}
+              {t("button.12")}
             </button>
           </div>
         </div>
@@ -138,9 +132,7 @@ export default function C101() {
           <h3>{t("c101.13")}</h3>
           <div className="content-part" style={{ width: "100%" }}>
             <h5>{t("c101.14")}</h5>
-            <p>
-            {t("c101.15")}
-            </p>
+            <p>{t("c101.15")}</p>
             <div className="image-center-column" style={{ marginTop: "0" }}>
               <img src="/images/101_7.png" width={"200px"} alt="nav" />
               <p>
@@ -166,9 +158,7 @@ export default function C101() {
             style={{ marginTop: "50px", width: "100%" }}
           >
             <h5>{t("c101.20")}</h5>
-            <p>
-            {t("c101.21")}
-            </p>
+            <p>{t("c101.21")}</p>
             <div className="image-center-column" style={{ marginTop: "0" }}>
               <img src="/images/101_11.png" width={"100%"} alt="nav" />
               <p>
@@ -181,9 +171,7 @@ export default function C101() {
             style={{ marginTop: "50px", width: "100%" }}
           >
             <h5>{t("c101.23")}</h5>
-            <p>
-            {t("c101.24")}
-            </p>
+            <p>{t("c101.24")}</p>
             <div className="image-center-column" style={{ marginTop: "0" }}>
               <img src="/images/101_13.png" width={"100%"} alt="nav" />
               <p>

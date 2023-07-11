@@ -1,7 +1,7 @@
 export const en = {
   login: {
     titre: ["Login", "Sign up", "Forgot password"],
-    label: ["Name", "First name", "Username", "Password", "Rewrite password", "Email", "Phone", "Language", "Country", "Region", "Commune", "What's your TERAKA's role ?", "Are you inside TERAKA Group ?", "TERAKA group number ?", "Do you agree with terms and conditions?", "Restauration method", "Send email", "Answer a question", "finished"]
+    label: ["Name", "First name", "Username", "Password", "Rewrite password", "Email", "Phone", "Language", "Country", "Region", "Commune", "What's your TERAKA's role ?", "Are you inside TERAKA Group ?", "TERAKA group number ?", "Do you agree with terms and conditions?", "Restauration method", "Send email", "Answer a question", "finished", "New password"]
   },
   button: ["Program", "Join", "Account", "Lexic", "F A Q", "Logout", "Sign in", "Sign up", "Forgot password", "Search", "Validate", "See", "Next", "Finish"],
   alert: ["Welcome", "Congratulation!", "You've finished this lesson", "Fields must be completed", "Minimum 8 character for password", "Password doesn't match", "Accept terms and condition"],
