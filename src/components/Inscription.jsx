@@ -20,7 +20,7 @@ import { useNavigate } from "react-router";
 const Asterisk = () => <span style={{ color: "red" }}>*</span>;
 
 export default function Inscription() {
-  const { server, setAlert, setUser, user } = useContext(ActContext);
+  const { server, setAlert, user, t } = useContext(ActContext);
   const form = useRef();
   const [verified, setVerified] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -244,6 +244,12 @@ export default function Inscription() {
     "Leader",
     "Autre...",
   ];
+  const Qsts = [
+    t("question.0"),
+    t("question.1"),
+    t("question.2"),
+    t("question.3"),
+  ];
   const verify = (value) => {
     if (value) {
       setVerified(true);
@@ -267,7 +273,7 @@ export default function Inscription() {
     ) {
       setAlert({
         type: "warning",
-        message: "Les champs avec (*) sont obligatoires",
+        message: t("alert.3"),
       });
       return;
     }
@@ -275,7 +281,7 @@ export default function Inscription() {
       if (region === "" || commune === "") {
         setAlert({
           type: "warning",
-          message: "Les champs avec (*) sont obligatoires",
+          message: t("alert.3"),
         });
         return;
       }
@@ -283,28 +289,28 @@ export default function Inscription() {
     if (f.password.value.length < 8) {
       setAlert({
         type: "warning",
-        message: "Minimum 8 caractères pour le mot de passe",
+        message: t("alert.4"),
       });
       return;
     }
     if (f.password.value !== f.repassword.value) {
       setAlert({
         type: "warning",
-        message: "Les mots de passe ne sont pas identiques",
+        message: t("alert.5"),
       });
       return;
     }
     if (is_pg === "Oui" && f.id_pg.value === "") {
       setAlert({
         type: "warning",
-        message: "Les champs avec (*) sont obligatoires",
+        message: t("alert.3"),
       });
       return;
     }
     if (!accept) {
       setAlert({
         type: "warning",
-        message: "Veuillez accepter les conditions d'utilisation",
+        message: t("alert.7"),
       });
       return;
     }
@@ -331,6 +337,8 @@ export default function Inscription() {
       role,
       is_pg,
       id_pg: is_pg === "Oui" ? f.id_pg.value : null,
+      qst: parseInt(f.qst.value),
+      reponse: f.reponse.value
     };
     setLoading(true);
     axios({
@@ -339,9 +347,8 @@ export default function Inscription() {
       data,
     })
       .then((res) => {
-        setUser(res.data.user);
         localStorage.setItem("token", res.data.token);
-        setAlert({ type: "success", message: res.data.message });
+        window.location.reload();
       })
       .catch((err) => {
         console.log(err);
@@ -383,7 +390,7 @@ export default function Inscription() {
         style={{ width: "100%" }}
       >
         <div className="col-div" style={{ gap: "10px", width: "100%" }}>
-          <h2>Inscription:</h2>
+          <h2>{t("login.titre.1")}:</h2>
           <div
             className="row-div"
             style={{
@@ -393,43 +400,43 @@ export default function Inscription() {
               gap: "20px",
             }}
           >
-            <div className="col-div" style={{width: "250px"}}>
+            <div className="col-div" style={{ width: "250px" }}>
               <div className="col-div" style={inputStyle}>
                 <label htmlFor="nom">
-                  Nom: <Asterisk />
+                  {t("login.label.0")}: <Asterisk />
                 </label>
                 <input type="text" name="nom" id="nom" />
               </div>
               <div className="col-div" style={inputStyle}>
                 <label htmlFor="prenom">
-                  Prénom: <Asterisk />
+                  {t("login.label.1")}: <Asterisk />
                 </label>
                 <input type="text" name="prenom" id="prenom" />
               </div>
               <div className="col-div" style={inputStyle}>
                 <label htmlFor="pseudo">
-                  Nom d'utilisateur: <Asterisk />
+                  {t("login.label.2")}: <Asterisk />
                 </label>
                 <input type="text" name="pseudo" id="pseudo" />
               </div>
               <div className="col-div" style={inputStyle}>
                 <label htmlFor="password">
-                  Mot de passe: <Asterisk />
+                  {t("login.label.3")}: <Asterisk />
                 </label>
                 <input type="password" name="password" id="password" />
               </div>
               <div className="col-div" style={inputStyle}>
                 <label htmlFor="repassword">
-                  Réecrire mot de passe: <Asterisk />
+                  {t("login.label.4")}: <Asterisk />
                 </label>
                 <input type="password" name="repassword" id="repassword" />
               </div>
               <div className="col-div" style={inputStyle}>
-                <label htmlFor="email">Adresse email: </label>
+                <label htmlFor="email">{t("login.label.5")}: </label>
                 <input type="email" name="email" id="email" />
               </div>
               <div className="col-div" style={inputStyle}>
-                <label htmlFor="phone">N° téléphone: </label>
+                <label htmlFor="phone">{t("login.label.6")}: </label>
                 <ThemeProvider theme={theme}>
                   <TextField
                     id="phone"
@@ -447,10 +454,10 @@ export default function Inscription() {
                 </ThemeProvider>
               </div>
             </div>
-            <div className="col-div" style={{width: "250px"}}>
+            <div className="col-div" style={{ width: "250px" }}>
               <div className="col-div" style={inputStyle}>
                 <label htmlFor="langage">
-                  Langage: <Asterisk />
+                  {t("login.label.7")}: <Asterisk />
                 </label>
                 <ThemeProvider theme={theme}>
                   <Autocomplete
@@ -479,7 +486,7 @@ export default function Inscription() {
               </div>
               <div className="col-div" style={inputStyle}>
                 <label htmlFor="pays">
-                  Pays: <Asterisk />
+                  {t("login.label.8")}: <Asterisk />
                 </label>
                 <ThemeProvider theme={theme}>
                   <Autocomplete
@@ -511,7 +518,7 @@ export default function Inscription() {
                 <>
                   <div className="col-div" style={inputStyle}>
                     <label htmlFor="langage">
-                      Région: <Asterisk />
+                      {t("login.label.9")}: <Asterisk />
                     </label>
                     <ThemeProvider theme={theme}>
                       <Autocomplete
@@ -540,7 +547,7 @@ export default function Inscription() {
                   </div>
                   <div className="col-div" style={inputStyle}>
                     <label htmlFor="langage">
-                      Commune: <Asterisk />
+                      {t("login.label.10")}: <Asterisk />
                     </label>
                     <ThemeProvider theme={theme}>
                       <Autocomplete
@@ -575,7 +582,7 @@ export default function Inscription() {
                 style={{ ...inputStyle, marginTop: "5px" }}
               >
                 <label htmlFor="langage">
-                  Quel est votre rôle dans TERAKA?: <Asterisk />
+                  {t("login.label.11")} <Asterisk />
                 </label>
                 <ThemeProvider theme={theme}>
                   <Autocomplete
@@ -604,7 +611,7 @@ export default function Inscription() {
               </div>
               <div className="col-div" style={inputStyle}>
                 <label htmlFor="langage">
-                  Êtes-vous membre d'un petit groupe: <Asterisk />
+                  {t("login.label.12")} <Asterisk />
                 </label>
                 <ThemeProvider theme={theme}>
                   <Autocomplete
@@ -637,11 +644,22 @@ export default function Inscription() {
                   style={{ ...inputStyle, marginBottom: "15px" }}
                 >
                   <label htmlFor="id_pg">
-                    Quel est le numéro de votre petit groupe?: <Asterisk />
+                    {t("login.label.13")} <Asterisk />
                   </label>
                   <input type="text" name="id_pg" id="id_pg" />
                 </div>
               )}
+              <div className="col-div"
+                style={{ ...inputStyle, marginBottom: "15px" }}>
+                <select name="qst" id="qst" style={{border: "none", fontSize: "15px"}}>
+                  {Qsts.map((item, index) => (
+                    <option key={index} value={index}>{item}</option>
+                  ))}
+                </select>
+              </div>
+              <div className="col-div">
+                <input type="reponse" name="reponse" id="reponse" required />
+              </div>
             </div>
           </div>
           <div className="col-div">
@@ -654,7 +672,7 @@ export default function Inscription() {
                       onChange={() => setAccept(!accept)}
                     />
                   }
-                  label="J'accepte les conditions d'utilisation de ce site"
+                  label={t("login.label.14")}
                 />
               </FormGroup>
             </ThemeProvider>
@@ -678,7 +696,7 @@ export default function Inscription() {
                 type="submit"
                 loading={loading}
               >
-                Inscription
+                {t("button.7")}
               </LoadingButton>
             </ThemeProvider>
           </div>
@@ -691,9 +709,9 @@ export default function Inscription() {
                   fontWeight: "bolder",
                   fontFamily: "Open Sans",
                 }}
-                onClick={()=>navigate("/")}
+                onClick={() => navigate("/")}
               >
-                Se connecter
+                {t("button.6")}
               </Button>
             </ThemeProvider>
           </div>

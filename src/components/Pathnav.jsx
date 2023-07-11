@@ -1,10 +1,70 @@
 import { HomeRounded } from "@mui/icons-material";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { ActContext } from "../App";
 import { NavLink, useLocation } from "react-router-dom";
-import { cours } from "../pages/Formation/cours1";
 
 export default function Pathnav() {
+  const { t } = useContext(ActContext);
   const [path, setPath] = useState([]);
+  const cours = [
+    {
+      titre: t("cours.0.titre"),
+      descri: t("cours.0.descri"),
+      liste: [
+        {
+          id: 101,
+          titre: t("cours.0.liste.0.titre"),
+          img: "Group_of_sakalava_women_001.jpg",
+        },
+        {
+          id: 102,
+          titre: t("cours.0.liste.1.titre"),
+          img: "Group_of_sakalava_women_001.jpg",
+        },
+      ],
+    },
+    {
+      titre: t("cours.1.titre"),
+      descri: t("cours.1.descri"),
+      liste: [
+        {
+          id: 201,
+          titre:  t("cours.1.liste.0.titre"),
+          img: "Group_of_sakalava_women_001.jpg",
+        },
+        {
+          id: 202,
+          titre: t("cours.1.liste.1.titre"),
+          img: "Group_of_sakalava_women_001.jpg",
+        },
+        {
+          id: 203,
+          titre: t("cours.1.liste.2.titre"),
+          img: "Group_of_sakalava_women_001.jpg",
+        },
+        {
+          id: 204,
+          titre: t("cours.1.liste.3.titre"),
+          img: "Group_of_sakalava_women_001.jpg",
+        },
+        {
+          id: 205,
+          titre: t("cours.1.liste.4.titre"),
+          img: "Group_of_sakalava_women_001.jpg",
+        },
+        {
+          id: 206,
+          titre: t("cours.1.liste.5.titre"),
+          img: "Group_of_sakalava_women_001.jpg",
+        },
+        {
+          id: 207,
+          titre: t("cours.1.liste.6.titre"),
+          img: "Group_of_sakalava_women_001.jpg",
+        },
+      ],
+    },
+  ];
   const location = useLocation();
   const roman = {
     "1": "I",

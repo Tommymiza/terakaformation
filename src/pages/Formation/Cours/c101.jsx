@@ -5,7 +5,7 @@ import { Rating } from "@mui/material";
 import { useNavigate } from "react-router";
 
 export default function C101() {
-  const { user, server, setAlert } = useContext(ActContext);
+  const { user, server, setAlert, t } = useContext(ActContext);
   const [rating, setRating] = useState(user?.formation["101"]?.rating || 0);
   const [nb, setNb] = useState(
     isNaN(parseInt((user?.formation["101"]?.progress * 2) / 100))
@@ -70,18 +70,14 @@ export default function C101() {
     <>
       {nb === 0 && (
         <div className="content">
-          <h1>Ireo karazana fifamoivoizana "ivelan'ny lesona"</h1>
+          <h1>{t("c101.0")}</h1>
           <div className="content-part" style={{ width: "100%" }}>
-            <h5>1. Top bar:</h5>
-            <p>
-              Ity no ahafahanao mivezivezy ato anatin'ny tranonkala na ihany koa
-              handeha hijery ireo tranonkala TERAKA hafa. Azonao kitihana ny
-              iray amin'ireo raha te hifindra tranonkala TERAKA hafa ianao.
-            </p>
+            <h5>{t("c101.1")}</h5>
+            <p>{t("c101.2")}</p>
             <div className="image-center-column" style={{ marginTop: "0" }}>
               <img src="/images/101_1.png" width={"100%"} alt="nav" />
               <p>
-                <i>Lalam-pifandraisan'ny tranonkala</i>
+                <i>{t("c101.3")}</i>
               </p>
             </div>
           </div>
@@ -89,16 +85,14 @@ export default function C101() {
             className="content-part"
             style={{ marginTop: "50px", width: "100%" }}
           >
-            <h5>2. Chemin d'accès:</h5>
+            <h5>{t("c101.4")}</h5>
             <p>
-              Ity no ahafahanao mamantatra ny toerana misy anao, ny lalana
-              nidiranao rehetra ka hatreo amin'ny misy anao izao. Azonao atao ny
-              lalana raha te hiverina amin'ny toerana iray.
+            {t("c101.5")}
             </p>
             <div className="image-center-column" style={{ marginTop: "0" }}>
               <img src="/images/101_3.png" width={"100%"} alt="nav" />
               <p>
-                <i>Lalana naleha sy ny misy anao</i>
+                <i>{t("c101.6")}</i>
               </p>
             </div>
           </div>
@@ -106,16 +100,14 @@ export default function C101() {
             className="content-part"
             style={{ marginTop: "50px", width: "100%" }}
           >
-            <h5>3. Compte:</h5>
+            <h5>{t("c101.7")}</h5>
             <p>
-              Ity no ahafahanao mijery ireo lesona tianao, na ihany koa, mivoaka
-              ny Tranonkala <i>"Déconnexion"</i>. Azonao atao ny mikitika ny
-              iray amin ireo.
+            {t("c101.8")}
             </p>
             <div className="image-center-column" style={{ marginTop: "0" }}>
               <img src="/images/101_2.png" width={"300px"} alt="nav" />
               <p>
-                <i>Kaonty TERAKA</i>
+                <i>{t("c101.9")}</i>
               </p>
             </div>
           </div>
@@ -123,38 +115,36 @@ export default function C101() {
             className="content-part"
             style={{ marginTop: "50px", width: "100%" }}
           >
-            <h5>4. Alert:</h5>
+            <h5>{t("c101.10")}</h5>
             <p>
-              Ity no ahafahan'ny pejy mifandray aminao. Ahitanao ireo teny madinika izy ito, miankina amin'ny lokony ny dikany.
+            {t("c101.11")}
             </p>
             <div className="image-center-column" style={{ marginTop: "0" }}>
               <img src="/images/101_15.png" width={"100%"} alt="nav" />
               <p>
-                <i>Notification</i>
+                <i>{t("c101.12")}</i>
               </p>
             </div>
           </div>
           <div className="action-center">
             <button className="nav-btn" onClick={() => valider()}>
-              Tohiny
+            {t("button.12")}
             </button>
           </div>
         </div>
       )}
       {nb === 1 && (
         <div className="content">
-          <h3>Ireo karazana fifamoivoizana "anatin'ny lesona"</h3>
+          <h3>{t("c101.13")}</h3>
           <div className="content-part" style={{ width: "100%" }}>
-            <h5>1. Affichage:</h5>
+            <h5>{t("c101.14")}</h5>
             <p>
-              Ity no ahafahanao manova ny fisehon'ny lisitra ny lesona. Azonao
-              kitihana ny iray amin'ireo raha te hiova fampisehoana ny lisitry
-              ny lesona ianao.
+            {t("c101.15")}
             </p>
             <div className="image-center-column" style={{ marginTop: "0" }}>
               <img src="/images/101_7.png" width={"200px"} alt="nav" />
               <p>
-                <i>Fanovana endriky ny lisitra</i>
+                <i>{t("c101.16")}</i>
               </p>
             </div>
           </div>
@@ -162,17 +152,12 @@ export default function C101() {
             className="content-part"
             style={{ marginTop: "50px", width: "100%" }}
           >
-            <h5>2. Affichage en grille:</h5>
-            <p>
-              Toy izao ny fomba fiseho raha <i>"En grille"</i> ny safidinao. Izy
-              ihany koa no miseho voalohany raha mbola tsy nisafidy ny hiova
-              ianao. Azonao atao ny mikitika ny lesona iray raha te hanohy ny
-              fianarana ao aminy ianao.
-            </p>
+            <h5>{t("c101.17")}</h5>
+            <p>{t("c101.18")}</p>
             <div className="image-center-column" style={{ marginTop: "0" }}>
               <img src="/images/101_10.png" width={"100%"} alt="nav" />
               <p>
-                <i>Lisitra en Grille</i>
+                <i>{t("c101.19")}</i>
               </p>
             </div>
           </div>
@@ -180,16 +165,14 @@ export default function C101() {
             className="content-part"
             style={{ marginTop: "50px", width: "100%" }}
           >
-            <h5>3. Affichage en ligne:</h5>
+            <h5>{t("c101.20")}</h5>
             <p>
-              Toy izao ny fomba fiseho raha <i>"En ligne"</i> ny safidinao.
-              Azonao atao ny mikitika ny lesona iray raha te hanohy ny fianarana
-              ao aminy ianao.
+            {t("c101.21")}
             </p>
             <div className="image-center-column" style={{ marginTop: "0" }}>
               <img src="/images/101_11.png" width={"100%"} alt="nav" />
               <p>
-                <i>Lisitra en Ligne</i>
+                <i>{t("c101.22")}</i>
               </p>
             </div>
           </div>
@@ -197,16 +180,14 @@ export default function C101() {
             className="content-part"
             style={{ marginTop: "50px", width: "100%" }}
           >
-            <h5>4. Navigation:</h5>
+            <h5>{t("c101.23")}</h5>
             <p>
-              Ireto ny bokotra <i>"bouton"</i> ahafahanao mamaky ny lesona.
-              Rehefa manindry ny "tohiny" ianao dia miakatra ny taha-pahavitanao
-              ny lesona.
+            {t("c101.24")}
             </p>
             <div className="image-center-column" style={{ marginTop: "0" }}>
               <img src="/images/101_13.png" width={"100%"} alt="nav" />
               <p>
-                <i>Bokotra ao anatin'ny lesona</i>
+                <i>{t("c101.25")}</i>
               </p>
             </div>
           </div>
@@ -214,17 +195,12 @@ export default function C101() {
             className="content-part"
             style={{ marginTop: "50px", width: "100%" }}
           >
-            <h5>5. Terminaison:</h5>
-            <p>
-              Ireto ny bokotra famaranana <i>"bouton de terminaison"</i>{" "}
-              ahafahanao mamarana ny lesona sy manome naoty arakarakin'ny
-              fahitanao ny lesona. Rehefa manindry ny "Tapitra" ianao dia feno
-              ny taha-pahavitanao ny lesona.
-            </p>
+            <h5>{t("c101.26")}</h5>
+            <p>{t("c101.27")}</p>
             <div className="image-center-column" style={{ marginTop: "0" }}>
               <img src="/images/101_14.png" width={"100%"} alt="nav" />
               <p>
-                <i>Bokotra famaranana ny lesona</i>
+                <i>{t("c101.28")}</i>
               </p>
             </div>
           </div>
@@ -232,18 +208,12 @@ export default function C101() {
             className="content-part"
             style={{ marginTop: "50px", width: "100%" }}
           >
-            <h5>6. Chapitre:</h5>
-            <p>
-              Ito ny mampiseho ny mombamomban'ny <i>"chapitre"</i> iray. Hita
-              ato ireo lesona mandrakotra ny chapitre ary ihany koa ny lesona
-              efa vitanao. Maitso ny lokon'ny lesona raha vita 100% izy, manga
-              kosa raha toa ka mbola misy tsy vita. Azonao kitihana ny lesona
-              iray raha te hianatra azy ianao.
-            </p>
+            <h5>{t("c101.29")}</h5>
+            <p>{t("c101.30")}</p>
             <div className="image-center-column" style={{ marginTop: "0" }}>
               <img src="/images/101_16.png" width={"100%"} alt="nav" />
               <p>
-                <i>Mombamomban'ny chapitre iray</i>
+                <i>{t("c101.31")}</i>
               </p>
             </div>
           </div>
@@ -259,7 +229,7 @@ export default function C101() {
           </div>
           <div className="action-center">
             <button className="nav-btn" onClick={() => valider()}>
-              Tapitra
+              {t("button.13")}
             </button>
           </div>
         </div>

@@ -14,17 +14,34 @@ import Chapitre from "./pages/Formation/Chapitre";
 import CompteLost from "./components/CompteLost";
 import MdpRenew from "./pages/Accueil/MdpRenew";
 import NotFound from "./components/NotFound";
+import i18n from "i18next";
+import { initReactI18next, useTranslation } from "react-i18next";
+import { en } from "./Locales/en";
+import { fr } from "./Locales/fr";
+import { mg } from "./Locales/mg";
 
 export const ActContext = createContext();
+
+i18n.use(initReactI18next).init({
+  resources: {
+    en: { translation: en },
+    fr: { translation: fr },
+    mg: { translation: mg },
+  },
+  lng: window.navigator.language,
+  fallbackLng: window.navigator.language,
+  interpolation: { escapeValue: false },
+});
 
 function App() {
   const [user, setUser] = useState();
   const [alert, setAlert] = useState();
   const [dialog, setDialog] = useState();
   const [load, setLoad] = useState(true);
-  const server = "https://api.teraka.org";
+  const server = "http://127.0.0.1:4422";
   const navigate = useNavigate();
   const location = useLocation();
+  const { t } = useTranslation();
   useEffect(() => {
     if (alert) {
       setTimeout(() => {
@@ -33,6 +50,9 @@ function App() {
     }
   }, [alert]);
   useEffect(() => {
+    if (localStorage.getItem("lang")) {
+      i18n.changeLanguage(localStorage.getItem("lang"));
+    }
     if (localStorage.getItem("token")) {
       axios({
         url: server + "/getuser",
@@ -79,6 +99,7 @@ function App() {
         setAlert,
         setDialog,
         setLoad,
+        t
       }}
     >
       <Navbar />

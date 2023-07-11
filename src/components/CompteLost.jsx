@@ -13,19 +13,24 @@ import { SearchRounded, CheckRounded } from "@mui/icons-material";
 import { ActContext } from "../App";
 import { useNavigate } from "react-router";
 import axios from "axios";
-import { qsts } from "./qsts";
 import ReCAPTCHA from "react-google-recaptcha";
 
 const Asterisk = () => <span style={{ color: "red" }}>*</span>;
 
 export default function CompteLost() {
-  const { user, setAlert, server } = useContext(ActContext);
+  const { user, setAlert, server, t } = useContext(ActContext);
   const [loading, setLoading] = useState(false);
   const [verified, setVerified] = useState(false);
   const [quest, setQuest] = useState("email");
   const [userFind, setuFind] = useState();
   const navigate = useNavigate();
   const form = useRef(null);
+  const Qsts = [
+    t("question.0"),
+    t("question.1"),
+    t("question.2"),
+    t("question.3"),
+  ];
   const verify = (value) => {
     if (value) {
       setVerified(true);
@@ -36,7 +41,7 @@ export default function CompteLost() {
   };
   const find = () => {
     if (form.current.username.value === "") {
-      setAlert({ type: "warning", message: "Champ obligatoire!" });
+      setAlert({ type: "warning", message: t("alert.3") });
       return;
     }
     setLoading(true);
@@ -122,10 +127,10 @@ export default function CompteLost() {
     <div id="accueil">
       <form ref={form} onSubmit={valider}>
         <div className="col-div" style={{ gap: "10px" }}>
-          <h3>Mot de passe oublié:</h3>
+          <h3>{t("login.titre.2")}:</h3>
           <div className="col-div" style={inputStyle}>
             <label htmlFor="username">
-              Nom d'utilisateur: <Asterisk />{" "}
+              {t("login.label.2")}: <Asterisk />{" "}
             </label>
             <input type="text" id="username" name="username" />
           </div>
@@ -133,7 +138,7 @@ export default function CompteLost() {
             <ThemeProvider theme={theme}>
               <FormControl>
                 <FormLabel id="demo-controlled-radio-buttons-group">
-                  Méthode de récupération
+                  {t("login.label.15")}
                 </FormLabel>
                 <RadioGroup
                   aria-labelledby="demo-controlled-radio-buttons-group"
@@ -145,12 +150,12 @@ export default function CompteLost() {
                     value="email"
                     defaultChecked
                     control={<Radio />}
-                    label="Envoyer un email"
+                    label={t("login.label.16")}
                   />
                   <FormControlLabel
                     value="qst"
                     control={<Radio />}
-                    label="Répondre à une question"
+                    label={t("login.label.17")}
                   />
                 </RadioGroup>
               </FormControl>
@@ -158,7 +163,7 @@ export default function CompteLost() {
           )}
           {quest === "qst" && userFind?.question && (
             <div className="col-div" style={inputStyle}>
-              <label htmlFor="qst">{qsts[userFind.question]}</label>
+              <label htmlFor="qst">{Qsts[userFind.question]}</label>
               <input type="text" name="qst" id="qst" required />
             </div>
           )}
@@ -184,7 +189,7 @@ export default function CompteLost() {
                   type="submit"
                   loading={loading}
                 >
-                  Valider
+                  {t("button.10")}
                 </LoadingButton>
               ) : (
                 <LoadingButton
@@ -198,7 +203,7 @@ export default function CompteLost() {
                   loading={loading}
                   onClick={find}
                 >
-                  Rechercher
+                  {t("button.9")}
                 </LoadingButton>
               )}
             </ThemeProvider>

@@ -8,8 +8,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Home from "../pages/Accueil/Home";
 
-export default function Connexion({ setState }) {
-  const { setAlert, server, setUser } = useContext(ActContext);
+export default function Connexion() {
+  const { setAlert, server, setUser, t } = useContext(ActContext);
   const form = useRef();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ export default function Connexion({ setState }) {
     const f = form.current;
     e.preventDefault();
     if (f.pseudo.value === "" || f.password.value === "") {
-      setAlert({ type: "warning", message: "Les champs sont obligatoires!" });
+      setAlert({ type: "warning", message: t("alert.3") });
       return;
     }
     setLoading(true);
@@ -52,13 +52,13 @@ export default function Connexion({ setState }) {
       <div className="row-content">
         <form onSubmit={submit} ref={form}>
           <div className="col-div" style={{ gap: "10px" }}>
-            <h2>Connexion:</h2>
+            <h2>{t("login.titre.0")}:</h2>
             <div className="col-div" style={inputStyle}>
-              <label htmlFor="pseudo">Nom d'utilisateur ou email: </label>
+              <label htmlFor="pseudo">{t("login.label.2")} / {t("login.label.5")}: </label>
               <input type="text" name="pseudo" id="pseudo" />
             </div>
             <div className="col-div" style={inputStyle}>
-              <label htmlFor="password">Mot de passe: </label>
+              <label htmlFor="password">{t("login.label.3")}: </label>
               <input type="password" name="password" id="password" />
             </div>
             <div className="col-div" style={{ alignSelf: "flex-start" }}>
@@ -67,7 +67,7 @@ export default function Connexion({ setState }) {
                 style={{ fontSize: "15px" }}
                 onClick={() => navigate("/reset password")}
               >
-                Détails du compte oublié?
+                {t("button.8")}
               </p>
             </div>
             <div className="col-div">
@@ -83,7 +83,7 @@ export default function Connexion({ setState }) {
                   type="submit"
                   loading={loading}
                 >
-                  Connecter
+                  {t("button.6")}
                 </LoadingButton>
               </ThemeProvider>
             </div>
@@ -98,7 +98,7 @@ export default function Connexion({ setState }) {
                   }}
                   onClick={() => navigate("/sign up")}
                 >
-                  S'inscrire
+                  {t("button.7")}
                 </Button>
               </ThemeProvider>
             </div>

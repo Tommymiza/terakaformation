@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ActContext } from "../../App";
 import { useNavigate } from "react-router";
-import { cours } from "./cours1";
 import {
   ExpandMore,
   ViewListRounded,
@@ -18,12 +17,71 @@ import {
 } from "@mui/material";
 
 export default function Cours() {
-  const { user, setAlert } = useContext(ActContext);
+  const { user, setAlert, t } = useContext(ActContext);
   // eslint-disable-next-line
   const [grille, setGrille] = useState(
     // eslint-disable-next-line
     eval(localStorage.getItem("grille")) ?? true
   );
+  const cours = [
+    {
+      titre: t("cours.0.titre"),
+      descri: t("cours.0.descri"),
+      liste: [
+        {
+          id: 101,
+          titre: t("cours.0.liste.0.titre"),
+          img: "Group_of_sakalava_women_001.jpg",
+        },
+        {
+          id: 102,
+          titre: t("cours.0.liste.1.titre"),
+          img: "Group_of_sakalava_women_001.jpg",
+        },
+      ],
+    },
+    {
+      titre: t("cours.1.titre"),
+      descri: t("cours.1.descri"),
+      liste: [
+        {
+          id: 201,
+          titre:  t("cours.1.liste.0.titre"),
+          img: "Group_of_sakalava_women_001.jpg",
+        },
+        {
+          id: 202,
+          titre: t("cours.1.liste.1.titre"),
+          img: "Group_of_sakalava_women_001.jpg",
+        },
+        {
+          id: 203,
+          titre: t("cours.1.liste.2.titre"),
+          img: "Group_of_sakalava_women_001.jpg",
+        },
+        {
+          id: 204,
+          titre: t("cours.1.liste.3.titre"),
+          img: "Group_of_sakalava_women_001.jpg",
+        },
+        {
+          id: 205,
+          titre: t("cours.1.liste.4.titre"),
+          img: "Group_of_sakalava_women_001.jpg",
+        },
+        {
+          id: 206,
+          titre: t("cours.1.liste.5.titre"),
+          img: "Group_of_sakalava_women_001.jpg",
+        },
+        {
+          id: 207,
+          titre: t("cours.1.liste.6.titre"),
+          img: "Group_of_sakalava_women_001.jpg",
+        },
+      ],
+    },
+  ];
   const navigate = useNavigate();
   const roman = {
     1: "I",
@@ -66,10 +124,10 @@ export default function Cours() {
       </div>
       {user &&
         (grille ? (
-          <div style={{display: "flex", flexDirection: "column", gap: "50px"}}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "50px" }}>
             {cours.map((i, index) => (
-              <div>
-                <h1 style={{cursor: "pointer", color: "var(--active)"}} className="underline" onClick={()=>navigate(`/cours/${(index + 1)}`)}>
+              <div key={index}>
+                <h1 style={{ cursor: "pointer", color: "var(--active)" }} className="underline" onClick={() => navigate(`/cours/${(index + 1)}`)}>
                   {roman[(index + 1).toString()]}. {i.titre} :
                 </h1>
                 <div className="grid-container">
@@ -86,14 +144,14 @@ export default function Cours() {
                               `/cours/${item.id
                                 .toString()
                                 .substr(0, 1)}/${item.id
-                                .toString()
-                                .substr(1, 3)}`
+                                  .toString()
+                                  .substr(1, 3)}`
                             )
                           }
                         >
                           <p>
                             <Visibility />
-                            <span>VOIR</span>
+                            <span>{t("button.11")}</span>
                           </p>
                         </div>
                       </div>
@@ -108,20 +166,21 @@ export default function Cours() {
                                 `/cours/${item.id
                                   .toString()
                                   .substr(0, 1)}/${item.id
-                                  .toString()
-                                  .substr(1, 3)}`
+                                    .toString()
+                                    .substr(1, 3)}`
                               )
                             }
                           >
                             {roman[item.id.toString().substr(0, 1)]}-
                             {item.id.toString().substr(2, 3)}. {item.titre}
                           </h4>
-                          <Rating
+                          {user.formation[item.id.toString()]?.rating ? (<Rating
                             disabled
-                            value={
-                              user.formation[item.id.toString()]?.rating || 0
-                            }
-                          />
+                            value={user.formation[item.id.toString()]?.rating}
+                          />) : (<Rating
+                            disabled
+                            value={0}
+                          />)}
                         </div>
                         <div className="progressbar">
                           <span
@@ -130,14 +189,14 @@ export default function Cours() {
                               width:
                                 user.formation[
                                   item.id.toString()
-                                ]?.progress.toString() + "%" || 0 + "%",
+                                ]?.progress?.toString() + "%" || 0 + "%",
                             }}
                           ></span>
                           <p>
                             {user.formation[
                               item.id.toString()
-                            ]?.progress.toFixed(1) || "0.0"}
-                            % Terminé(s)
+                            ]?.progress?.toFixed(1) || "0.0"}
+                            % {t("login.label.18")}
                           </p>
                         </div>
                       </div>
@@ -180,11 +239,11 @@ export default function Cours() {
                             width:
                               user.formation[
                                 item.id.toString()
-                              ]?.progress.toString() + "%" || 0 + "%",
+                              ]?.progress?.toString() + "%" || 0 + "%",
                           }}
                         ></span>
                         <p>
-                          {user.formation[item.id.toString()]?.progress.toFixed(
+                          {user.formation[item.id.toString()]?.progress?.toFixed(
                             1
                           ) || "0.0"}
                           % Terminé(s)
