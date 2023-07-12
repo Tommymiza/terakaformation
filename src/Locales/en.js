@@ -39,6 +39,7 @@ export const en = {
     "See",
     "Next",
     "Finish",
+    "Back"
   ],
   alert: [
     "Welcome",

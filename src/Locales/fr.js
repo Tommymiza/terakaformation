@@ -39,6 +39,7 @@ export const fr = {
     "Voir",
     "Suite",
     "Terminer",
+    "Précedent"
   ],
   alert: [
     "Bienvenue à bord",

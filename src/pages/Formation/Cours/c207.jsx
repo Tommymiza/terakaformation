@@ -155,7 +155,7 @@ export default function C207() {
             </div>
             <div className="action-center">
               <button className="nav-btn" onClick={() => valider(45)}>
-                Tohiny
+                {t("button.12")}
               </button>
             </div>
           </div>
@@ -221,10 +221,10 @@ export default function C207() {
             </div>
             <div className="action-center">
               <button className="nav-btn" onClick={() => setNb(nb - 1)}>
-                Hiverina
+                {t("button.14")}
               </button>
               <button className="nav-btn" onClick={() => valider(85)}>
-                Tohiny
+                {t("button.12")}
               </button>
             </div>
           </div>

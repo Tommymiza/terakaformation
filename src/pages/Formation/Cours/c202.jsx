@@ -82,7 +82,7 @@ export default function C202() {
             <p>{t("c202.3")}</p>
             <div className="action-center">
               <button className="nav-btn" onClick={() => valider(15)}>
-                Tohiny
+                {t("button.12")}
               </button>
             </div>
           </div>
@@ -164,10 +164,10 @@ export default function C202() {
             <p>{t("c202.39")}</p>
             <div className="action-center">
               <button className="nav-btn" onClick={() => setNb(nb - 1)}>
-                Hiverina
+                {t("button.14")}
               </button>
               <button className="nav-btn" onClick={() => valider(85)}>
-                Tohiny
+                {t("button.12")}
               </button>
             </div>
           </div>
@@ -179,10 +179,10 @@ export default function C202() {
             <p>{t("c202.42")}</p>
             <div className="action-center">
               <button className="nav-btn" onClick={() => setNb(nb - 1)}>
-                Hiverina
+                {t("button.14")}
               </button>
               <button className="nav-btn" onClick={() => valider(100)}>
-                Tapitra
+                {t("button.13")}
               </button>
             </div>
           </div>

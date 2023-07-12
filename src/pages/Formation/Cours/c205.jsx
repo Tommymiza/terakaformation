@@ -106,7 +106,7 @@ export default function C205() {
             </p>
             <div className="action-center">
               <button className="nav-btn" onClick={() => valider(nb)}>
-                Tohiny
+                {t("button.12")}
               </button>
             </div>
           </div>
@@ -131,10 +131,10 @@ export default function C205() {
             </p>
             <div className="action-center">
               <button className="nav-btn" onClick={() => setNb(nb - 1)}>
-                Hiverina
+                {t("button.14")}
               </button>
               <button className="nav-btn" onClick={() => valider(nb)}>
-                Tohiny
+                {t("button.12")}
               </button>
             </div>
           </div>
@@ -290,10 +290,10 @@ export default function C205() {
             </div>
             <div className="action-center">
               <button className="nav-btn" onClick={() => setNb(nb - 1)}>
-                Hiverina
+                {t("button.14")}
               </button>
               <button className="nav-btn" onClick={() => valider(nb)}>
-                Tohiny
+                {t("button.12")}
               </button>
             </div>
           </div>
@@ -440,10 +440,10 @@ export default function C205() {
             </ul>
             <div className="action-center">
               <button className="nav-btn" onClick={() => setNb(nb - 1)}>
-                Hiverina
+                {t("button.14")}
               </button>
               <button className="nav-btn" onClick={() => valider(nb)}>
-                Tohiny
+                {t("button.12")}
               </button>
             </div>
           </div>
@@ -568,10 +568,10 @@ export default function C205() {
             </ul>
             <div className="action-center">
               <button className="nav-btn" onClick={() => setNb(nb - 1)}>
-                Hiverina
+                {t("button.14")}
               </button>
               <button className="nav-btn" onClick={() => valider(nb)}>
-                Tohiny
+                {t("button.12")}
               </button>
             </div>
           </div>
@@ -597,10 +597,10 @@ export default function C205() {
             <Test205 />
             <div className="action-center">
               <button className="nav-btn" onClick={() => setNb(nb - 1)}>
-                Hiverina
+                {t("button.14")}
               </button>
               <button className="nav-btn" onClick={() => valider(nb)}>
-                Tohiny
+                {t("button.12")}
               </button>
             </div>
           </div>
@@ -688,10 +688,10 @@ export default function C205() {
             </ul>
             <div className="action-center">
               <button className="nav-btn" onClick={() => setNb(nb - 1)}>
-                Hiverina
+                {t("button.14")}
               </button>
               <button className="nav-btn" onClick={() => valider(nb)}>
-                Tohiny
+                {t("button.12")}
               </button>
             </div>
           </div>
@@ -717,10 +717,10 @@ export default function C205() {
             </p>
             <div className="action-center">
               <button className="nav-btn" onClick={() => setNb(nb - 1)}>
-                Hiverina
+                {t("button.14")}
               </button>
               <button className="nav-btn" onClick={() => valider(nb)}>
-                Tohiny
+                {t("button.12")}
               </button>
             </div>
           </div>
@@ -761,10 +761,10 @@ export default function C205() {
             </p>
             <div className="action-center">
               <button className="nav-btn" onClick={() => setNb(nb - 1)}>
-                Hiverina
+                {t("button.14")}
               </button>
               <button className="nav-btn" onClick={() => valider(nb)}>
-                Tohiny
+                {t("button.12")}
               </button>
             </div>
           </div>
@@ -788,7 +788,7 @@ export default function C205() {
             </div>
             <div className="action-center">
               <button className="nav-btn" onClick={() => valider(nb)}>
-                Tapitra
+                {t("button.13")}
               </button>
             </div>
           </div>

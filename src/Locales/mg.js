@@ -39,6 +39,7 @@ export const mg = {
     "Hijery",
     "Tohiny",
     "Tapitra",
+    "Hiverina"
   ],
   alert: [
     "Tongasoa indray",

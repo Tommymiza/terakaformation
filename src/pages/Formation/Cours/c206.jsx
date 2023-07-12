@@ -87,7 +87,7 @@ export default function C206() {
             </ul>
             <div className="action-center">
               <button className="nav-btn" onClick={() => valider(nb)}>
-                Tohiny
+                {t("button.12")}
               </button>
             </div>
           </div>
@@ -129,10 +129,10 @@ export default function C206() {
             </ul>
             <div className="action-center">
               <button className="nav-btn" onClick={() => setNb(nb - 1)}>
-                Hiverina
+                {t("button.14")}
               </button>
               <button className="nav-btn" onClick={() => valider(nb)}>
-                Tohiny
+                {t("button.12")}
               </button>
             </div>
           </div>
@@ -167,10 +167,10 @@ export default function C206() {
             </ul>
             <div className="action-center">
               <button className="nav-btn" onClick={() => setNb(nb - 1)}>
-                Hiverina
+                {t("button.14")}
               </button>
               <button className="nav-btn" onClick={() => valider(nb)}>
-                Tohiny
+                {t("button.12")}
               </button>
             </div>
           </div>
@@ -251,10 +251,10 @@ export default function C206() {
             </p>
             <div className="action-center">
               <button className="nav-btn" onClick={() => setNb(nb - 1)}>
-                Hiverina
+                {t("button.14")}
               </button>
               <button className="nav-btn" onClick={() => valider(nb)}>
-                Tohiny
+                {t("button.12")}
               </button>
             </div>
           </div>
@@ -346,10 +346,10 @@ export default function C206() {
 
             <div className="action-center">
               <button className="nav-btn" onClick={() => setNb(nb - 1)}>
-                Hiverina
+                {t("button.14")}
               </button>
               <button className="nav-btn" onClick={() => valider(nb)}>
-                Tohiny
+                {t("button.12")}
               </button>
             </div>
           </div>
@@ -428,10 +428,10 @@ export default function C206() {
             </div>
             <div className="action-center">
               <button className="nav-btn" onClick={() => setNb(nb - 1)}>
-                Hiverina
+                {t("button.14")}
               </button>
               <button className="nav-btn" onClick={() => valider(nb)}>
-                Tohiny
+                {t("button.12")}
               </button>
             </div>
           </div>
@@ -463,10 +463,10 @@ export default function C206() {
             </ul>
             <div className="action-center">
               <button className="nav-btn" onClick={() => setNb(nb - 1)}>
-                Hiverina
+                {t("button.14")}
               </button>
               <button className="nav-btn" onClick={() => valider(nb)}>
-                Tohiny
+                {t("button.12")}
               </button>
             </div>
           </div>
@@ -506,10 +506,10 @@ export default function C206() {
             </p>
             <div className="action-center">
               <button className="nav-btn" onClick={() => setNb(nb - 1)}>
-                Hiverina
+                {t("button.14")}
               </button>
               <button className="nav-btn" onClick={() => valider(nb)}>
-                Tohiny
+                {t("button.12")}
               </button>
             </div>
           </div>
@@ -823,7 +823,7 @@ export default function C206() {
                 Carbon Credit, ary ajanony ny fandoavam-bola amin'ny vondrona
                 kely rehefa misy fanamarihana 90 andro. Amin'izany toe-javatra
                 izany, ny zo amin'ny Carbon Credits izay tsy mbola naloan'ny
-                iTERAKA dia hiverina any amin'ny vondrona kely.
+                iTERAKA dia {t("button.14")} any amin'ny vondrona kely.
               </li>
               <li>
                 Famaranana voalohany ny fifanarahana nataon'ny vondrona
@@ -880,10 +880,10 @@ export default function C206() {
             </ol>
             <div className="action-center">
               <button className="nav-btn" onClick={() => setNb(nb - 1)}>
-                Hiverina
+                {t("button.14")}
               </button>
               <button className="nav-btn" onClick={() => valider(nb)}>
-                Tohiny
+                {t("button.12")}
               </button>
             </div>
           </div>
@@ -927,7 +927,7 @@ export default function C206() {
             </div>
             <div className="action-center">
               <button className="nav-btn" onClick={() => valider(nb)}>
-                Tapitra
+                {t("button.13")}
               </button>
             </div>
           </div>
