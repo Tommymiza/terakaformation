@@ -7,7 +7,7 @@ import { Rating } from "@mui/material";
 
 export default function C201() {
   const navigate = useNavigate();
-  const { user, server, setAlert } = useContext(ActContext);
+  const { user, server, setAlert, t } = useContext(ActContext);
   const page = [1, 2, 3, 4, 5];
   const [rating, setRating] = useState(user?.formation["201"]?.rating || 0);
   const [nb, setNb] = useState(
@@ -71,63 +71,23 @@ export default function C201() {
       <>
         {nb === 0 && (
           <div className="content">
-            <h3>Iza ary izany TERAKA izany?</h3>
-            <p>
-              TERAKA dia tantsaha mirotsaka an-tsitrapo hiditra ao amin'ny
-              vondrom-piarahamonin’ny TERAKA. Tia fanabeazana izy ireo, tia
-              mandrato fahalalana momba ny fiompiana amam-pambolena, ary tia
-              mikolokolo ny tontolo iainana. Maro ireo tantsahan’ny TERAKA izay
-              monina any amin'ny faritra maina, izay mijaly noho ny
-              faharipahan’ny ala, ny fahapotehan'ny tany, ny hain-tany ary ny
-              tsy fahampian-tsakafo. Ny TERAKA dia ahitana Vondrona Madinika.
-              Miara-miasa izahay hamolavola fampiharana tsara sy hanatsara ny
-              fambolena amam-piompiana ary ny tontolo iainanay.
-            </p>
-            <p>
-              Amin’ny alalan’ny fambolenkazo, dia mahazo kitay fandrehitra ny
-              tantsahan’ny TERAKA, mahazo hazo amin’ny fanorenana
-              fotodrafitr’asa, mahazo voankazo sy voa ary zava-maniry mitondra
-              fitsaboana. Manatsara ny tany mandrakariva ny fambolenkazo, miaro
-              ny fambolena amin’ny tundra-drano, manatsaran’ny rano fisotron’ny
-              mponina, ary miady amin’ny fiovaovan’ny toetr’andro.
-            </p>
-            <p>
-              Miankina amin’ny tahan’ny gazy karbaonika izay notrohan’ny hazo
-              voavolin’ny tantsahan’ny TERAKA teny amin’ny atmosfera ny vola
-              miditra ao amin’izy ireo. Ny Clean Air Action Cooperation no
-              mandrefy amin’ny fomba mazava sy mangarahara an’io tahan’ny
-              karbaona anaty hazo io, mba ahafahan’ireo tantsaha miditra amin’ny
-              tsenan’ny karbaona maneran-tany.
-            </p>
-            <p>
-              Rehefa miara-miasa ny Vondrona Madinika dia mahavita zavatra be.
-              Raha to aka Vondrona Madinika aman’arivony no miara-miasa mba
-              hanatsara ny famboleny sy ny vondrom-piarahamonina misy azy, dia
-              afaka manampy nan’izao tontolo izao izy ireo. Manaraka ny
-              soatoavin’ny TERAKA avokoa ireo mpikambana ao aminy. Hojerentsika
-              manaraka ireo soatoavina ireo.
-            </p>
-            <h3>TERAKA VALUES</h3>
-            <p>
-              TERAKA dia vondron'ireo tantsaha niara-niasa mba hanatsarana ny
-              fiainan'ny fianakaviany, ny vondrom-piarahamonina misy azy ary ny
-              planeta. Tantsaha maherin’ny 130.000 no mikolokolo hazo velona
-              manodidina ny 23 tapitr’isa any India, Kenya, Tanzanie ary Uganda.
-            </p>
-            <p>
-              Ny soatoavin’ny teraka dia tena manan-danja be amin’ny
-              fahatafitan’ny tetik’asa
-            </p>
+            <h3>{t("c201.0")}</h3>
+            <p>{t("c201.1")}</p>
+            <p>{t("c201.2")}</p>
+            <p>{t("c201.3")}</p>
+            <p>{t("c201.4")}</p>
+            <h3>{t("c201.5")}</h3>
+            <p>{t("c201.6")}</p>
+            <p>{t("c201.7")}</p>
             <ul style={{ marginLeft: "20px" }}>
-              <li>Mandeha amin’ny rariny izahay.</li>
-              <li>Manao zavatra mazava tsara izahay.</li>
-              <li>Mangarahara izahay.</li>
-              <li>Izahay dia tompon'andraikitra.</li>
-              <li>Izahay dia mifampitondra ami-pifanompoana.</li>
-              <li>Mpilatsaka an-tsitra-po izahay.</li>
-              <li>
-                Mikajy vokatra lehibe miaraka amin’ny teti-bola mora izahay.
-              </li>
+              <li>{t("c201.8")}</li>
+              <li>{t("c201.9")}</li>
+              <li>{t("c201.10")}</li>
+              <li>{t("c201.11")}</li>
+              <li>{t("c201.12")}</li>
+              <li>{t("c201.13")}</li>
+              <li>{t("c201.14")}</li>
+              <li>{t("c201.61")}</li>
             </ul>
             <div className="action-center">
               <button className="nav-btn" onClick={() => valider(nb)}>
@@ -138,35 +98,15 @@ export default function C201() {
         )}
         {nb === 1 && (
           <div className="content">
-            <h3>Inona no mampiavaka azy?</h3>
-            <p>Mpilatsaka antsitra-po izahay</p>
-            <p>
-              Manantevin-daharana ny TERAKA ireo tan-tsaha noho ny
-              vondrom-piarahamonina, ny fanabeazana, ny fitomboan'ny fahalalana
-              momba ny fambolena ary ny fandraharahana momban’ny ny karbaona.
-            </p>
-            <p>Mamolavola sy mampiasa fampiharana tsara izahay</p>
-            <p>
-              Ny tantsaha TERAKA dia mamolavola sy mizara fampahalalana momba ny
-              fambolena maharitra, momban’ny ala, ny fahasalamana, ny resaka
-              sakafo mahavelona ary ireo hetsika amin’ny fampandrosoana
-              lovian-jafy. Izahay dia mizara ireo fampiharana tsara amin'ireo
-              Vondrona Madinika rehetra.
-            </p>
-            <p>Izahay ihany no manao ny asa ao amin'ny Vondrona Madinika</p>
-            <p>
-              Ireo Vondrona Madinika no fototry ny programa TERAKA. Miisa 6
-              katramin’ny 12 ireo tantsaha anaty vondrona iray ary mivory
-              isan-kerinandro mba hizara ireo fampiharana tsara, mba hifanohana
-              ary hifampitantana.
-            </p>
-            <p>Mampiasa ny lohantsika sy ny tanantsika isika</p>
-            <p>
-              Haintsika hoe ahoana ny fiasana mafy miaraka amin’ny loha sy ny
-              tanantsika. Ny fanoloran-tenantsika amin'ny soatoavin’ny TERAKA
-              dia midika fa manao zavatra tsara amin’ny tokony ho izy isika fa
-              tsy amin’ny fomba mora.
-            </p>
+            <h3>{t("c201.15")}</h3>
+            <p>{t("c201.16")}</p>
+            <p>{t("c201.17")}</p>
+            <p>{t("c201.18")}</p>
+            <p>{t("c201.19")}</p>
+            <p>{t("c201.20")}</p>
+            <p>{t("c201.21")}</p>
+            <p>{t("c201.22")}</p>
+            <p>{t("c201.23")}</p>
             <div className="action-center">
               <button className="nav-btn" onClick={() => setNb(nb - 1)}>
                 Hiverina
@@ -179,77 +119,27 @@ export default function C201() {
         )}
         {nb === 2 && (
           <div className="content">
-            <h3>Inona no ataontsika?</h3>
-            <p>
-              Manantevin-daharana ny TERAKA ny tantsaha ary mandrafitra Vondrona
-              Madinika misy olona 6 katramin’ny 12 mba hamboly hazo manodidina
-              ny tranony, ny toeram-pamboleny, ny renirano, ny sekoly, ny lalana
-              ary ny fiangonana. Manome alokaloka ny hazo, mampihena ny
-              fikaohan’ny riaka, manatsara ny tany ary mandrisika ny
-              fitomboan'ny kirihitra sy ahitra. Ny hazo koa dia mamokatra
-              voankazo sy voanjo, fanafody, sakafom-biby fiompy toy ny omby,
-              kitay ary fitaovana fananganana.
-            </p>
-            <p>
-              Rehefa mihalehibe ny hazo dia mampihena ny gazy karbaonika amin'ny
-              rivotra ny photosynthèse amin'ny alàlan'ny fitahirizana azy ao
-              anaty hazo, ny fakany ary ny tany. Ny mpiara-miasa aminay, Clean
-              Air Action Corporation ( iTERAKA ), dia manao izay rehetra azo
-              atao mba hamadika ity karbaona ity ho kredi karbaona ary avy eo
-              mivarotra azy eny amin'ny tsenan'ny karbaona. Ny tantsahan’ny
-              TERAKA kosa dia mahazo fiomanana isan-taona ary hahazo 70% ny
-              tombom-barotra amin'ny fivarotana ny kredi karbaona.
-            </p>
-            <p>
-              Mampiofana mpitarika ihany koa izahay. Amin'ny alàlan'ny
-              “fifandimbiasan’ny fitarihina ”, ny tantsaha TERAKA rehetra dia
-              mianatra mitarika ny Vondrona Madinika ananany. Ny tantsaha TERAKA
-              sasany dia misafidy ny hampiofanina ho Kilasitera Mpanampy izay
-              tena manisa sy manara-maso tsara ny fitomboan'ny hazo tsirairay ka
-              ny kajy iTERAKA ny fahazoan-dàlana karbaona dia rariny sy mazava.
-              Ireo valiny ireo dia ao amin'ny tranokalan'ny www.teraka.org mba
-              hahitan'ny olona manerana an'izao tontolo izao ny hetsika
-              ataontsika.
-            </p>
+            <h3>{t("c201.24")}</h3>
             <div className="content-part">
-              <h5>Mizara fampiharana tsara</h5>
-              <p>
-                Mamolavola sy mizara fomba fanao tsara indrindra momba ny
-                fambolena maharitra, ny ala, ny fahasalamana ( ao anatin'izany
-                ny VIH / SIDA ), ary ny hetsika amin’ny fampandrosoana
-                lovain-jafy. Ny tantsaha TERAKA dia mizara ireo fampiharana
-                tsara amin'ireo vondrona madinika rehetra. Manana
-                fampitam-baovao, fivorian’ny kilasitera isam-bolana isika, ary
-                Seminera isam-paritra izay mizara ny fampiharana tsara
-                novolavolainay.
-              </p>
+              <h5>{t("c201.25")}</h5>
+              <p>{t("c201.26")}</p>
+              <p>{t("c201.27")}</p>
             </div>
-            <h3>Inona avy no ataonay?</h3>
-            <p>
-              Izahay dia mamboly karazana hazo samihafa mba hamoronana tontolo
-              iainana tsara kokoa
-            </p>
-            <p>
-              Mahita fomba hanatsarana ny sakafo ara-pahasalamana sy ny
-              fahasalamantsika isika
-            </p>
-            <p>
-              Izahay dia manao ny fambolena maharitra amin'ny fanatsarana ny
-              toeram-piompiana sy ny fampitomboana ny vokatra azo.
-            </p>
-            <p>
-              Izahay ihany koa dia mikajy tetikasa hafa hanatsarana ny
-              fiainan’ny tantsaha sy ny vondrom-piarahamonina misy ny tantsaha
-              toy ny fiompiana ny tantely sy ny fambolena holatra.
-            </p>
-            <p>
-              Izahay dia mandrefy ny vokatry ny ezaka ataontsika hanatsarana ny
-              tontolo iainana
-            </p>
-            <p>
-              Mahazo vola avy amin'ny kredi Karbaona sy ny serivisy hafa
-              momban’ny tontolo iainana izay ataon'ny tantsahan’nyTERAKA izahay
-            </p>
+            <div className="content-part">
+              <h5>{t("c201.28")}</h5>
+              <p>{t("c201.29")}</p>
+            </div>
+            <div className="content-part">
+              <h5>{t("c201.30")}</h5>
+              <p>{t("c201.31")}</p>
+            </div>
+            <h3>{t("c201.32")}</h3>
+            <p>{t("c201.33")}</p>
+            <p>{t("c201.34")}</p>
+            <p>{t("c201.35")}</p>
+            <p>{t("c201.36")}</p>
+            <p>{t("c201.37")}</p>
+            <p>{t("c201.38")}</p>
             <div className="action-center">
               <button className="nav-btn" onClick={() => setNb(nb - 1)}>
                 Hiverina
@@ -262,57 +152,30 @@ export default function C201() {
         )}
         {nb === 3 && (
           <div className="content">
-            <h3>Inona no foroninay? </h3>
+            <h3>{t("c201.39")} </h3>
             <div className="content-part">
-              <h5>Misehatra amin’ny fandraharahana amin’ny karbaona izahay.</h5>
-              <p>
-                Mandraharaha ao amin’ny sehatry ny karbaona ny tantsahan’ny
-                TERAKA mba hanohanana ny fianakaviany ary hanatsarana ny
-                toeram-pambolena sy ny vondrom-piarahamonina misy azy ireo ary
-                ny planeta.
-              </p>
+              <h5>{t("c201.40")}</h5>
+              <p>{t("c201.41")}</p>
             </div>
             <div className="content-part">
-              <h5>Mamorona kredi karbaona izahay.</h5>
-              <p>
-                Manome vola ny tenantsika sy ny ezaka ataontsika isika amin'ny
-                fandrefesana tsara ny habetsaky ny gazy karbaonika teny amin’ny
-                habakabaka notrohan’ny hazo izay nambolentsika eto amintsika.
-              </p>
+              <h5>{t("c201.42")}</h5>
+              <p>{t("c201.43")}</p>
             </div>
             <div className="content-part">
-              <h5>Mamorona fidiram-bola vaovao hoan’ny tokantrano isika.</h5>
-              <p>
-                Miara-miasa amin'ny iTERAKA mba handrefesana ny vokatra
-                azontsika amin'ny fomba mazava sy mangarahara isika mba
-                hahafahantsika miditra amin'ny tsenan'ny karbona manerantany.
-              </p>
+              <h5>{t("c201.44")}</h5>
+              <p>{t("c201.45")}</p>
             </div>
             <div className="content-part">
-              <h5>Mamorona vokatra lehibe isika.</h5>
-              <p>
-                Ny iTERAKA dia namolavola ary nanohy ny fanatsarana ny fomba
-                hamoronana crédit karbaona ary handrefesana ny vokatra lehibe
-                izay noforoninay amin'ny fanatsarana ny toeram-pambolena
-              </p>
+              <h5>{t("c201.46")}</h5>
+              <p>{t("c201.47")}</p>
             </div>
             <div className="content-part">
-              <h5>
-                Mampiasa teti-bola mora izahay mba amoronana vokatra lehibe.
-              </h5>
-              <p>
-                TERAKA sy iTERAKA dia niasa mafy nandritra ny 20 taona mahery
-                mba hampihenana ny vidin'ny fandaharana mba hahafahan'ny vola
-                karbonina bebe kokoa mankany amin'ny tantsaha TERAKA.
-              </p>
+              <h5>{t("c201.48")}</h5>
+              <p>{t("c201.49")}</p>
             </div>
             <div className="content-part">
-              <h5>Manangana vondrom-piarahamonina tantsaha izahay.</h5>
-              <p>
-                Tianay ny miara-miasa, mizara fampiharana tsara, ary ny
-                manatsara ny toeram-pambolena sy ny fiaraha-monina ary ny
-                tontolo iainana.
-              </p>
+              <h5>{t("c201.50")}</h5>
+              <p>{t("c201.51")}</p>
             </div>
             <div className="action-center">
               <button className="nav-btn" onClick={() => setNb(nb - 1)}>
@@ -326,38 +189,22 @@ export default function C201() {
         )}
         {nb === 4 && (
           <div className="content">
-            <h3>Fa maninona no manan-danja ny soatoavin'ny TERAKA?</h3>
+            <h3>{t("c201.52")}</h3>
             <div className="content-part">
-              <h5>Mampisy fifampitokisana izahay.</h5>
-              <p>
-                TERAKA dia miasa miaraka amin’ireo azo itokisana ihany:
-                mivarotra crédit karbaona, izay tsy hit any maso, tsy voakasiky
-                ny tanana, ary tsy afaka andramana akory isika. Ny orinasa
-                mividy ny kredi karbaona dia tsy maintsy matoky ny TERAKA, ary
-                ny mpikambana ao amin’ny TERAKA dia tsy maintsy mifampatoky.
-              </p>
+              <h5>{t("c201.53")}</h5>
+              <p>{t("c201.54")}</p>
             </div>
             <div className="content-part">
-              <h5>Mifanampy mba ahazahoana tombony izy ireo</h5>
-              <p>
-                Ny soatoavina TERAKA dia manampy ny tantsaha hahazo valiny
-                lehibe. Amin'ny alàlan'ny fiasa miaraka amin'ny teti-bola ambany
-                izay miteraka valiny lehibe, dia mamorona vola karbonina bebe
-                kokoa ho an'ny tantsaha TERAKA izahay.
-              </p>
+              <h5>{t("c201.55")}</h5>
+              <p>{t("c201.56")}</p>
             </div>
             <div className="content-part">
-              <h5>Avy amin’ny tantsaha, hoan’ny tantsaha.</h5>
-              <p>
-                TERAKA dia ataon'ireo tantsaha, ho an'ny tantsaha. Amin'ny
-                fanarahana ny soatoavina TIST dia miara-miasa isika sy ny
-                tenantsika. Ireo soatoavina ireo dia manohana ny fiaraha-monina
-                sy ny fandraisana andraikitra.
-              </p>
+              <h5>{t("c201.57")}</h5>
+              <p>{t("c201.58")}</p>
             </div>
             <div className="content-part">
-              <h5>Mifanompo:</h5>
-              <p>Ny soatoavin’ny TERAKA dia manampy anay hifanompo.</p>
+              <h5>{t("c201.59")}</h5>
+              <p>{t("c201.60")}</p>
             </div>
             <div className="action-center">
               <Rating

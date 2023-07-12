@@ -8,7 +8,7 @@ import Test from "./Test202";
 
 export default function C202() {
   const navigate = useNavigate();
-  const { user, server, setAlert } = useContext(ActContext);
+  const { user, server, setAlert, t } = useContext(ActContext);
   const [rating, setRating] = useState(user?.formation["202"]?.rating || 0);
   const [nb, setNb] = useState(
     user?.formation["202"]?.progress !== 15 &&
@@ -76,24 +76,10 @@ export default function C202() {
       <>
         {nb === 0 && (
           <div className="content">
-            <h3>
-              Fampidirana momban’ny tombotsoa azo avy amin’ny fambolen-kazo
-            </h3>
-            <p>
-              Tongasoa indray ianao. Teo aloha isika dia namelabelatra ny
-              mahazavadehibe ny soatoavin’ny TERAKA. Eto indray isika dia
-              hianatra momban’ny fambolen-kazo.
-            </p>
-            <p>
-              Mitondra zava-tsoa be dia be hoanao ny fambolenkazo amin’ny maha
-              tantsaha, hoan’ny fambolenao, hoan’ny vondrom-piarahamonina misy
-              anao, zry indrindra hoan’ny tontolo iainana. Hianaranao ihany koa
-              ny mamboly hazo miaraka amin’ny TERAKA. Satria ny hazon’ny TERAKA
-              da afaka manome vola karbaona, saingy mbolq mila manaraka
-              toromarika maromaro aloha vao afaka mandraharaha anatin’ilay
-              sehatra karbaona.
-            </p>
-            <p>Mazotoa ary miofana.</p>
+            <h3>{t("c202.0")}</h3>
+            <p>{t("c202.1")}</p>
+            <p>{t("c202.2")}</p>
+            <p>{t("c202.3")}</p>
             <div className="action-center">
               <button className="nav-btn" onClick={() => valider(15)}>
                 Tohiny
@@ -103,118 +89,39 @@ export default function C202() {
         )}
         {nb === 1 && (
           <div className="content">
-            <h3>Ireo tombontsoa azo avy amin’ny fambolen-kazo</h3>
-            <p>
-              Ireto avy ary ireo tombontsoa azo avy amin’ny fambolen-kazo, toy
-              ny fitsaboina, na ny fahatomombanan’ny tany
-            </p>
-            <p>Fa maninona no manan-danja ny fambolena hazo?</p>
+            <h3>{t("c202.4")}</h3>
+            <p>{t("c202.5")}</p>
+            <p>{t("c202.6")}</p>
             <div className="content-part">
-              <h5>Manarina an’ireo toerana voatrandradraka ny fambolen-kazo</h5>
-              <p>
-                Ny ala dia fonenan'ny karazan-java-maniry sy biby isan-karazany,
-                ary ny fambolena hazo dia manampy amin'ny fikolokoloina ny
-                zava-mananaina.
-              </p>
-              <p>
-                Ny fambolen-kazo dia miaro ny tany tsy hovoakaokan’ny riaka ary
-                miaro amin’ny fihotsahan’ny tany
-              </p>
-              <p>
-                Ny fakany hazo dia manampy amin'ny fanamafisana ny tany ary
-                hampihenana ny riaka mikaoka azy amin’ny alalan’ny rivotra sy ny
-                tondra-drano. Ny fambolen-kazo any an-tendrombohitra dia
-                mampihena ny mety hisian'ny fihotsahan'ny tany.
-              </p>
+              <h5>{t("c202.7")}</h5>
+              <p>{t("c202.8")}</p>
+              <p>{t("c202.9")}</p>
+              <p>{t("c202.10")}</p>
             </div>
-            <p>
-              Manatsara ny kalitaon'ny tany manodidina azy ireo ny hazo, manampy
-              ny fambolena ho tsara vokatra amin’ny alalan’ny fitambaran’ny voly
-              sy ny ala ary ny fiompiana (agroforesterie)
-            </p>
-            <p>
-              Miaraka amin’io agroforesterie io, dia maniry miaraka amin’ny voly
-              sy ny sahan’arakandro ny hazo. Ny ravina latsaka avy amin'ny hazo
-              dia manampy amin'ny fanatsarana ny tany amin'ny alàlan'ny
-              fampidirana otrikaina toy ny azota.
-            </p>
+            <p>{t("c202.11")}</p>
+            <p>{t("c202.12")}</p>
             <div className="content-part">
-              <h5>
-                Ny hazo dia manome voankazo sy voanjo izay azo anampiana ny
-                fidiram-bola sy ny fomba fisakafoanana{" "}
-              </h5>
-              <p>
-                Karazan-javamaniry maro no mamoa voankazo, toy ny zavoka sy
-                manga, na voanjo, toy ny macadamia. Ireo dia azo amidy
-                soamantsara na ihany koa azo atao sakafo hoan’ny fianakaviana.
-              </p>
+              <h5>{t("c202.13")}</h5>
+              <p>{t("c202.14")}</p>
             </div>
-            <p>
-              Amin'ny faritra somary mandrivotra dia azo ambolena manodidina ny
-              trano na karazana fanorenana ny hazo mba ho fiarovana amin’ny
-              fifofon’ny rivotra.
-            </p>
-            <p>
-              Ireo hazo manko dia miaro ny tany tsy ho very be loatra amin’ny
-              alalan’ny fitsiokan’ny rivotra. Rehefa mamboly manodidina ny trano
-              na karazana fanorenana ireo hazo, dia afaka miaro azo ireo sy
-              miaro ny fanahazan-damba.
-            </p>
-            <p>Ny hazo sasany dia manome fanafody.</p>
-            <p>
-              Ny hazo dia manome hazo amin’ny fanganana trano ohatra, angovo ary
-              tsato-kazo
-            </p>
-            <p>
-              Raha araky ny fampiharana tsara an’ny TERAKA, ny hazo dia azo
-              otazana amin’ny fomba maharitra eny fa na dia hampiasaina amin’ny
-              fiompiana aza.
-            </p>
+            <p>{t("c202.15")}</p>
+            <p>{t("c202.16")}</p>
+            <p>{t("c202.17")}</p>
+            <p>{t("c202.18")}</p>
+            <p>{t("c202.19")}</p>
             <div className="content-part">
-              <h5>
-                Ny fambolen-kazo dia mampisy hatsarana ny endriky ny taninao
-              </h5>
-              <p>
-                Tsy tombony ara-toekarena, ara-pambolena sy ara-tontolo iainana
-                ihany ihany no azo avy amin’ny hazo fa manome fahafinaretana
-                hoan’ny maso ihany koa izy!
-              </p>
-              <p>
-                Manampy amin’ny ady atao amin’ny fiovaovan’ny toetr’andro ihany
-                koa ny hazo
-              </p>
-              <p>
-                Ny fiovaovan'ny toetr'andro dia mitarika ny haintany,
-                tondra-drano ary rotsak’orana tsy ara-dalàna. Manatsara ny
-                toetrandro ny hazo amin'ny alalan’ny fanesorana karbaona eny
-                amin'ny habakabaka.
-              </p>
+              <h5>{t("c202.20")}</h5>
+              <p>{t("c202.21")}</p>
+              <p>{t("c202.22")}</p>
+              <p>{t("c202.23")}</p>
             </div>
             <div className="content-part">
-              <h5>
-                Midika inona izany hoe mamboly hazo miaraka amin’ny TERAKA?
-              </h5>
-              <p>
-                Ny mpikambana ao amin’ny TERAKA no misafidy ny hazo tiany
-                hambolena. Ireo hazo avy ao an-toerana sy ireo hazo fihinam-boa
-                dia tsaratsara kokoa.
-              </p>
-              <p>
-                Kanefa rehefa mamboly haeo hoan’ny TERAKA dia misy fepetra tsy
-                maintsy arahina.
-              </p>
-              <p>
-                Voalohany aloha, ny hazo iray raha te ho tafiditra anatin’ny
-                sokajin’ny hazon’ny TERAKA? Dia mila hambolena aorian’ny
-                fanatevenan-daharana ny Fandaharan’asa TERAKA.
-              </p>
-              <p>
-                Ireo hazo dia tsy maintsy manana halava mirefy 2 metatra
-                farafahakeliny ary ireo tantsaha dia tsy maintsy manaiky ny
-                hikolokolo ireo hazo ao anatin’ny 60 taona farafahakeliny. Ireo
-                “hazo izay ho tapahina afaka 10 na 20 taona” na “hazo à courte
-                rotation” dia tsy tafiditra anatin’ny hazon’ny TERAKA.
-              </p>
+              <h5>{t("c202.24")}</h5>
+              <p>{t("c202.25")}</p>
+              <p>{t("c202.26")}</p>
+              <p>{t("c202.27")}</p>
+              <p>{t("c202.28")}</p>
+              <p>{t("c202.44")}</p>
             </div>
             <div className="image-center-row">
               <img
@@ -222,7 +129,7 @@ export default function C202() {
                 alt="202_arbre_1.png"
                 style={{ objectFit: "contain" }}
               />
-              <p>Tsy maintsy 2 metatra ny halavan’ny hazo farafahakeliny</p>
+              <p>{t("c202.29")}</p>
             </div>
             <div className="image-center-column">
               <img
@@ -231,57 +138,30 @@ export default function C202() {
                 style={{ width: "100%", objectFit: "contain" }}
               />
               <div>
-                <p>1 taona</p>
+                <p>{t("c202.30")}</p>
                 <img
                   src="/images/arrow.png"
                   alt="arrow"
                   style={{ width: "60%" }}
                 />
-                <p>60 taona</p>
+                <p>{t("c202.31")}</p>
               </div>
-              <p>
-                Ny tanin-janakazo dia tsy maintsy velona anatin’ny 60 taona
-                farafahakeliny.
-              </p>
+              <p>{t("c202.32")}</p>
             </div>
-            <p>
-              Ireo hazo tanora tsy mbola nahatratra 2 metatra dia afaka
-              tafiditra ao anatin’ny hazon'ny TERAKA fa tsy afaka misehatra
-              amin’ny vola karbaona fotsiny izy ireo. Saingy efa mahazo ilay
-              fandoavana vola mialoha.
-            </p>
-            <p>
-              Mila mielanelana 2 metatra ireo hazon’ny TERAKA. Mba ahafahan’ny
-              hazo mitroka tsara ireo gazy, dia mila toerana malalaka be ny hazo
-              mba ahafahany mitombo ara-dalàna.
-            </p>
+            <p>{t("c202.33")}</p>
+            <p>{t("c202.34")}</p>
             <div className="image-center-column">
               <img
                 src="/images/202_arbre_3.png"
                 alt="202_arbre_3.png"
                 style={{ width: "100%", objectFit: "contain" }}
               />
-              <p>2 metatra</p>
-              <p>
-                Mila mielanelana 2 metatra ireo hazo mba hanana ny kalitao
-                mendrika amin’ny vola karbaona.
-              </p>
+              <p>{t("c202.35")}</p>
+              <p>{t("c202.36")}</p>
             </div>
-            <p>
-              Afaka mamboly hazo mielanelana latsaky ny 2 metatra ireo tantsaha
-              toy ny hazon’angovo. Saingy tsy mahazo vola karbaona ireo hazo
-              ireo amin’izay fotoana izay.
-            </p>
-            <p>
-              Mila ambolena eo amin’ny taninao ireo hazo, na raha eo
-              an-tanin’olona dia mila mahazo alalana avy amin’ny tompony.
-            </p>
-            <p>
-              Na dia tsy an-tery aza izany, dia ampirisihana ireo tantsaha
-              TERAKA anorina ny pepinierany mba hanampy amin’ny fambolena ny
-              zana-kazo. Ireo zana-kazo ireo dia afaka ambolena sy ampiasaina
-              mba hampidi-bola ihany koa.
-            </p>
+            <p>{t("c202.37")}</p>
+            <p>{t("c202.38")}</p>
+            <p>{t("c202.39")}</p>
             <div className="action-center">
               <button className="nav-btn" onClick={() => setNb(nb - 1)}>
                 Hiverina
@@ -294,19 +174,9 @@ export default function C202() {
         )}
         {nb === 2 && (
           <div className="content">
-            <h3>Famintinana: TERAKA sy ny fambolen-kazo</h3>
-            <p>
-              Vita soa izay! Azonao tsara izao ny votoanton’ny fambolen-kazo
-              miaraka amin’ny TERAKA! Fotoana izao ny ampiharana sy
-              anantanterahana izay nianarana! Afaka atombokao izany amin’ny
-              alalan’ny fambolenkazo ao amin’ny TERAKA.
-            </p>
-            <p>
-              Ny fizarana manaraka dia anome fahalalana bebe kokoa momban’ny
-              fandraharahana amin’ny Kredi Karbaona. Mialohan’ny hanohizana
-              amin’io fizarana io anefa dia manasa anao hamaly ireo fanontaniana
-              mifanaraka amin’ity fiofanana ity.
-            </p>
+            <h3>{t("c202.40")}</h3>
+            <p>{t("c202.41")}</p>
+            <p>{t("c202.42")}</p>
             <div className="action-center">
               <button className="nav-btn" onClick={() => setNb(nb - 1)}>
                 Hiverina
@@ -319,7 +189,7 @@ export default function C202() {
         )}
         {nb === 3 && (
           <div className="content">
-            <h3>Fanadinana momban'ny fambolena hazo TERAKA</h3>
+            <h3>{t("c202.43")}</h3>
             <Test />
             <div className="action-center">
               <Rating
