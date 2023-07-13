@@ -7,7 +7,7 @@ import { Rating } from "@mui/material";
 
 export default function C206() {
   const navigate = useNavigate();
-  const { user, server, setAlert } = useContext(ActContext);
+  const { user, server, setAlert, t } = useContext(ActContext);
   const [rating, setRating] = useState(user?.formation["206"]?.rating || 0);
   const [nb, setNb] = useState(
     !isNaN((user?.formation["206"]?.progress * 10) / 100) &&

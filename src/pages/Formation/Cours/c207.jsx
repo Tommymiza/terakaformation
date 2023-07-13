@@ -7,7 +7,7 @@ import { Rating } from "@mui/material";
 
 export default function C207() {
   const navigate = useNavigate();
-  const { user, server, setAlert } = useContext(ActContext);
+  const { user, server, setAlert, t } = useContext(ActContext);
   const [rating, setRating] = useState(user?.formation["207"]?.rating || 0);
   const [nb, setNb] = useState(
     user?.formation["207"]?.progress !== 45 &&
