@@ -49,7 +49,7 @@ export default function C204() {
     if ((user?.formation["204"]?.progress * 10) / 100 === 10) {
       setAlert({
         type: "success",
-        message: "Efa vitanao ito lesona ito!",
+        message: t("alert.2"),
       });
     }
     // eslint-disable-next-line
@@ -58,7 +58,7 @@ export default function C204() {
     if (nb === 10) {
       setAlert({
         type: "success",
-        message: "Arabaina, nahavita ny lesona!",
+        message: t("alert.1"),
       });
       navigate("/cours");
     }

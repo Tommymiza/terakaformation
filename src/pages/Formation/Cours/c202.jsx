@@ -56,7 +56,7 @@ export default function C202() {
     if (user?.formation["202"]?.progress === 100) {
       setAlert({
         type: "success",
-        message: "Efa vitanao ito lesona ito!",
+        message: t("alert.2"),
       });
     }
     // eslint-disable-next-line
@@ -65,7 +65,7 @@ export default function C202() {
     if (nb === 3) {
       setAlert({
         type: "success",
-        message: "Arabaina, nahavita ny lesona!",
+        message: t("alert.1"),
       });
     }
     // eslint-disable-next-line

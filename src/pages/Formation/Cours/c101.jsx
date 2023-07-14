@@ -49,7 +49,7 @@ export default function C101() {
     if ((user?.formation["101"]?.progress * 2) / 100 === 2) {
       setAlert({
         type: "success",
-        message: "Efa vitanao ito lesona ito!",
+        message: t("alert.2"),
       });
       setNb(0);
     }
@@ -60,7 +60,7 @@ export default function C101() {
     if (nb === 2) {
       setAlert({
         type: "success",
-        message: "Arabaina, nahavita ny lesona!",
+        message: t("alert.1"),
       });
       navigate("/cours");
     }

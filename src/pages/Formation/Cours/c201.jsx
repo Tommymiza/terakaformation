@@ -50,7 +50,7 @@ export default function C201() {
     if ((user?.formation["201"]?.progress * page.length) / 100 === 5) {
       setAlert({
         type: "success",
-        message: "Efa vitanao ito lesona ito!",
+        message: t("alert.2"),
       });
     }
     // eslint-disable-next-line
@@ -59,7 +59,7 @@ export default function C201() {
     if (nb === 5) {
       setAlert({
         type: "success",
-        message: "Arabaina, nahavita ny lesona!",
+        message: t("alert.1"),
       });
       navigate("/cours");
     }
