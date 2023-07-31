@@ -1,4 +1,5 @@
 export const en = {
+  tooltip: "Complete the first chapiter",
   login: {
     titre: ["Login", "Sign up", "Forgot password"],
     label: [

@@ -1,4 +1,5 @@
 export const mg = {
+  tooltip: "Iangaviana ianao hamita ny andininy voalohany",
   login: {
     titre: ["Hiditra", "Hamorona Kaonty", "Adino ny teny miafina"],
     label: [
