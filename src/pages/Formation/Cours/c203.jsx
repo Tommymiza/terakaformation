@@ -4,6 +4,8 @@ import { ActContext } from "../../../App";
 import axios from "axios";
 import "../../../styles/cours-content.scss";
 import { Rating } from "@mui/material";
+import Files from "../Files";
+import { DownloadRounded } from "@mui/icons-material";
 
 export default function C203() {
   const navigate = useNavigate();
@@ -70,6 +72,14 @@ export default function C203() {
       <>
         {nb === 0 && (
           <div className="content">
+            <h3 className="offline">{t("label")}</h3>
+            <div className="list-fic">
+              {Files[203].map((link, index) => (
+                <a key={index} href={link} target="_blank" rel="noreferrer">
+                  Fichier {index} <DownloadRounded />
+                </a>
+              ))}
+            </div>
             <p>{t("c203.0")}</p>
             <p>{t("c203.1")}</p>
             <ul style={{ marginLeft: "20px" }}>

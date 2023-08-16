@@ -67,6 +67,25 @@
     min-width: 250px;
   }
 }
+.list-fic{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+h3.offline{
+  color: var(--active);
+}
+.list-fic a{
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: var(--active);
+}
+.list-fic a:hover{
+  color: var(--primary);
+}
 @media screen and (max-width: 350px) {
   .image-center-row {
     img:nth-child(1) {

@@ -51,6 +51,7 @@ export const en = {
     "Password doesn't match",
     "Accept terms and condition",
   ],
+  label: "Offline training",
   question: [
     "What is your dog's name?",
     "Where is your birth city?",
@@ -133,6 +134,12 @@ export const en = {
     "6. Chapter:",
     "This shows the information of a chapter. Here you can see the lessons that cover the chapter and also the lessons you have completed. The color of the lesson is green if it is 100% completed, blue if there are still some unfinished. You can click a lesson if you want to learn it.",
     "About a chapter",
+  ],
+  c102:[
+    "How to download the training course ?",
+    "In every course, there is a section which contains the course's files list",
+    "Clic on every link to start the download",
+    "List of files"
   ],
   c201: [
     "Who is TERAKA?",

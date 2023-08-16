@@ -51,6 +51,7 @@ export const mg = {
     "Tsy mitovy ny teny miafina",
     "Ekeo ny fepetra",
   ],
+  label: "Fiofanana tsy mila internet",
   question: [
     "Iza ny anaran'ny alikanao?",
     "Taiza ny tanana nahaterahanao?",
@@ -134,6 +135,12 @@ export const mg = {
     "6. Chapitre:",
     "Ito ny mampiseho ny mombamomban'ny chapitre iray. Hita ato ireo lesona mandrakotra ny chapitre ary ihany koa ny lesona efa vitanao. Maitso ny lokon'ny lesona raha vita 100% izy, manga kosa raha toa ka mbola misy tsy vita. Azonao kitihana ny lesona iray raha te hianatra azy ianao.",
     "Mombamomban'ny chapitre iray",
+  ],
+  c102: [
+    "Aona ny fomba hangalana ny fiofanana?",
+    "Ao anatin'ny fiofanana iray dia ahitana ny lisitry ny fichiers azo alaina",
+    "Kitiho eo amin'iray amin'izy ireo raha te haka azy",
+    "Ahitana an'ireo Lisitry ny fiofanana",
   ],
   c201: [
     "Iza ary izany TERAKA izany? ",

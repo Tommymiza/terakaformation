@@ -42,6 +42,7 @@ export const fr = {
     "Terminer",
     "Précedent",
   ],
+  label: "Formation hors-ligne",
   alert: [
     "Bienvenue à bord",
     "Félicitation!",
@@ -134,6 +135,12 @@ export const fr = {
     "6. Chapitre :",
     "Cela montre les informations d'un chapitre. Ici, vous pouvez voir les leçons qui couvrent le chapitre et aussi les leçons que vous avez terminées. La couleur de la leçon est verte si elle est terminée à 100 %, bleue s'il reste encore des leçons à terminer. Vous pouvez cliquer sur une leçon si vous voulez l'apprendre.",
     "Description d'un chapitre",
+  ],
+  c102:[
+    "Comment télécharger les fichiers du cours ?",
+    "Dans chaque cours, il y a une section au tout début qui liste les fichiers téléchargeables du cours.",
+    "Cliquer sur eux pour lancer un téléchargement",
+    "Section Liste des fichiers"
   ],
   c201: [
     "Qui est TERAKA?",

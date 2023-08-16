@@ -5,6 +5,8 @@ import axios from "axios";
 import "../../../styles/cours-content.scss";
 import { Rating } from "@mui/material";
 import Test205 from "./Test205";
+import Files from "../Files";
+import { DownloadRounded } from "@mui/icons-material";
 
 export default function C205() {
   const navigate = useNavigate();
@@ -71,6 +73,14 @@ export default function C205() {
       <>
         {nb === 0 && (
           <div className="content">
+            <h3 className="offline">{t("label")}</h3>
+            <div className="list-fic">
+              {Files[205].map((link, index) => (
+                <a key={index} href={link} target="_blank" rel="noreferrer">
+                  Fichier {index} <DownloadRounded />
+                </a>
+              ))}
+            </div>
             <h3>{t("c205.0")}</h3>
             <p>{t("c205.1")}</p>
             <h4>{t("c205.2")}</h4>
