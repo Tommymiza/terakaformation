@@ -4,7 +4,7 @@ import { MenuItem, Select, ThemeProvider } from "@mui/material";
 import { theme } from "./theme";
 
 const Lang = () => {
-  const [ln, setLn] = useState(localStorage.getItem("lang") ?? "mg-MG");
+  const [ln, setLn] = useState(localStorage.getItem("lang") ?? i18n.language);
   const lang = [
     {
       value: "en-EN",
