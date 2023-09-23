@@ -4,20 +4,13 @@ import { ActContext } from "../../../App";
 import axios from "axios";
 import "../../../styles/cours-content.scss";
 import { Rating } from "@mui/material";
-import Files from "../Files";
-import { DownloadRounded } from "@mui/icons-material";
+import { Carousel } from "react-responsive-carousel";
 
 export default function C203() {
   const navigate = useNavigate();
   const { user, server, setAlert, t } = useContext(ActContext);
   const [rating, setRating] = useState(user?.formation["203"]?.rating || 0);
-  const [nb, setNb] = useState(
-    !isNaN((user?.formation["203"]?.progress * 5) / 100) &&
-      (user?.formation["203"]?.progress * 5) / 100 !== 5
-      ? (user?.formation["203"]?.progress * 5) / 100
-      : 0
-  );
-  function updateDatabase() {
+  async function updateDatabase() {
     axios({
       method: "POST",
       url: server + "/updateformation",
@@ -35,20 +28,21 @@ export default function C203() {
       });
     });
   }
-  function valider(nb) {
-    if (
-      !user.formation["203"] ||
-      user.formation["203"].progress < (nb + 1) * 20
-    ) {
-      var temp = Object.create(user.formation["203"] ?? { progress: 0 });
-      temp.progress += 20;
-      user.formation["203"] = temp;
-      updateDatabase();
+  const valider = async () => {
+    user.formation["203"].progress = 100;
+    try {
+      await updateDatabase();
+      setAlert({
+        type: "success",
+        message: t("alert.1"),
+      });
+      navigate("/cours/2/04");
+    } catch (error) {
+      setAlert({ type: "error", message: error.message });
     }
-    setNb(nb + 1);
-  }
+  };
   useEffect(() => {
-    if ((user?.formation["203"]?.progress * 5) / 100 === 5) {
+    if (user?.formation["203"]?.progress === 100) {
       setAlert({
         type: "success",
         message: t("alert.2"),
@@ -56,301 +50,304 @@ export default function C203() {
     }
     // eslint-disable-next-line
   }, []);
-  useEffect(() => {
-    if (nb === 5) {
-      setAlert({
-        type: "success",
-        message: t("alert.1"),
-      });
-      navigate("/cours");
-    }
-    // eslint-disable-next-line
-  }, [nb]);
 
   return (
     user && (
       <>
-        {nb === 0 && (
-          <div className="content">
-            <h3 className="offline">{t("label")}</h3>
-            <div className="list-fic">
-              {Files[203].map((link, index) => (
-                <a key={index} href={link} target="_blank" rel="noreferrer">
-                  Fichier {index} <DownloadRounded />
-                </a>
-              ))}
-            </div>
-            <p>{t("c203.0")}</p>
-            <p>{t("c203.1")}</p>
-            <ul style={{ marginLeft: "20px" }}>
-              <li>{t("c203.2")}</li>
-              <li>{t("c203.3")}</li>
-              <li>{t("c203.4")}</li>
-              <li>{t("c203.5")}</li>
-            </ul>
-            <h3>{t("c203.6")}</h3>
-            <p>{t("c203.7")}</p>
-            <p>{t("c203.8")}</p>
-            <p>{t("c203.9")}</p>
-            <ul style={{ marginLeft: "20px" }}>
-              <li>{t("c203.10")}</li>
-              <li>{t("c203.11")}</li>
-              <li>{t("c203.12")}</li>
-              <li>{t("c203.13")}</li>
-              <li>{t("c203.14")}</li>
-            </ul>
-            <p>{t("c203.15")}</p>
-            <p>{t("c203.16")}</p>
-            <p>{t("c203.17")}</p>
-            <h3>{t("c203.18")}</h3>
-            <p>{t("c203.19")}</p>
-            <p>{t("c203.20")}</p>
-            <p>{t("c203.21")}</p>
-            <p>{t("c203.22")}</p>
-            <p>{t("c203.23")}</p>
-            <h4>{t("c203.24")}</h4>
-            <p>{t("c203.25")}</p>
-            <h3>{t("c203.26")}</h3>
-            <div className="action-center">
-              <button className="nav-btn" onClick={() => valider(nb)}>
-                {t("button.12")}
-              </button>
-            </div>
-          </div>
-        )}
-        {nb === 1 && (
-          <div className="content">
-            <h3>{t("c203.27")}</h3>
-            <p>{t("c203.28")}</p>
-            <div className="content-part">
-              <h5>{t("c203.29")}</h5>
-              <p>{t("c203.30")}</p>
-            </div>
-            <div className="image-center-column">
-              <img
-                src="/images/203_1.png"
-                alt="203_1.png"
-                style={{ width: "50%", minWidth: "300px" }}
-              />
-            </div>
-            <p>{t("c203.31")}</p>
-            <div className="image-center-column">
-              <img
-                src="/images/203_2.png"
-                alt="203_2.png"
-                style={{ width: "50%", minWidth: "300px" }}
-              />
-            </div>
-            <p>{t("c203.32")}</p>
-            <div className="image-center-column">
-              <img
-                src="/images/203_3.png"
-                alt="203_3.png"
-                style={{ width: "50%", minWidth: "300px" }}
-              />
-            </div>
-            <p>{t("c203.33")}</p>
-            <div className="image-center-column">
-              <img
-                src="/images/203_4.png"
-                alt="203_4png"
-                style={{ width: "30%", minWidth: "300px" }}
-              />
-            </div>
-            <p>{t("c203.34")}</p>
-            <p>{t("c203.35")}</p>
-            <div className="image-center-column">
-              <img
-                src="/images/203_5.png"
-                alt="203_5.png"
-                style={{ width: "50%", minWidth: "300px" }}
-              />
-            </div>
-            <p>{t("c203.36")}</p>
-            <div className="image-center-column">
-              <img
-                src="/images/203_6.png"
-                alt="203_6.png"
-                style={{ width: "50%", minWidth: "300px" }}
-              />
-            </div>
-            <p>{t("c203.37")}</p>
-            <div className="image-center-column">
-              <img
-                src="/images/203_7.png"
-                alt="203_7.png"
-                style={{ width: "50%", minWidth: "300px" }}
-              />
-            </div>
-            <p>{t("c203.38")}</p>
-            <div className="image-center-column">
-              <img
-                src="/images/203_8.png"
-                alt="203_8.png"
-                style={{ width: "50%", minWidth: "300px" }}
-              />
-            </div>
-            <p>{t("c203.39")}</p>
-            <div className="image-center-column">
-              <img
-                src="/images/203_9.png"
-                alt="203_9.png"
-                style={{ width: "50%", minWidth: "300px" }}
-              />
-            </div>
-            <p>{t("c203.40")}</p>
-            <div className="image-center-column">
-              <img
-                src="/images/203_10.png"
-                alt="203_10.png"
-                style={{ width: "50%", minWidth: "300px" }}
-              />
-            </div>
-            <p>{t("c203.41")}</p>
-            <p>{t("c203.42")}</p>
-            <p>{t("c203.43")}</p>
-            <div className="image-center-column">
-              <img
-                src="/images/203_11.png"
-                alt="203_11.png"
-                style={{ width: "50%", minWidth: "300px" }}
-              />
-            </div>
-            <div className="action-center">
-              <button className="nav-btn" onClick={() => setNb(nb - 1)}>
-                {t("button.14")}
-              </button>
-              <button className="nav-btn" onClick={() => valider(nb)}>
-                {t("button.12")}
-              </button>
-            </div>
-          </div>
-        )}
-        {nb === 2 && (
-          <div className="content">
-            <p>{t("c203.44")}</p>
-            <div className="content-part">
-              <h5>{t("c203.45")}</h5>
-              <p>{t("c203.46")}</p>
-            </div>
-            <div className="content-part">
-              <h5>{t("c203.47")}</h5>
-              <p>{t("c203.48")}</p>
-            </div>
-            <div className="content-part">
-              <h5>{t("c203.49")}</h5>
-              <p>{t("c203.50")}</p>
-            </div>
-            <div className="action-center">
-              <button className="nav-btn" onClick={() => setNb(nb - 1)}>
-                {t("button.14")}
-              </button>
-              <button className="nav-btn" onClick={() => valider(nb)}>
-                {t("button.12")}
-              </button>
-            </div>
-          </div>
-        )}
-        {nb === 3 && (
-          <div className="content">
-            <h3>{t("c203.51")}</h3>
-            <p>{t("c203.52")}</p>
-            <div className="image-center-column">
-              <img
-                src="/images/203_2.png"
-                alt="203_2.png"
-                style={{ width: "50%", minWidth: "300px" }}
-              />
-            </div>
-            <p>{t("c203.53")}</p>
-            <div className="content-part">
-              <h5>{t("c203.54")}</h5>
-              <div className="row-content">
-                <ul>
-                  <li>{t("c203.55")}</li>
-                  <li>{t("c203.56")}</li>
-                  <li>{t("c203.57")}</li>
-                </ul>
-                <img src="/images/203_12.jpg" alt="203_12" />
+        <div className="content">
+          <div className="column-content">
+            <h3>C’EST QUOI CARBONE ?</h3>
+            <div className="article">
+              <img src="/images/203/Carbonides-Carbone.png" alt="" />
+              <div>
+                <p>
+                  Le carbone est partout autour de nous, mais nous ne pouvons ni
+                  le voir, ni le toucher, ni le goûter alors qu'est-ce que c'est
+                  ?
+                </p>
+                <p>
+                  Les arbres qui nous font de l'ombre sont faits de carbone.
+                </p>
+                <p>Les animaux que nous élevons sont faits de carbone.</p>
+                <p>
+                  Les légumes que nous cultivons sont faits de carbone Même vous
+                  et moi sommes faits de carbone.
+                </p>
+                <p>
+                  Les combustibles que nous utilisons tous les jours sont
+                  également composés de carbone : les combustibles comme
+                  l'essence et le bois de chauffage pour la cuisine.
+                </p>
+                <p>
+                  Lorsque nous brûlons des combustibles à base de carbone, nous
+                  produisons de la fumée et des gaz d'échappement qui salissent
+                  l'air que nous respirons et noircissent nos toits en tôle.
+                </p>
               </div>
             </div>
-            <div className="content-part">
-              <h5>{t("c203.58")}</h5>
-              <div className="row-content">
-                <ul>
-                  <li>{t("c203.59")}</li>
-                  <li>{t("c203.60")}</li>
-                  <li>{t("c203.61")}</li>
-                </ul>
-                <img src="/images/203_13.jpg" alt="203_13" />
+          </div>
+          <div className="column-content">
+            <h3>QU'EST CE QUE LE CYCLE DU CARBONE ?</h3>
+            <img
+              src="/images/203/cycle-carbone.jpg"
+              style={{ width: "50%", minWidth: 300 }}
+              alt=""
+            />
+            <div className="card-descri">
+              <h4>1ère phase :</h4>
+              <p>
+                Le carbone est présent partout sur Terre. Il régule la
+                température de la Terre, est à la base de toutes les inondations
+                et constitue une source majeure de carburant. Le carbone est à
+                la base de toute vie sur Terre. Le carbone se trouve dans notre
+                atmosphère sous la forme de dioxyde de carbone ou CO2. On ne
+                peut ni le voir, ni le goûter, ni le sentir, mais il est partout
+                autour de nous.
+              </p>
+            </div>
+            <div className="card-descri">
+              <h4>2ème phase :</h4>
+              <p>
+                Les sécheresses plus longues et les températures plus élevées
+                sont toutes deux des conséquences du changement climatique. Mais
+                il y a une chose simple que nous pouvons tous faire pour lutter
+                contre les causes du changement climatique : Planter des arbres
+                : les arbres absorbent le CO2 de l'atmosphère pendant leur
+                croissance
+              </p>
+            </div>
+          </div>
+          <div className="column-content">
+            <h3>TERAKA ET LE BUSINESS DU CREDIT CARBONE ?</h3>
+            <Carousel>
+              <div className="column-content">
+                <img
+                  src="/images/203/203_1.png"
+                  alt=""
+                  style={{ minWidth: 300, width: "50%" }}
+                />
+                <p style={{ fontWeight: "bolder" }}>
+                  L'activité de crédit carbone est la façon dont la iTERAKA
+                  reçoit des fonds pour gérer le programme TERAKA
+                </p>
+              </div>
+              <div className="column-content">
+                <img
+                  src="/images/203/203_2.png"
+                  alt=""
+                  style={{ minWidth: 300, width: "50%" }}
+                />
+                <p style={{ fontWeight: "bolder" }}>
+                  Les agriculteurs de TERAKA rejoignent un petit groupe dans le
+                  but d'aider l'environnement
+                </p>
+              </div>
+              <div className="column-content">
+                <img
+                  src="/images/203/203_3.png"
+                  alt=""
+                  style={{ minWidth: 300, width: "50%" }}
+                />
+                <p style={{ fontWeight: "bolder" }}>
+                  Le petit groupe TERAKA signe un contrat avec iTERAKA , la
+                  société qui gère le programme TERAKA
+                </p>
+              </div>
+              <div className="column-content">
+                <img
+                  src="/images/203/203_4.png"
+                  alt=""
+                  style={{ minWidth: 300, width: "50%" }}
+                />
+                <p style={{ fontWeight: "bolder" }}>
+                  Ce contract est appelé Contrat de Gas à Effet de Serre ou
+                  Contrat GES
+                </p>
+              </div>
+              <div className="column-content">
+                <img
+                  src="/images/203/203_5.png"
+                  alt=""
+                  style={{ minWidth: 300, width: "50%" }}
+                />
+                <p style={{ fontWeight: "bolder" }}>
+                  Les Petits Groupes de TERAKA maintiennent les arbres en vie.
+                </p>
+              </div>
+              <div className="column-content">
+                <img
+                  src="/images/203/203_6.png"
+                  alt=""
+                  style={{ minWidth: 300, width: "50%" }}
+                />
+                <p style={{ fontWeight: "bolder" }}>
+                  Un agent de Cluster TERAKA viendra compter les arbres et
+                  mesurer leur croissance.
+                </p>
+              </div>
+              <div className="column-content">
+                <img
+                  src="/images/203/203_7.png"
+                  alt=""
+                  style={{ minWidth: 300, width: "50%" }}
+                />
+                <p style={{ fontWeight: "bolder" }}>
+                  Cela permet à la iTERAKA de calculer la quantité de carbone
+                  que les arbres ont absorbée dans l'air.
+                </p>
+              </div>
+              <div className="column-content">
+                <img
+                  src="/images/203/203_8.png"
+                  alt=""
+                  style={{ minWidth: 300, width: "50%" }}
+                />
+                <p style={{ fontWeight: "bolder" }}>
+                  La iTERAKA engage des vérificateurs tiers pour s'assurer de
+                  l'exactitude de cette mesure.
+                </p>
+              </div>
+              <div className="column-content">
+                <img
+                  src="/images/203/203_9.png"
+                  alt=""
+                  style={{ minWidth: 300, width: "50%" }}
+                />
+                <p style={{ fontWeight: "bolder" }}>
+                  La iTERAKA crée un crédit carbone à partir de la quantité de
+                  carbone que les arbres TERAKA ont éliminé de l'air.
+                </p>
+              </div>
+              <div className="column-content">
+                <img
+                  src="/images/203/203_10.png"
+                  alt=""
+                  style={{ minWidth: 300, width: "50%" }}
+                />
+                <p style={{ fontWeight: "bolder" }}>
+                  Les entreprises achètent ce crédit carbone à la iTERAKA
+                </p>
+              </div>
+              <div className="column-content">
+                <img
+                  src="/images/203/203_11.png"
+                  alt=""
+                  style={{ minWidth: 300, width: "50%" }}
+                />
+                <p style={{ fontWeight: "bolder" }}>
+                  C'est ainsi que les Petits Groupes de TERAKA bénéficient de
+                  l'activité carbone.
+                </p>
+              </div>
+            </Carousel>
+          </div>
+          <div className="column-content">
+            <h3>NOTES IMPORTANTES :</h3>
+            <div className="card-descri">
+              <h4>Prépaiements du carbone</h4>
+              <p>
+                Au début, les arbres TERAKA seront trop petits pour créer un
+                crédit carbone. Jusqu'à ce que l'arbre TERAKA devienne
+                suffisamment grand, les petits groupes TERAKA recevront un
+                paiement anticipé de 0,02 $ par arbre et par an pour maintenir
+                la croissance de l'arbre.
+              </p>
+            </div>
+            <div className="card-descri">
+              <h4>Partage du profit de carbone</h4>
+              <p>
+                Lorsque l'arbre est suffisamment grand et que le petit groupe
+                remplit toutes les conditions d'admissibilité, le petit groupe
+                TERAKA reçoit une participation aux bénéfices. La participation
+                aux bénéfices est créée lorsque la iTERAKA vend des crédits de
+                carbone à une autre personne ou entreprise, et que la iTERAKA
+                partage 70 % des bénéfices de la vente avec les petits groupes
+                TERAKA.
+              </p>
+            </div>
+            <div className="card-descri">
+              <h4>Création d’un credit carbone</h4>
+              <p>
+                Pour créer un crédit carbone, un serviteur de TERAKA comptera
+                les arbres de chaque bosquet, en mesurant la circonférence du
+                tronc, en notant l'espèce de l'arbre et la proximité des arbres
+                entre eux. Ces informations sont ensuite ajoutées à la base de
+                données TERAKA. La iTERAKA utilise ces informations pour créer
+                un crédit carbone. Ce crédit carbone est ensuite vendu à une
+                autre personne ou entreprise désireuse d'aider l'environnement.
+              </p>
+            </div>
+          </div>
+          <div className="column-content">
+            <h3>AUTRES AVANTAGES DE TERAKA</h3>
+            <div className="row-content">
+              <div className="card" style={{ width: 300, height: 240 }}>
+                <img src="/images/203/CCfour-malgache.webp" alt="" />
+                <div className="contenu">
+                  <h5>Fourneaux améliorés</h5>
+                </div>
+              </div>
+              <div className="card" style={{ width: 300, height: 240 }}>
+                <img src="/images/203/Photo_petite.jpg" alt="" />
+                <div className="contenu">
+                  <h5>Agriculture de conservation</h5>
+                </div>
+              </div>
+              <div className="card" style={{ width: 300, height: 240 }}>
+                <img
+                  src="/images/203/quand-epandre-le-fumier-de-cheval-dans-le-jardin.jpg"
+                  alt=""
+                />
+                <div className="contenu">
+                  <h5>Formation sur le compostage du fumier</h5>
+                  <p>
+                    Cela permet aux agriculteurs d'obtenir de meilleurs
+                    rendements, d'aider l'environnement et d'éviter d'acheter
+                    des engrais.
+                  </p>
+                </div>
+              </div>
+              <div className="card" style={{ width: 300, height: 240 }}>
+                <img src="/images/203/sante_1_0.jpg" alt="" />
+                <div className="contenu">
+                  <h5>Santé</h5>
+                  <p>
+                    La santé d'un agriculteur est sa plus grande ressource. Les
+                    agriculteurs de TERAKA reçoivent des formations pour rester
+                    en bonne santé ainsi que des formations sur les problèmes de
+                    santé courants.
+                  </p>
+                </div>
+              </div>
+              <div className="card" style={{ width: 300, height: 240 }}>
+                <img src="/images/203/iStock-1406909744.jpg" alt="" />
+                <div className="contenu">
+                  <h5>Développement du leaderdship</h5>
+                  <p>
+                    Chaque agriculteur de TERAKA a la possibilité d'être un
+                    leader de TERAKA et de recevoir une formation en leadership
+                    Les agriculteurs de TERAKA pratiquent le leadership par
+                    rotation, ce qui donne à chacun la possibilité d'être un
+                    leader.
+                  </p>
+                </div>
               </div>
             </div>
-            <div className="content-part">
-              <h5>{t("c203.62")}</h5>
-              <p>{t("c203.63")}</p>
-            </div>
-            <div className="image-center-column">
-              <img
-                src="/images/203_14.jpg"
-                alt="203_14"
-                style={{ width: "50%", minWidth: "250px" }}
-              />
-            </div>
-            <div className="content-part">
-              <h5>{t("c203.64")}</h5>
-              <p>{t("c203.65")}</p>
-            </div>
-            <div className="image-center-column">
-              <img
-                src="/images/203_15.png"
-                alt="203_15"
-                style={{ width: "20%", minWidth: "100px" }}
-              />
-            </div>
-            <div className="content-part">
-              <h5>{t("c203.66")}</h5>
-              <p>{t("c203.67")}</p>
-              <p>{t("c203.68")}</p>
-            </div>
-            <div className="image-center-column">
-              <img
-                src="/images/203_16.jpg"
-                alt="203_16"
-                style={{ width: "50%", minWidth: "250px" }}
-              />
-            </div>
-            <div className="action-center">
-              <button className="nav-btn" onClick={() => setNb(nb - 1)}>
-                {t("button.14")}
-              </button>
-              <button className="nav-btn" onClick={() => valider(nb)}>
-                {t("button.12")}
-              </button>
-            </div>
           </div>
-        )}
-        {nb === 4 && (
-          <div className="content">
-            <h3>{t("c203.69")}</h3>
-            <p>{t("c203.70")}</p>
-            <p>{t("c203.71")}</p>
-            <div className="action-center">
-              <Rating
-                value={rating}
-                onChange={(e, n) => {
-                  user.formation["203"].rating = n;
-                  updateDatabase();
-                  setRating(n);
-                }}
-              />
-            </div>
-            <div className="action-center">
-              <button className="nav-btn" onClick={() => valider(nb)}>
-                {t("button.13")}
-              </button>
-            </div>
+          <div className="action-center">
+            <Rating
+              value={rating}
+              onChange={(e, n) => {
+                user.formation["203"].rating = n;
+                updateDatabase();
+                setRating(n);
+              }}
+            />
+            <button className="nav-btn" onClick={() => valider()}>
+              {t("button.12")}
+            </button>
           </div>
-        )}
+        </div>
       </>
     )
   );

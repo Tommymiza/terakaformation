@@ -19,6 +19,7 @@ import { initReactI18next, useTranslation } from "react-i18next";
 import { en } from "./Locales/en";
 import { fr } from "./Locales/fr";
 import { mg } from "./Locales/mg";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 export const ActContext = createContext();
 
@@ -43,11 +44,13 @@ function App() {
   const location = useLocation();
   const { t } = useTranslation();
   useEffect(() => {
+    let timeout = null;
     if (alert) {
-      setTimeout(() => {
+      timeout = setTimeout(() => {
         setAlert(null);
       }, 3000);
     }
+    return () => clearTimeout(timeout);
   }, [alert]);
   useEffect(() => {
     if (localStorage.getItem("lang")) {
@@ -80,7 +83,7 @@ function App() {
     // eslint-disable-next-line
   }, []);
   useEffect(() => {
-    if(location.pathname.includes("renew")){
+    if (location.pathname.includes("renew")) {
       return;
     }
     if (user) {
@@ -99,7 +102,7 @@ function App() {
         setAlert,
         setDialog,
         setLoad,
-        t
+        t,
       }}
     >
       <Navbar />
