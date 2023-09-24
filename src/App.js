@@ -39,7 +39,7 @@ function App() {
   const [alert, setAlert] = useState();
   const [dialog, setDialog] = useState();
   const [load, setLoad] = useState(true);
-  const server = "https://api.teraka.org";
+  const server = process.env.REACT_APP_API;
   const navigate = useNavigate();
   const location = useLocation();
   const { t } = useTranslation();
