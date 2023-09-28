@@ -29,8 +29,8 @@ i18n.use(initReactI18next).init({
     fr: { translation: fr },
     mg: { translation: mg },
   },
-  lng: window.navigator.language,
-  fallbackLng: window.navigator.language,
+  lng: "fr-FR",
+  fallbackLng: "fr-FR",
   interpolation: { escapeValue: false },
 });
 
