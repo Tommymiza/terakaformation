@@ -42,6 +42,7 @@ export default function C203() {
     }
   };
   useEffect(() => {
+    user.formation["203"] = {};
     if (user?.formation["203"]?.progress === 100) {
       setAlert({
         type: "success",

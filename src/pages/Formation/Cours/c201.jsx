@@ -30,6 +30,7 @@ export default function C201() {
     });
   }
   const valider = async () => {
+    user.formation["201"] = {};
     user.formation["201"].progress = 100;
     try {
       await updateDatabase();
