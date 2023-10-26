@@ -69,7 +69,7 @@ export default function C207() {
                     Les agriculteurs entendent parler du programme TERAKA lors
                     d'un séminaire organisé par TERAKA, d'une formation interne,
                     d'une visite avec un membre de TERAKA, d'émissions de radio,
-                    de journaux ou de bulletins d'information, ou de bien
+                    de journaux ou de la gazette mensuelle, ou de bien
                     d'autres façons.
                   </p>
                 </div>
@@ -163,7 +163,7 @@ export default function C207() {
                 </div>
                 <div className="card-descri">
                   <p>
-                    Partager le bulletin d'information de TERAKA avec des
+                    Partager la gazette mensuelle de TERAKA avec des
                     personnes en dehors de TERAKA.
                   </p>
                 </div>

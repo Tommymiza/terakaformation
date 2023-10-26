@@ -154,7 +154,7 @@ export default function C201() {
                   <p>
                     Les agriculteurs de TERAKA partagent ces meilleures
                     pratiques avec tous les petits groupes. Nous avons des
-                    bulletins d'information, des réunions mensuelles locales des
+                    gazettes mensuelles, des réunions mensuelles locales des
                     clusters et des séminaires régionaux où nous partageons les
                     meilleures pratiques que nous avons développées.
                   </p>
@@ -238,7 +238,7 @@ export default function C201() {
                 <h4>Par les agriculteurs, pour les agricultuers.</h4>
                 <p>
                   TERAKA est fait par les agriculteurs, pour les agriculteurs.
-                  En suivant les valeurs TIST, nous travaillons les uns pour les
+                  En suivant les valeurs TERAKA, nous travaillons les uns pour les
                   autres et pour nous-mêmes. Ces valeurs soutiennent la
                   communauté et la responsabilité.
                 </p>

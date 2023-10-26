@@ -343,7 +343,7 @@ export default function C204() {
                 </p>
                 <div className="card-descri">
                   <p>
-                    reçoivent le bulletin mensuel de TERAKA, qu'ils rapportent à
+                    reçoivent la gazette mensuelle de TERAKA, qu'ils rapportent à
                     leur petit groupe TERAKA
                   </p>
                 </div>
