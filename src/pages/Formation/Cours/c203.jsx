@@ -1,10 +1,10 @@
+import { Rating } from "@mui/material";
+import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
+import { Carousel } from "react-responsive-carousel";
 import { useNavigate } from "react-router";
 import { ActContext } from "../../../App";
-import axios from "axios";
 import "../../../styles/cours-content.scss";
-import { Rating } from "@mui/material";
-import { Carousel } from "react-responsive-carousel";
 
 export default function C203() {
   const navigate = useNavigate();
@@ -57,69 +57,37 @@ export default function C203() {
       <>
         <div className="content">
           <div className="column-content">
-            <h3>C’EST QUOI CARBONE ?</h3>
+            <h3>{t("c203.0")}</h3>
             <div className="article">
               <img src="/images/203/Carbonides-Carbone.png" alt="" />
               <div>
-                <p>
-                  Le carbone est partout autour de nous, mais nous ne pouvons ni
-                  le voir, ni le toucher, ni le goûter alors qu'est-ce que c'est
-                  ?
-                </p>
-                <p>
-                  Les arbres qui nous font de l'ombre sont faits de carbone.
-                </p>
-                <p>Les animaux que nous élevons sont faits de carbone.</p>
-                <p>
-                  Les légumes que nous cultivons sont faits de carbone Même vous
-                  et moi sommes faits de carbone.
-                </p>
-                <p>
-                  Les combustibles que nous utilisons tous les jours sont
-                  également composés de carbone : les combustibles comme
-                  l'essence et le bois de chauffage pour la cuisine.
-                </p>
-                <p>
-                  Lorsque nous brûlons des combustibles à base de carbone, nous
-                  produisons de la fumée et des gaz d'échappement qui salissent
-                  l'air que nous respirons et noircissent nos toits en tôle.
-                </p>
+                <p>{t("c203.1")}</p>
+                <p>{t("c203.2")}</p>
+                <p>{t("c203.3")}</p>
+                <p>{t("c203.4")}</p>
+                <p>{t("c203.5")}</p>
+                <p>{t("c203.6")}</p>
               </div>
             </div>
           </div>
           <div className="column-content">
-            <h3>QU'EST CE QUE LE CYCLE DU CARBONE ?</h3>
+            <h3>{t("c203.7")}</h3>
             <img
               src="/images/203/cycle-carbone.jpg"
               style={{ width: "50%", minWidth: 300 }}
               alt=""
             />
             <div className="card-descri">
-              <h4>1ère phase :</h4>
-              <p>
-                Le carbone est présent partout sur Terre. Il régule la
-                température de la Terre, est à la base de toutes les inondations
-                et constitue une source majeure de carburant. Le carbone est à
-                la base de toute vie sur Terre. Le carbone se trouve dans notre
-                atmosphère sous la forme de dioxyde de carbone ou CO2. On ne
-                peut ni le voir, ni le goûter, ni le sentir, mais il est partout
-                autour de nous.
-              </p>
+              <h4>{t("c203.8")}</h4>
+              <p>{t("c203.9")}</p>
             </div>
             <div className="card-descri">
-              <h4>2ème phase :</h4>
-              <p>
-                Les sécheresses plus longues et les températures plus élevées
-                sont toutes deux des conséquences du changement climatique. Mais
-                il y a une chose simple que nous pouvons tous faire pour lutter
-                contre les causes du changement climatique : Planter des arbres
-                : les arbres absorbent le CO2 de l'atmosphère pendant leur
-                croissance
-              </p>
+              <h4>{t("c203.10")}</h4>
+              <p>{t("c203.11")}</p>
             </div>
           </div>
           <div className="column-content">
-            <h3>TERAKA ET LE BUSINESS DU CREDIT CARBONE ?</h3>
+            <h3>{t("c203.12")}</h3>
             <Carousel>
               <div className="column-content">
                 <img
@@ -127,10 +95,7 @@ export default function C203() {
                   alt=""
                   style={{ minWidth: 300, width: "50%" }}
                 />
-                <p style={{ fontWeight: "bolder" }}>
-                  L'activité de crédit carbone est la façon dont la iTERAKA
-                  reçoit des fonds pour gérer le programme TERAKA
-                </p>
+                <p style={{ fontWeight: "bolder" }}>{t("c203.13")}</p>
               </div>
               <div className="column-content">
                 <img
@@ -138,10 +103,7 @@ export default function C203() {
                   alt=""
                   style={{ minWidth: 300, width: "50%" }}
                 />
-                <p style={{ fontWeight: "bolder" }}>
-                  Les agriculteurs de TERAKA rejoignent un petit groupe dans le
-                  but d'aider l'environnement
-                </p>
+                <p style={{ fontWeight: "bolder" }}>{t("c203.14")}</p>
               </div>
               <div className="column-content">
                 <img
@@ -149,10 +111,7 @@ export default function C203() {
                   alt=""
                   style={{ minWidth: 300, width: "50%" }}
                 />
-                <p style={{ fontWeight: "bolder" }}>
-                  Le petit groupe TERAKA signe un contrat avec iTERAKA , la
-                  société qui gère le programme TERAKA
-                </p>
+                <p style={{ fontWeight: "bolder" }}>{t("c203.15")}</p>
               </div>
               <div className="column-content">
                 <img
@@ -160,10 +119,7 @@ export default function C203() {
                   alt=""
                   style={{ minWidth: 300, width: "50%" }}
                 />
-                <p style={{ fontWeight: "bolder" }}>
-                  Ce contract est appelé Contrat de Gas à Effet de Serre ou
-                  Contrat GES
-                </p>
+                <p style={{ fontWeight: "bolder" }}>{t("c203.16")}</p>
               </div>
               <div className="column-content">
                 <img
@@ -171,9 +127,7 @@ export default function C203() {
                   alt=""
                   style={{ minWidth: 300, width: "50%" }}
                 />
-                <p style={{ fontWeight: "bolder" }}>
-                  Les Petits Groupes de TERAKA maintiennent les arbres en vie.
-                </p>
+                <p style={{ fontWeight: "bolder" }}>{t("c203.17")}</p>
               </div>
               <div className="column-content">
                 <img
@@ -181,10 +135,7 @@ export default function C203() {
                   alt=""
                   style={{ minWidth: 300, width: "50%" }}
                 />
-                <p style={{ fontWeight: "bolder" }}>
-                  Un agent de Cluster TERAKA viendra compter les arbres et
-                  mesurer leur croissance.
-                </p>
+                <p style={{ fontWeight: "bolder" }}>{t("c203.18")}</p>
               </div>
               <div className="column-content">
                 <img
@@ -192,10 +143,7 @@ export default function C203() {
                   alt=""
                   style={{ minWidth: 300, width: "50%" }}
                 />
-                <p style={{ fontWeight: "bolder" }}>
-                  Cela permet à la iTERAKA de calculer la quantité de carbone
-                  que les arbres ont absorbée dans l'air.
-                </p>
+                <p style={{ fontWeight: "bolder" }}>{t("c203.19")}</p>
               </div>
               <div className="column-content">
                 <img
@@ -203,10 +151,7 @@ export default function C203() {
                   alt=""
                   style={{ minWidth: 300, width: "50%" }}
                 />
-                <p style={{ fontWeight: "bolder" }}>
-                  La iTERAKA engage des vérificateurs tiers pour s'assurer de
-                  l'exactitude de cette mesure.
-                </p>
+                <p style={{ fontWeight: "bolder" }}>{t("c203.20")}</p>
               </div>
               <div className="column-content">
                 <img
@@ -214,10 +159,7 @@ export default function C203() {
                   alt=""
                   style={{ minWidth: 300, width: "50%" }}
                 />
-                <p style={{ fontWeight: "bolder" }}>
-                  La iTERAKA crée un crédit carbone à partir de la quantité de
-                  carbone que les arbres TERAKA ont éliminé de l'air.
-                </p>
+                <p style={{ fontWeight: "bolder" }}>{t("c203.21")}</p>
               </div>
               <div className="column-content">
                 <img
@@ -225,9 +167,7 @@ export default function C203() {
                   alt=""
                   style={{ minWidth: 300, width: "50%" }}
                 />
-                <p style={{ fontWeight: "bolder" }}>
-                  Les entreprises achètent ce crédit carbone à la iTERAKA
-                </p>
+                <p style={{ fontWeight: "bolder" }}>{t("c203.22")}</p>
               </div>
               <div className="column-content">
                 <img
@@ -235,63 +175,38 @@ export default function C203() {
                   alt=""
                   style={{ minWidth: 300, width: "50%" }}
                 />
-                <p style={{ fontWeight: "bolder" }}>
-                  C'est ainsi que les Petits Groupes de TERAKA bénéficient de
-                  l'activité carbone.
-                </p>
+                <p style={{ fontWeight: "bolder" }}>{t("c203.23")}</p>
               </div>
             </Carousel>
           </div>
           <div className="column-content">
-            <h3>NOTES IMPORTANTES :</h3>
+            <h3>{t("c203.24")}</h3>
             <div className="card-descri">
-              <h4>Prépaiements du carbone</h4>
-              <p>
-                Au début, les arbres TERAKA seront trop petits pour créer un
-                crédit carbone. Jusqu'à ce que l'arbre TERAKA devienne
-                suffisamment grand, les petits groupes TERAKA recevront un
-                paiement anticipé de 0,02 $ par arbre et par an pour maintenir
-                la croissance de l'arbre.
-              </p>
+              <h4>{t("c203.25")}</h4>
+              <p>{t("c203.26")}</p>
             </div>
             <div className="card-descri">
-              <h4>Partage du profit de carbone</h4>
-              <p>
-                Lorsque l'arbre est suffisamment grand et que le petit groupe
-                remplit toutes les conditions d'admissibilité, le petit groupe
-                TERAKA reçoit une participation aux bénéfices. La participation
-                aux bénéfices est créée lorsque la iTERAKA vend des crédits de
-                carbone à une autre personne ou entreprise, et que la iTERAKA
-                partage 70 % des bénéfices de la vente avec les petits groupes
-                TERAKA.
-              </p>
+              <h4>{t("c203.27")}</h4>
+              <p>{t("c203.28")}</p>
             </div>
             <div className="card-descri">
-              <h4>Création d’un credit carbone</h4>
-              <p>
-                Pour créer un crédit carbone, un serviteur de TERAKA comptera
-                les arbres de chaque bosquet, en mesurant la circonférence du
-                tronc, en notant l'espèce de l'arbre et la proximité des arbres
-                entre eux. Ces informations sont ensuite ajoutées à la base de
-                données TERAKA. La iTERAKA utilise ces informations pour créer
-                un crédit carbone. Ce crédit carbone est ensuite vendu à une
-                autre personne ou entreprise désireuse d'aider l'environnement.
-              </p>
+              <h4>{t("c203.29")}</h4>
+              <p>{t("c203.30")}</p>
             </div>
           </div>
           <div className="column-content">
-            <h3>AUTRES AVANTAGES DE TERAKA</h3>
+            <h3>{t("c203.31")}</h3>
             <div className="row-content">
               <div className="card" style={{ width: 300, height: 240 }}>
                 <img src="/images/203/CCfour-malgache.webp" alt="" />
                 <div className="contenu">
-                  <h5>Fourneaux améliorés</h5>
+                  <h5>{t("c203.32")}</h5>
                 </div>
               </div>
               <div className="card" style={{ width: 300, height: 240 }}>
                 <img src="/images/203/Photo_petite.jpg" alt="" />
                 <div className="contenu">
-                  <h5>Agriculture de conservation</h5>
+                  <h5>{t("c203.33")}</h5>
                 </div>
               </div>
               <div className="card" style={{ width: 300, height: 240 }}>
@@ -300,37 +215,22 @@ export default function C203() {
                   alt=""
                 />
                 <div className="contenu">
-                  <h5>Formation sur le compostage du fumier</h5>
-                  <p>
-                    Cela permet aux agriculteurs d'obtenir de meilleurs
-                    rendements, d'aider l'environnement et d'éviter d'acheter
-                    des engrais.
-                  </p>
+                  <h5>{t("c203.34")}</h5>
+                  <p>{t("c203.35")}</p>
                 </div>
               </div>
               <div className="card" style={{ width: 300, height: 240 }}>
                 <img src="/images/203/sante_1_0.jpg" alt="" />
                 <div className="contenu">
-                  <h5>Santé</h5>
-                  <p>
-                    La santé d'un agriculteur est sa plus grande ressource. Les
-                    agriculteurs de TERAKA reçoivent des formations pour rester
-                    en bonne santé ainsi que des formations sur les problèmes de
-                    santé courants.
-                  </p>
+                  <h5>{t("c203.36")}</h5>
+                  <p>{t("c203.37")}</p>
                 </div>
               </div>
               <div className="card" style={{ width: 300, height: 240 }}>
                 <img src="/images/203/iStock-1406909744.jpg" alt="" />
                 <div className="contenu">
-                  <h5>Développement du leaderdship</h5>
-                  <p>
-                    Chaque agriculteur de TERAKA a la possibilité d'être un
-                    leader de TERAKA et de recevoir une formation en leadership
-                    Les agriculteurs de TERAKA pratiquent le leadership par
-                    rotation, ce qui donne à chacun la possibilité d'être un
-                    leader.
-                  </p>
+                  <h5>{t("c203.38")}</h5>
+                  <p>{t("c203.39")}</p>
                 </div>
               </div>
             </div>

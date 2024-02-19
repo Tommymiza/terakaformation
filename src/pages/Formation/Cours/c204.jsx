@@ -1,10 +1,10 @@
+import { Rating, Tooltip } from "@mui/material";
+import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
+import { Carousel } from "react-responsive-carousel";
 import { useNavigate } from "react-router";
 import { ActContext } from "../../../App";
-import axios from "axios";
 import "../../../styles/cours-content.scss";
-import { Rating, Tooltip } from "@mui/material";
-import { Carousel } from "react-responsive-carousel";
 
 export default function C204() {
   const navigate = useNavigate();
@@ -57,14 +57,10 @@ export default function C204() {
       <>
         <div className="content">
           <div className="column-content">
-            <h3>COMMENT FORMER UN PETIT GROUPE SOLIDE ?</h3>
+            <h3>{t("c204.0")}</h3>
             <div className="card-descri">
-              <h4>Un petit groupe</h4>
-              <p>
-                Les petits groupes de TERAKA sont composés de 6 à 12 membres
-                issus d'au moins 3 familles différentes qui vivent toutes à
-                proximité les unes des autres.
-              </p>
+              <h4>{t("c204.1")}</h4>
+              <p>{t("c204.2")}</p>
             </div>
             <div
               className="row-content"
@@ -74,47 +70,32 @@ export default function C204() {
             >
               <img src="/images/203/IMG_1530.JPG" alt="" />
               <div>
-                <p>
-                  Vous devez appartenir à un petit groupe pour rejoindre TERAKA.
-                  Réfléchissez bien avant de former un petit groupe. Les petits
-                  groupes sont constitués d'amis et de voisins, et ils
-                  permettent aux agriculteurs de TERAKA de se développer en tant
-                  que leaders. Les bons petits groupes TERAKA sont constitués de
-                  personnes qui travaillent dur et qui incarnent les valeurs de
-                  TERAKA. Les hommes et les femmes d'un même petit groupe sont
-                  souvent ceux qui accomplissent le plus de choses.
-                </p>
+                <p>{t("c204.3")}</p>
               </div>
             </div>
           </div>
           <div className="column-content">
-            <h3>LES PROMESSES DU PETITS GROUPES DE TERAKA</h3>
+            <h3>{t("c204.4")}</h3>
             <div className="row-content">
               <div
                 className="column-content"
                 style={{ width: "40%", minWidth: 300 }}
               >
-                <p style={{ alignSelf: "flex-start" }}>
-                  Lorsqu'un petit groupe TERAKA adhère au programme, ses membres
-                  acceptent de :
-                </p>
+                <p style={{ alignSelf: "flex-start" }}>{t("c204.5")}</p>
                 <div className="card-descri">
-                  <p>
-                    S'engager à planter au moins 1 000 arbres par an pendant 5
-                    ans
-                  </p>
+                  <p>{t("c204.6")}</p>
                 </div>
                 <div className="card-descri">
-                  <p>Se réunir au moins une fois par semaine</p>
+                  <p>{t("c204.7")}</p>
                 </div>
                 <div className="card-descri">
-                  <p>Signer ensemble le contrat sur les gaz à effet de serre</p>
+                  <p>{t("c204.8")}</p>
                 </div>
                 <div className="card-descri">
-                  <p>Incarner les valeurs de TERAKA</p>
+                  <p>{t("c204.9")}</p>
                 </div>
                 <div className="card-descri">
-                  <p>Utiliser le leadership par rotation et le Kujengana</p>
+                  <p>{t("c204.10")}</p>
                 </div>
               </div>
               <div style={{ width: "40%", minWidth: 300 }}>
@@ -127,63 +108,37 @@ export default function C204() {
             </div>
           </div>
           <div className="column-content">
-            <h3>LES RÔLES DU LEADERSHIP DES PETITS GROUPES</h3>
+            <h3>{t("c204.11")}</h3>
             <div className="row-content">
-              <Tooltip
-                title="Le responsable est au service du petit groupe, il dirige les
-                    réunions et veille à ce que chaque personne puisse
-                    participer."
-              >
+              <Tooltip title={t("c204.12")}>
                 <div className="card">
-                  <p>Le responsable</p>
+                  <p>{t("c204.13")}</p>
                 </div>
               </Tooltip>
-              <Tooltip
-                title="Aide à diriger le petit groupe et fait office
-                    de chronométreur. Le co-responsable devient le responsable
-                    lors de la réunion suivante."
-              >
+              <Tooltip title={t("c204.14")}>
                 <div className="card">
-                  <p>Le co-leader</p>
+                  <p>{t("c204.15")}</p>
                 </div>
               </Tooltip>
-              <Tooltip
-                title="Rappelle au petit
-                    groupe ses responsabilités et ses engagements passés et
-                    présents. La personne chargée de la responsabilité devient
-                    le co-responsable lors de la réunion suivante."
-              >
+              <Tooltip title={t("c204.16")}>
                 <div className="card">
-                  <p>La personne chargée de la responsabilité</p>
+                  <p>{t("c204.17")}</p>
                 </div>
               </Tooltip>
             </div>
           </div>
           <div className="column-content">
-            <h3>LEADERSHIP TOURNANT</h3>
+            <h3>{t("c204.18")}</h3>
             <div className="row-content">
               <div
                 className="column-content"
                 style={{ width: "40%", minWidth: 300 }}
               >
                 <div className="card-descri">
-                  <p>
-                    La rotation du leadership est une pratique exemplaire de
-                    TERAKA pour les petits groupes. Le leadership est renouvelé
-                    à chaque réunion (hebdomadaire), le co-responsable devenant
-                    le leader, la personne chargée de la responsabilité devenant
-                    le co-responsable et une nouvelle personne chargée de la
-                    responsabilité étant élue.
-                  </p>
+                  <p>{t("c204.19")}</p>
                 </div>
                 <div className="card-descri">
-                  <p>
-                    Le leadership alterne entre hommes et femmes à chaque niveau
-                    de TERAKA. Cela signifie que si la personne responsable
-                    actuelle est un homme, la prochaine devrait être une femme.
-                    Ainsi, la direction alterne toujours entre les hommes et les
-                    femmes.
-                  </p>
+                  <p>{t("c204.20")}</p>
                 </div>
               </div>
               <div style={{ width: "40%", minWidth: 300 }}>
@@ -196,121 +151,72 @@ export default function C204() {
             </div>
           </div>
           <div className="column-content">
-            <h3>LES AVANTAGES DU LEADERSHIP TOURNANT</h3>
+            <h3>{t("c204.21")}</h3>
             <div className="card-descri">
-              <p>
-                Chaque personne a la possibilité de servir en tant que leader.
-              </p>
+              <p>{t("c204.22")}</p>
             </div>
             <div className="card-descri">
-              <p>Les hommes et les femmes ont les mêmes chances.</p>
+              <p>{t("c204.23")}</p>
             </div>
             <div className="card-descri">
-              <p>
-                Nous apprenons les uns des autres ce qui fait un bon dirigeant.
-              </p>
+              <p>{t("c204.24")}</p>
             </div>
             <div className="card-descri">
-              <p>
-                La rotation du leadership encourage les nouveaux venus et les
-                personnes timides à prendre la tête d'un groupe.
-              </p>
+              <p>{t("c204.25")}</p>
             </div>
           </div>
           <div className="column-content">
-            <h3>KUJENGANA</h3>
+            <h3>{t("c204.26")}</h3>
             <Carousel>
               <div className="row-content" style={{ minHeight: "50vh" }}>
                 <img src="/images/204/IMG_1271.jpeg" alt="" />
                 <div>
-                  <h3>C'est quoi le Kujengana</h3>
-                  <p>
-                    Kujengana est le mot swahili qui signifie construire, et
-                    c'est quelque chose que l'on fait à la fin de chaque réunion
-                    de TERAKA.
-                  </p>
+                  <h3>{t("c204.27")}</h3>
+                  <p>{t("c204.28")}</p>
                 </div>
               </div>
               <div className="row-content" style={{ minHeight: "50vh" }}>
                 <img src="/images/204/leader cluster.jpeg" alt="" />
                 <div>
-                  <h3>Comment pratiquer le Kujengana ?</h3>
-                  <p>
-                    Avant la prière de clôture, chaque membre du petit groupe
-                    dit une chose spécifique et positive que le responsable a
-                    faite au cours de la réunion. Ces commentaires doivent être
-                    spécifiques et se référer à quelque chose que le responsable
-                    a fait ou dit. Pensez à quelque chose qu'une mouche sur le
-                    mur verrait ou entendrait. Il ne doit pas s'agir d'un
-                    commentaire général du type le responsable a fait du bon
-                    travail. Il s'agit plutôt d'un commentaire spécifique comme
-                    le responsable a respecté le temps imparti, a souri et a
-                    encouragé tous les membres du petit groupe à s'exprimer.
-                  </p>
+                  <h3>{t("c204.29")}</h3>
+                  <p>{t("c204.30")}</p>
                 </div>
               </div>
               <div className="row-content" style={{ minHeight: "50vh" }}>
                 <img src="/images/204/Leader national.JPG" alt="" />
                 <div>
-                  <h3>Pourquoi pratiquer le Kujengana ?</h3>
-                  <p>
-                    Chaque membre de TERAKA possède des talents et des dons
-                    particuliers et a quelque chose de précieux à apporter. Le
-                    Kujengana est la pratique qui consiste à exprimer cette
-                    valeur à haute voix. Tout comme la rotation du leadership,
-                    le Kujengana est un élément important de la croissance des
-                    leaders au sein de TERAKA.
-                  </p>
+                  <h3>{t("c204.31")}</h3>
+                  <p>{t("c204.32")}</p>
                 </div>
               </div>
               <div className="row-content" style={{ minHeight: "50vh" }}>
                 <img src="/images/204/record meeting.jpeg" alt="" />
                 <div>
-                  <h3>Les bénéfices du Kujengana</h3>
-                  <p>
-                    Il donne confiance aux dirigeants lorsqu'ils ont fait
-                    quelque chose de bien.
-                  </p>
-                  <p>
-                    Il aide les futurs dirigeants à s'inspirer des bonnes idées
-                    des dirigeants actuels.
-                  </p>
-                  <p>Il encourage les gens à devenir des leaders</p>
+                  <h3>{t("c204.33")}</h3>
+                  <p>{t("c204.34")}</p>
+                  <p>{t("c204.35")}</p>
+                  <p>{t("c204.36")}</p>
                 </div>
               </div>
             </Carousel>
           </div>
           <div className="column-content">
-            <h3>CLUSTER DE TERAKA</h3>
+            <h3>{t("c204.37")}</h3>
             <div className="row-content">
               <div
                 className="column-content"
                 style={{ width: "40%", minWidth: 300 }}
               >
                 <div className="card-descri">
-                  <p>
-                    Chaque petit groupe TERAKA fait partie d'une grappe de
-                    petits groupes. Une grappe est un groupe de 30 à 50 petits
-                    groupes TERAKA qui se trouvent à proximité les uns des
-                    autres.
-                  </p>
+                  <p>{t("c204.38")}</p>
                 </div>
                 <div className="card-descri">
-                  <h4>Comment former un Cluster ?</h4>
-                  <p>
-                    Chaque Cluster doit compter entre 30 et 50 petits groupes
-                    qui ont:
-                  </p>
+                  <h4>{t("c204.39")}</h4>
+                  <p>{t("c204.40")}</p>
                   <ul style={{ marginLeft: 20 }}>
-                    <li>
-                      planté au moins 200 000 arbres au total (chaque petit
-                      groupe doit planter 1 000 arbres par an)
-                    </li>
-                    <li>un lit de pépinière pour élever les plantules</li>
-                    <li>
-                      environ 80 à 100 hectares de terrain pour la plantation
-                      d'arbres.
-                    </li>
+                    <li>{t("c204.41")}</li>
+                    <li>{t("c204.42")}</li>
+                    <li>{t("c204.43")}</li>
                   </ul>
                 </div>
               </div>
@@ -320,7 +226,7 @@ export default function C204() {
             </div>
           </div>
           <div className="column-content">
-            <h3>RÉUNION DES CLUSTERS</h3>
+            <h3>{t("c204.44")}</h3>
             <div className="row-content">
               <div style={{ minWidth: 300, width: "50%" }}>
                 <img
@@ -333,34 +239,18 @@ export default function C204() {
                 className="column-content"
                 style={{ minWidth: 300, width: "40%" }}
               >
-                <p>
-                  Chaque mois, chaque petit groupe TERAKA du groupe envoie deux
-                  représentants (un homme et une femme) à une réunion de groupe.
-                  Un agent de Cluster de TERAKA organise ces réunions dans un
-                  lieu facilement accessible à tous les petits groupes du
-                  groupe. Lors de la réunion de grappe, les agriculteurs de
-                  TERAKA :
-                </p>
+                <p>{t("c204.45")}</p>
                 <div className="card-descri">
-                  <p>
-                    reçoivent la gazette mensuelle de TERAKA, qu'ils rapportent à
-                    leur petit groupe TERAKA
-                  </p>
+                  <p>{t("c204.46")}</p>
                 </div>
                 <div className="card-descri">
-                  <p>
-                    reçoivent un bon de paiement pour l'activité de plantation
-                    d'arbres de leur petit groupe de TERAKA
-                  </p>
+                  <p>{t("c204.47")}</p>
                 </div>
                 <div className="card-descri">
-                  <p>reçoivent une formation supplémentaire</p>
+                  <p>{t("c204.48")}</p>
                 </div>
                 <div className="card-descri">
-                  <p>
-                    partagent les meilleures pratiques et les nouvelles avec les
-                    membres des autres petits groupes de TERAKA de la région
-                  </p>
+                  <p>{t("c204.49")}</p>
                 </div>
               </div>
             </div>

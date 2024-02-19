@@ -1,10 +1,10 @@
+import { Rating } from "@mui/material";
+import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
+import { Carousel } from "react-responsive-carousel";
 import { useNavigate } from "react-router";
 import { ActContext } from "../../../App";
-import axios from "axios";
 import "../../../styles/cours-content.scss";
-import { Rating } from "@mui/material";
-import { Carousel } from "react-responsive-carousel";
 
 export default function C206() {
   const navigate = useNavigate();
@@ -57,9 +57,9 @@ export default function C206() {
       <>
         <div className="content">
           <div className="column-content">
-            <h3>RESPONSABILITÉS</h3>
+            <h3>{t("c206.0")}</h3>
             <div className="row-content">
-              <div  style={{width: "40%", minWidth: 300}}>
+              <div style={{ width: "40%", minWidth: 300 }}>
                 <img
                   src="/images/206/IMG_1389.jpeg"
                   alt=""
@@ -70,25 +70,11 @@ export default function C206() {
                 className="card-descri"
                 style={{ width: "50%", minWidth: 300 }}
               >
-                <h4>Les responsabilités des petits groupes</h4>
-                <p>
-                  Le Petit Groupe s'engage à planter au moins 1 000 arbres par
-                  an pendant 5 ans
-                </p>
-                <p>
-                  Le Petit Groupe s'engage à garder les arbres en vie pendant 60
-                  ans et à replanter ceux qui meurent
-                </p>
-                <p>
-                  Le Petit Groupe s'engage à participer aux formations
-                  dispensées par TERAKA et à contribuer au développement des
-                  bonnes pratiques
-                </p>
-                <p>
-                  Le groupe minoritaire accepte de permettre aux classificateurs
-                  et vérificateurs de TERAK de venir à la plantation pour
-                  mesurer la croissance des arbres
-                </p>
+                <h4>{t("c206.1")}</h4>
+                <p>{t("c206.2")}</p>
+                <p>{t("c206.3")}</p>
+                <p>{t("c206.4")}</p>
+                <p>{t("c206.5")}</p>
               </div>
             </div>
             <div className="row-content">
@@ -96,27 +82,13 @@ export default function C206() {
                 className="card-descri"
                 style={{ width: "50%", minWidth: 300 }}
               >
-                <h4>Les responsabilités de iTERAKA</h4>
-                <p>
-                  iTERAKA s'engage à fournir des informations dans les
-                  formations, les médias et sur Internet
-                </p>
-                <p>
-                  iTERAKA convient qu'il est précis et transparent dans la
-                  mesure
-                </p>
-                <p>
-                  iTERAKA s'engage à payer les 70 % du Petit Groupe qui est le
-                  bénéfice de la vente du carbone et de faire le paiement
-                  anticipé de l'arbre vivant qui est au moins 6 mois par an qui
-                  vaut 0,03 euro à 0,03 $ (euro )
-                </p>
-                <p>
-                  iTERAKA s'engage à faire ses meilleurs efforts dans la vente
-                  de crédits carbone au profit de petits groupes
-                </p>
+                <h4>{t("c206.6")}</h4>
+                <p>{t("c206.7")}</p>
+                <p>{t("c206.8")}</p>
+                <p>{t("c206.9")}</p>
+                <p>{t("c206.10")}</p>
               </div>
-              <div style={{width: "40%", minWidth: 300}}>
+              <div style={{ width: "40%", minWidth: 300 }}>
                 <img
                   src="/images/206/XWOVEIJ4O7D45ESQMCSDJPCOF4.jpg"
                   style={{ width: "100%", objectFit: "contain" }}
@@ -126,7 +98,7 @@ export default function C206() {
             </div>
           </div>
           <div className="column-content">
-            <h3>COMPRÉHENSION DE PRÉPAIEMENT</h3>
+            <h3>{t("c206.11")}</h3>
             <Carousel
               showThumbs={false}
               autoPlay={true}
@@ -141,8 +113,8 @@ export default function C206() {
                   alt=""
                   style={{ height: 250, objectFit: "contain" }}
                 />
-                <p>Arbre de deux (2) mois</p>
-                <h4>Pour pouvoir recevoir l'acompte</h4>
+                <p>{t("c206.12")}</p>
+                <h4>{t("c206.13")}</h4>
               </div>
               <div className="column-content">
                 <img
@@ -150,8 +122,8 @@ export default function C206() {
                   alt=""
                   style={{ height: 250, objectFit: "contain" }}
                 />
-                <p>Arbre de quatre (4) mois</p>
-                <h4>Pour pouvoir recevoir l'acompte...</h4>
+                <p>{t("c206.14")}</p>
+                <h4>{t("c206.15")}</h4>
               </div>
               <div className="column-content">
                 <img
@@ -159,12 +131,8 @@ export default function C206() {
                   alt=""
                   style={{ height: 250, objectFit: "contain" }}
                 />
-                <p>Arbre de dix-huit (18) mois</p>
-                <h4>
-                  Pour recevoir l'acompte, les arbres doivent avoir été comptés
-                  comme des arbres dans les 18 mois L'acompte est de 0,03 euro
-                  par an pour chaque arbre vivant
-                </h4>
+                <p>{t("c206.16")}</p>
+                <h4>{t("c206.17")}</h4>
               </div>
               <div className="column-content">
                 <img
@@ -172,16 +140,13 @@ export default function C206() {
                   alt=""
                   style={{ height: 250, objectFit: "contain" }}
                 />
-                <p>Arbre adulte</p>
-                <h4>
-                  Le paiement anticipé est également le paiement minimum
-                  qu'iTERAKA fournit annuellement pour chaque arbre vivant.
-                </h4>
+                <p>{t("c206.18")}</p>
+                <h4>{t("c206.19")}</h4>
               </div>
             </Carousel>
           </div>
           <div className="column-content">
-            <h3>REPARTITION DES BENEFICES</h3>
+            <h3>{t("c206.20")}</h3>
             <Carousel
               showThumbs={false}
               autoPlay={true}
@@ -200,10 +165,7 @@ export default function C206() {
                     objectFit: "contain",
                   }}
                 />
-                <p>
-                  Par exemple, si la vente d'un crédit carbone crée 1 000 unités
-                  monétaires (unités) de revenus carbone
-                </p>
+                <p>{t("c206.21")}</p>
               </div>
               <div className="column-content">
                 <img
@@ -215,10 +177,7 @@ export default function C206() {
                     objectFit: "contain",
                   }}
                 />
-                <p>
-                  Et nous pensons que le prix est de 200 unités. Le bénéfice
-                  restant est de 800 Unités
-                </p>
+                <p>{t("c206.22")}</p>
               </div>
               <div className="column-content">
                 <img
@@ -230,10 +189,7 @@ export default function C206() {
                     objectFit: "contain",
                   }}
                 />
-                <p>
-                  iTERAKA s'engage à partager 70 %, soit 560 Unités, avec le
-                  petit groupe
-                </p>
+                <p>{t("c206.23")}</p>
               </div>
               <div className="column-content">
                 <img
@@ -245,10 +201,7 @@ export default function C206() {
                     objectFit: "contain",
                   }}
                 />
-                <p>
-                  Et 30 %, soit 240 Unités, seront inclus dans le Programme
-                  TERAKA
-                </p>
+                <p>{t("c206.24")}</p>
               </div>
               <div className="column-content">
                 <img
@@ -260,11 +213,7 @@ export default function C206() {
                     objectFit: "contain",
                   }}
                 />
-                <p>
-                  Ainsi, dans cet exemple, le crédit carbone vendu pour 1 000
-                  Unités est utilisé pour 560 Unités qui reviennent à des petits
-                  groupes
-                </p>
+                <p>{t("c206.25")}</p>
               </div>
             </Carousel>
           </div>

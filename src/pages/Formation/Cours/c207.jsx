@@ -1,10 +1,10 @@
+import { Rating } from "@mui/material";
+import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
+import { Carousel } from "react-responsive-carousel";
 import { useNavigate } from "react-router";
 import { ActContext } from "../../../App";
-import axios from "axios";
 import "../../../styles/cours-content.scss";
-import { Rating } from "@mui/material";
-import { Carousel } from "react-responsive-carousel";
 
 export default function C207() {
   const navigate = useNavigate();
@@ -57,128 +57,78 @@ export default function C207() {
       <>
         <div className="content">
           <div className="column-content">
-            <h3>
-              DÉVELOPPEMENT DE TERAKA : COMMENT TERAKA SE DÉVELOPPE-T-IL ?
-            </h3>
+            <h3>{t("c207.0")}</h3>
             <Carousel>
               <div className="row-content" style={{ minHeight: "80vh" }}>
                 <img src="/images/207/IMG_0231.JPG" alt="" />
                 <div>
-                  <h4>Étape 1 : Premier contact</h4>
-                  <p>
-                    Les agriculteurs entendent parler du programme TERAKA lors
-                    d'un séminaire organisé par TERAKA, d'une formation interne,
-                    d'une visite avec un membre de TERAKA, d'émissions de radio,
-                    de journaux ou de la gazette mensuelle, ou de bien
-                    d'autres façons.
-                  </p>
+                  <h4>{t("c207.1")}</h4>
+                  <p>{t("c207.2")}</p>
                 </div>
               </div>
               <div className="row-content" style={{ minHeight: 800 }}>
                 <img src="/images/207/P1100297.JPG" alt="" />
                 <div>
-                  <h4>Étape 2 : Sensibilisation et recrutement</h4>
-                  <p>
-                    Si un agriculteur souhaite en savoir plus sur TERAKA, il
-                    doit se rendre sur le site join.TERAKA.org et demander s'il
-                    y a des réunions de groupe TERAKA dans sa région. Discuter
-                    avec des agriculteurs TERAKA et assister aux réunions de
-                    groupe (si possible).
-                  </p>
+                  <h4>{t("c207.3")}</h4>
+                  <p>{t("c207.4")}</p>
                 </div>
               </div>
               <div className="row-content" style={{ minHeight: 800 }}>
                 <img src="/images/207/P1100319.JPG" alt="" />
                 <div>
-                  <h4>Étape 3: Formation et application</h4>
-                  <p>
-                    Revoir le 5e sous chapitre du chapitre 2: Comment devenir
-                    membre de Petit Groupe TERAKA pour aider les agriculteurs à
-                    former des petits groupes solides qui comprennent le
-                    programme TERAKA.
-                  </p>
+                  <h4>{t("c207.5")}</h4>
+                  <p>{t("c207.6")}</p>
                 </div>
               </div>
               <div className="row-content" style={{ minHeight: 800 }}>
                 <img src="/images/207/case.JPG" alt="" />
                 <div>
-                  <h4>Étape 4 : Formation d'un Cluster</h4>
-                  <p>
-                    Un Cluster est une combinaison de 30 à 50 Petits Groupes qui
-                    se trouvent à une distance de marche. S'il y a moins de 30
-                    petits groupes dans votre région, vous pouvez quand même
-                    créer un groupe. Continuez à ajouter des petits groupes
-                    jusqu'à ce que vous atteigniez 30 !
-                  </p>
+                  <h4>{t("c207.7")}</h4>
+                  <p>{t("c207.8")}</p>
                 </div>
               </div>
               <div className="row-content" style={{ minHeight: 800 }}>
                 <img src="/images/207/paysage.jpeg" alt="" />
                 <div>
-                  <h4>Étape 5: AGIR et FAIRE</h4>
-                  <p>
-                    A ce stade, les agriculteurs en savent assez et doivent être
-                    encouragés à AGIR et à FAIRE ! Poursuivre la formation des
-                    agriculteurs TERAKA en utilisant le matériel du Centre
-                    d'apprentissage et en partageant les meilleures pratiques en
-                    matière de petits groupes et de clusters Revoir les
-                    formations du Centre d'apprentissage pour savoir comment
-                    enregistrer le petit groupe une fois qu'il a compris le
-                    programme.
-                  </p>
+                  <h4>{t("c207.9")}</h4>
+                  <p>{t("c207.10")}</p>
                 </div>
               </div>
             </Carousel>
           </div>
           <div className="column-content">
-            <h3>MOYENS DE RECRUTER POUR L'EXPANSION DE TERAKA</h3>
+            <h3>{t("c207.11")}</h3>
             <div className="row-content">
               <div
                 className="column-content"
                 style={{ width: "50%", minWidth: 300 }}
               >
                 <div className="card-descri">
-                  <p>Mobilisation par le biais de réunions communautaires.</p>
+                  <p>{t("c207.12")}</p>
                 </div>
                 <div className="card-descri">
-                  <p>
-                    Créez une pépinière surélevée afin de disposer plusieurs
-                    plantules.
-                  </p>
+                  <p>{t("c207.13")}</p>
                 </div>
                 <div className="card-descri">
-                  <p>
-                    Demandez aux autres membres de TERAKA près de chez vous pour
-                    vous aider à recruter leurs voisins.
-                  </p>
+                  <p>{t("c207.14")}</p>
                 </div>
                 <div className="card-descri">
-                  <p>Mobiliser en travaillant avec les dirigeants locaux.</p>
+                  <p>{t("c207.15")}</p>
                 </div>
                 <div className="card-descri">
-                  <p>
-                    Expliquer aux membres de la communauté l'importance de la
-                    plantation d'arbres et les avantages de participer à TERAKA.
-                  </p>
+                  <p>{t("c207.16")}</p>
                 </div>
                 <div className="card-descri">
-                  <p>
-                    Partager la gazette mensuelle de TERAKA avec des
-                    personnes en dehors de TERAKA.
-                  </p>
+                  <p>{t("c207.17")}</p>
                 </div>
                 <div className="card-descri">
-                  <p>
-                    Montrer aux gens les avantages tels que les foyers
-                    améliorés, les paiements pour les arbres, les arbres
-                    fruitiers ou l'agriculture de conservation.
-                  </p>
+                  <p>{t("c207.18")}</p>
                 </div>
                 <div className="card-descri">
-                  <p>Mobiliser par l'intermédiaire des églises.</p>
+                  <p>{t("c207.19")}</p>
                 </div>
                 <div className="card-descri">
-                  <p>Mobilisation par le biais de la radio locale.</p>
+                  <p>{t("c207.20")}</p>
                 </div>
               </div>
               <div style={{ width: "40%", minWidth: 300 }}>
