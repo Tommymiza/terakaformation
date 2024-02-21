@@ -177,7 +177,7 @@ export const mg = {
     "Mifanampy mba ahazahoana tombony izy ireo.",
     "Ny soatoavina TERAKA dia manampy ny tantsaha hahazo valiny lehibe. Amin'ny alàlan'ny fiasa miaraka amin'ny teti-bola ambany izay miteraka valiny lehibe, dia mamorona vola karbonina bebe kokoa ho an'ny tantsaha TERAKA izahay.",
     "Avy amin’ny tantsaha, hoan’ny tantsaha.",
-    "TERAKA dia ataon'ireo tantsaha, ho an'ny tantsaha. Amin'ny fanarahana ny soatoavina TIST dia miara-miasa isika sy ny tenantsika. Ireo soatoavina ireo dia manohana ny fiaraha-monina sy ny fandraisana andraikitra.",
+    "TERAKA dia ataon'ireo tantsaha, ho an'ny tantsaha. Amin'ny fanarahana ny soatoavina TERAKA dia miara-miasa isika sy ny tenantsika. Ireo soatoavina ireo dia manohana ny fiaraha-monina sy ny fandraisana andraikitra.",
     "Mifanompo.",
     "Ny soatoavin’ny TERAKA dia mamnampy anay hifanompo.",
   ],
