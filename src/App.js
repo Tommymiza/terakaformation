@@ -1,25 +1,25 @@
-import React, { useEffect, createContext, useState } from "react";
-import axios from "axios";
-import Info from "./components/Info";
 import { CircularProgress, ThemeProvider } from "@mui/material";
-import { theme } from "./components/theme";
-import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
-import Cours from "./pages/Formation/Cours";
-import Navbar from "./components/Navbar";
-import Accueil from "./pages/Accueil/Accueil";
-import Pathnav from "./components/Pathnav";
-import Inscription from "./components/Inscription";
-import Content from "./pages/Formation/Content";
-import Chapitre from "./pages/Formation/Chapitre";
-import CompteLost from "./components/CompteLost";
-import MdpRenew from "./pages/Accueil/MdpRenew";
-import NotFound from "./components/NotFound";
+import axios from "axios";
 import i18n from "i18next";
+import React, { createContext, useEffect, useState } from "react";
 import { initReactI18next, useTranslation } from "react-i18next";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { en } from "./Locales/en";
 import { fr } from "./Locales/fr";
 import { mg } from "./Locales/mg";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import CompteLost from "./components/CompteLost";
+import Info from "./components/Info";
+import Inscription from "./components/Inscription";
+import Navbar from "./components/Navbar";
+import NotFound from "./components/NotFound";
+import Pathnav from "./components/Pathnav";
+import { theme } from "./components/theme";
+import Accueil from "./pages/Accueil/Accueil";
+import MdpRenew from "./pages/Accueil/MdpRenew";
+import Chapitre from "./pages/Formation/Chapitre";
+import Content from "./pages/Formation/Content";
+import Cours from "./pages/Formation/Cours";
 
 export const ActContext = createContext();
 
@@ -127,6 +127,9 @@ function App() {
           </Routes>
         </section>
       )}
+      <footer>
+        <a href="https://teraka.org/mention.html">Mentions légales</a>
+      </footer>
       {alert && <Info type={alert.type} message={alert.message} />}
       {dialog && (
         <div id="dialog">
