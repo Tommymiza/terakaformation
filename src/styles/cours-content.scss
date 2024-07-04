@@ -45,7 +45,7 @@
   border: solid 5px transparent;
   overflow: hidden;
   position: relative;
-  &>img{
+  & > img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -58,7 +58,7 @@
     border: solid 5px var(--active);
     box-shadow: 0 0 10px 5px rgba($color: #000000, $alpha: 0.1);
   }
-  .contenu{
+  .contenu {
     background-color: rgba($color: #000000, $alpha: 0.5);
     color: white;
     display: flex;
@@ -71,14 +71,14 @@
     width: 100%;
     height: 100%;
     opacity: 0;
-    transition: .4s;
-    p{
+    transition: 0.4s;
+    p {
       font-size: 15px;
       line-height: 20px;
       font-weight: normal;
     }
   }
-  &:hover .contenu{
+  &:hover .contenu {
     opacity: 1;
   }
 }
@@ -120,4 +120,20 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
+}
+
+.qcm {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  & > div {
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-left: 20px;
+    }
+  }
 }

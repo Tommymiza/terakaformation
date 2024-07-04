@@ -223,7 +223,7 @@ export const mg = {
     "Dia izay sy izay no tombontsoa azon’ny Vondrona Madinika ao amin’ny TERAKA amin’ny alalan’ny fandraharahana ao amin’ny karbaona.",
     "FANAMARIHANA :",
     "Fandoavana mialoha ny karbônina",
-    "Tany am-piandohana dia ho kely loatra ny hazo TERAKA mba hamoronana crédit karbonika. Mandra-pahalehiben'ny hazo TERAKA dia hahazo fandoavana 0,02 dolara isaky ny hazo isan-taona ny Vondrona Madinika TERAKA mba hitazonana ilay hazo hitombo.",
+    "Tany am-piandohana dia ho kely loatra ny hazo TERAKA mba hamoronana crédit karbonika. Mandra-pahalehiben'ny hazo TERAKA dia hahazo fandoavana 0,02 euro isaky ny hazo isan-taona ny Vondrona Madinika TERAKA mba hitazonana ilay hazo hitombo.",
     "Fizarana ny tombon’ny karbaona ",
     "Rehefa lehibe ny hazo ary mahafeno ny fepetra rehetra azo atao ny Vondrona Madinika, dia hahazo anjara tombony ny Vondrona Madinika an’i TERAKA. Ny fizaran’ny tombony dia noforonina rehefa mivarotra ny kredi karbaona amin'ny olona na orinasa hafa ny iTERAKA, ary ny iTERAKA dia mizara ny iTERAKA 70% amin’ny tombom-barotra azony amin’ny tantsahan’ny TERAKA.",
     "Famoronana kredi karbaona",

@@ -86,11 +86,14 @@ function App() {
     if (location.pathname.includes("renew")) {
       return;
     }
+    if (location.pathname.includes("cours")) {
+      return;
+    }
     if (user) {
       navigate("/cours");
-    } else {
-      navigate("/");
+      return;
     }
+    navigate("/");
     // eslint-disable-next-line
   }, [user]);
   return (
@@ -115,16 +118,18 @@ function App() {
         </div>
       ) : (
         <section>
-          <Routes>
-            <Route path="/" element={<Accueil />}></Route>
-            <Route path="/sign up" element={<Inscription />}></Route>
-            <Route path="/reset password" element={<CompteLost />}></Route>
-            <Route path="/renew/:token" element={<MdpRenew />}></Route>
-            <Route path="/cours" element={<Cours />}></Route>
-            <Route path="/cours/:id" element={<Chapitre />}></Route>
-            <Route path="/cours/:id/:sid" element={<Content />}></Route>
-            <Route path="*" element={<NotFound />}></Route>
-          </Routes>
+          <ThemeProvider theme={theme}>
+            <Routes>
+              <Route path="/" element={<Accueil />}></Route>
+              <Route path="/sign up" element={<Inscription />}></Route>
+              <Route path="/reset password" element={<CompteLost />}></Route>
+              <Route path="/renew/:token" element={<MdpRenew />}></Route>
+              <Route path="/cours" element={<Cours />}></Route>
+              <Route path="/cours/:id" element={<Chapitre />}></Route>
+              <Route path="/cours/:id/:sid" element={<Content />}></Route>
+              <Route path="*" element={<NotFound />}></Route>
+            </Routes>
+          </ThemeProvider>
         </section>
       )}
       <footer>

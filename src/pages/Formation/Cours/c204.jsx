@@ -5,45 +5,59 @@ import { Carousel } from "react-responsive-carousel";
 import { useNavigate } from "react-router";
 import { ActContext } from "../../../App";
 import "../../../styles/cours-content.scss";
+import Quest4 from "../Qcm/Quest4";
+
+const CHAP = 204;
 
 export default function C204() {
+  const { user, server, setAlert, t, setUser } = useContext(ActContext);
+  const [load, setLoad] = useState(false);
   const navigate = useNavigate();
-  const { user, server, setAlert, t } = useContext(ActContext);
-  const [rating, setRating] = useState(user?.formation["204"]?.rating || 0);
-  async function updateDatabase() {
-    axios({
-      method: "POST",
-      url: server + "/updateformation",
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("token"),
-      },
-      data: {
-        id: user.id,
-        formation: user.formation,
-      },
-    }).catch((err) => {
+  const updateDatabase = async (data) => {
+    try {
+      setLoad(true);
+      await axios({
+        method: "POST",
+        url: server + "/updateformation",
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+        data: {
+          id_user: user.id,
+          chapitre: CHAP,
+          ...data,
+        },
+      });
+      const response = await axios({
+        url: server + "/getuser",
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      });
+      setUser(response.data.user);
+      if (data.progress === 100) {
+        setAlert({
+          type: "success",
+          message: t("alert.2"),
+        });
+        navigate("/cours/2/05");
+      }
+    } catch (error) {
       setAlert({
         type: "error",
-        message: err.response.data.error || "Erreur de connexion!",
+        message: error.response.data.error || "Erreur de connexion!",
       });
-    });
-  }
-  const valider = async () => {
-    user.formation["204"] = {};
-    user.formation["204"].progress = 100;
-    try {
-      await updateDatabase();
-      setAlert({
-        type: "success",
-        message: t("alert.1"),
-      });
-      navigate("/cours/2/05");
-    } catch (error) {
-      setAlert({ type: "error", message: error.message });
+    } finally {
+      setLoad(false);
     }
   };
   useEffect(() => {
-    if (user?.formation["204"]?.progress === 100) {
+    if (
+      (user?.progressions.find((p) => p.chapitre === CHAP)?.progress * 2) /
+        100 ===
+      2
+    ) {
       setAlert({
         type: "success",
         message: t("alert.2"),
@@ -257,16 +271,25 @@ export default function C204() {
           </div>
           <div className="action-center">
             <Rating
-              value={rating}
+              value={
+                user?.progressions.find((p) => p.chapitre === CHAP)?.rating ?? 0
+              }
               onChange={(e, n) => {
-                user.formation["204"].rating = n;
-                updateDatabase();
-                setRating(n);
+                if (n) {
+                  updateDatabase({ rating: n });
+                }
               }}
             />
-            <button className="nav-btn" onClick={() => valider()}>
+            <button
+              className="nav-btn"
+              onClick={() => updateDatabase({ progress: 100 })}
+              disabled={load}
+            >
               {t("button.12")}
             </button>
+          </div>
+          <div className="qcm">
+            <Quest4 />
           </div>
         </div>
       </>

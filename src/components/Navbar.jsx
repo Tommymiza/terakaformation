@@ -1,17 +1,31 @@
-import { Avatar, Menu, MenuItem } from "@mui/material";
+import {
+  AbcOutlined,
+  AccountCircleOutlined,
+  HelpOutline,
+  LogoutRounded,
+} from "@mui/icons-material";
+import {
+  Avatar,
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  Menu,
+  MenuItem,
+} from "@mui/material";
+import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ActContext } from "../App";
-import { AbcOutlined, AccountCircleOutlined, HelpOutline, LogoutRounded } from "@mui/icons-material";
-import axios from "axios";
 import "../styles/navbar.scss";
 import Lang from "./Lang";
 
 export default function Navbar() {
   const navigate = useNavigate();
   const [anchor, setAnchor] = useState(null);
+  const [open, setOpen] = useState(false);
   const [width, setWidth] = useState(document.body.offsetWidth);
-  const { user, setUser, server, setAlert, setLoad, t } = useContext(ActContext);
+  const { user, setUser, server, setAlert, setLoad, t } =
+    useContext(ActContext);
   const logout = () => {
     navigate("/");
     setLoad(true);
@@ -40,7 +54,7 @@ export default function Navbar() {
   useEffect(() => {
     window.addEventListener("resize", (e) => {
       setWidth(document.body.offsetWidth);
-    })
+    });
     // eslint-disable-next-line
   }, []);
   return (
@@ -62,21 +76,37 @@ export default function Navbar() {
         >
           <button
             className="nav-btn"
-            style={{ padding: width > 500 ? "10px 0": "5px 0",  fontSize: "12px", width: width > 500 ? "150px":"100px" }}
+            style={{
+              padding: width > 500 ? "10px 0" : "5px 0",
+              fontSize: "12px",
+              width: width > 500 ? "150px" : "100px",
+            }}
             onClick={() => window.open("https://programme.teraka.org", "_self")}
           >
             {t("button.0")} TERAKA
           </button>
           <button
             className="nav-btn"
-            style={{ padding: width > 500 ? "10px 0": "5px 0", fontSize: "12px", width: width > 500 ? "150px":"100px" }}
+            style={{
+              padding: width > 500 ? "10px 0" : "5px 0",
+              fontSize: "12px",
+              width: width > 500 ? "150px" : "100px",
+            }}
             onClick={() => window.open("https://rejoindre.teraka.org", "_self")}
           >
             {t("button.1")} TERAKA
           </button>
         </div>
       </div>
-      <div style={{ display: "flex", flexDirection: "row", gap: "10px", flexWrap: "wrap", justifyContent: "center"}}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          gap: "10px",
+          flexWrap: "wrap",
+          justifyContent: "center",
+        }}
+      >
         <Lang />
         {user && (
           <>
@@ -107,6 +137,7 @@ export default function Navbar() {
                   fontWeight: "bolder",
                   fontFamily: "Open Sans",
                 }}
+                onClick={() => setOpen(true)}
               >
                 <AccountCircleOutlined />
                 {t("button.2")}
@@ -154,6 +185,23 @@ export default function Navbar() {
           </>
         )}
       </div>
+      <Dialog open={open} onClose={() => setOpen(false)}>
+        <DialogTitle>Compte</DialogTitle>
+        <DialogContent>
+          <p>
+            <b>Nom:</b> {user?.nom}
+          </p>
+          <p>
+            <b>Prénom:</b> {user?.prenom}
+          </p>
+          <p>
+            <b>Email:</b> {user?.email}
+          </p>
+          <p>
+            <b>Points:</b> {user?.points}
+          </p>
+        </DialogContent>
+      </Dialog>
     </header>
   );
 }

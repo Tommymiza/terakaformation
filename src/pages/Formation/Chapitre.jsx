@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
-import { ActContext } from "../../App";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
+import { ActContext } from "../../App";
 import NotFound from "../../components/NotFound";
 import Check from "../../components/check";
 import "../../styles/chapitre.scss";
@@ -37,7 +37,7 @@ export default function Chapitre() {
       liste: [
         {
           id: 201,
-          titre:  t("cours.1.liste.0.titre"),
+          titre: t("cours.1.liste.0.titre"),
           img: "Group_of_sakalava_women_001.jpg",
         },
         {
@@ -99,16 +99,16 @@ export default function Chapitre() {
                     to={`/cours/${id}/${i.id.toString().substring(1, 3)}`}
                     style={{
                       color:
-                        user.formation[i.id.toString()]?.progress === 100
+                        user.progressions.find((p) => p.chapitre === i.id)
+                          ?.progress === 100
                           ? "rgb(0, 171, 8)"
                           : "rgb(103, 163, 212)",
                     }}
                   >
                     {i.id.toString().substring(1, 3) + ". " + i.titre}
                   </Link>
-                  {user.formation[i.id.toString()]?.progress === 100 && (
-                    <Check />
-                  )}
+                  {user.progressions.find((p) => p.chapitre === i.id)
+                    ?.progress === 100 && <Check />}
                 </div>
               ))}
             </div>

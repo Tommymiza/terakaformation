@@ -1,6 +1,3 @@
-import React, { useContext, useEffect, useState } from "react";
-import { ActContext } from "../../App";
-import { useNavigate } from "react-router";
 import {
   ExpandMore,
   Lock,
@@ -16,9 +13,14 @@ import {
   Rating,
   Tooltip,
 } from "@mui/material";
+import axios from "axios";
+import React, { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router";
+import { ActContext } from "../../App";
 
 export default function Cours() {
   const { user, setAlert, t } = useContext(ActContext);
+  const [ratings, setRatings] = useState([]);
   // eslint-disable-next-line
   const [grille, setGrille] = useState(
     // eslint-disable-next-line
@@ -88,11 +90,18 @@ export default function Cours() {
     1: "I",
     2: "II",
   };
+  const server = process.env.REACT_APP_API;
   useEffect(() => {
     if (!user) {
       setAlert({ type: "warning", message: "Vous devez vous connecter" });
       navigate("/");
     }
+    axios({
+      url: server + "/ratings",
+      method: "GET",
+    }).then((res) => {
+      setRatings(res.data.ratings);
+    });
     // eslint-disable-next-line
   }, []);
   return (
@@ -149,8 +158,12 @@ export default function Cours() {
                           onClick={() => {
                             if (index === 1) {
                               if (
-                                user.formation["101"]?.progress !== 100 ||
-                                user.formation["102"]?.progress !== 100
+                                user.progressions.find(
+                                  (p) => p.chapitre === 101
+                                )?.progress !== 100 ||
+                                user.progressions.find(
+                                  (p) => p.chapitre === 102
+                                )?.progress !== 100
                               ) {
                                 return;
                               }
@@ -166,8 +179,10 @@ export default function Cours() {
                         >
                           <p>
                             {index === 1 ? (
-                              user.formation["101"]?.progress !== 100 ||
-                              user.formation["102"]?.progress !== 100 ? (
+                              user.progressions.find((p) => p.chapitre === 101)
+                                ?.progress !== 100 ||
+                              user.progressions.find((p) => p.chapitre === 102)
+                                ?.progress !== 100 ? (
                                 <Lock />
                               ) : (
                                 <Visibility />
@@ -186,8 +201,10 @@ export default function Cours() {
                           </h5>
 
                           {index === 1 ? (
-                            user.formation["101"]?.progress !== 100 ||
-                            user.formation["102"]?.progress !== 100 ? (
+                            user.progressions.find((p) => p.chapitre === 101)
+                              ?.progress !== 100 ||
+                            user.progressions.find((p) => p.chapitre === 102)
+                              ?.progress !== 100 ? (
                               <Tooltip title={t("tooltip")}>
                                 <h4>
                                   {roman[item.id.toString().substr(0, 1)]}-
@@ -228,10 +245,13 @@ export default function Cours() {
                             </h4>
                           )}
 
-                          {user.formation[item.id.toString()]?.rating ? (
+                          {ratings.find((r) => r.chapitre === item.id) ? (
                             <Rating
                               disabled
-                              value={user.formation[item.id.toString()]?.rating}
+                              value={parseFloat(
+                                ratings.find((r) => r.chapitre === item.id)
+                                  .rating
+                              )}
                             />
                           ) : (
                             <Rating disabled value={0} />
@@ -242,15 +262,15 @@ export default function Cours() {
                             className="progress"
                             style={{
                               width:
-                                user.formation[
-                                  item.id.toString()
-                                ]?.progress?.toString() + "%" || 0 + "%",
+                                user.progressions
+                                  .find((p) => p.chapitre === item.id)
+                                  ?.progress?.toString() + "%" || 0 + "%",
                             }}
                           ></span>
                           <p>
-                            {user.formation[
-                              item.id.toString()
-                            ]?.progress?.toFixed(1) || "0.0"}
+                            {user.progressions
+                              .find((p) => p.chapitre === item.id)
+                              ?.progress?.toFixed(1) || "0.0"}
                             % {t("login.label.18")}
                           </p>
                         </div>
@@ -277,8 +297,10 @@ export default function Cours() {
                   {i.liste.map((item) => (
                     <div className="list-item" key={item.titre}>
                       {index === 1 ? (
-                        user.formation["101"]?.progress !== 100 ||
-                        user.formation["102"]?.progress !== 100 ? (
+                        user.progressions.find((p) => p.chapitre === 101)
+                          ?.progress !== 100 ||
+                        user.progressions.find((p) => p.chapitre === 102)
+                          ?.progress !== 100 ? (
                           <Tooltip title={t("tooltip")}>
                             <h4>
                               {item.id.toString().substr(1, 3)}. {item.titre}{" "}
@@ -320,15 +342,15 @@ export default function Cours() {
                           className="progress"
                           style={{
                             width:
-                              user.formation[
-                                item.id.toString()
-                              ]?.progress?.toString() + "%" || 0 + "%",
+                              user.progressions
+                                .find((p) => p.chapitre === item.id)
+                                ?.progress?.toString() + "%" || 0 + "%",
                           }}
                         ></span>
                         <p>
-                          {user.formation[
-                            item.id.toString()
-                          ]?.progress?.toFixed(1) || "0.0"}
+                          {user.progressions
+                            .find((p) => p.chapitre === item.id)
+                            ?.progress?.toFixed(1) || "0.0"}
                           % Terminé(s)
                         </p>
                       </div>
