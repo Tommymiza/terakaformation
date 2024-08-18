@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useContext, useRef } from "react";
+import { CheckRounded, SearchRounded } from "@mui/icons-material";
+import { LoadingButton } from "@mui/lab";
 import {
   FormControl,
   FormControlLabel,
@@ -7,13 +8,11 @@ import {
   RadioGroup,
   ThemeProvider,
 } from "@mui/material";
-import { LoadingButton } from "@mui/lab";
-import { theme } from "./theme";
-import { SearchRounded, CheckRounded } from "@mui/icons-material";
-import { ActContext } from "../App";
-import { useNavigate } from "react-router";
 import axios from "axios";
-import ReCAPTCHA from "react-google-recaptcha";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router";
+import { ActContext } from "../App";
+import { theme } from "./theme";
 
 const Asterisk = () => <span style={{ color: "red" }}>*</span>;
 
@@ -21,6 +20,8 @@ export default function CompteLost() {
   const { user, setAlert, server, t } = useContext(ActContext);
   const [loading, setLoading] = useState(false);
   const [verified, setVerified] = useState(false);
+  const [a, setA] = useState(genererChiffreAleatoire());
+  const [b, setB] = useState(genererChiffreAleatoire());
   const [quest, setQuest] = useState("email");
   const [userFind, setuFind] = useState();
   const navigate = useNavigate();
@@ -31,14 +32,9 @@ export default function CompteLost() {
     t("question.2"),
     t("question.3"),
   ];
-  const verify = (value) => {
-    if (value) {
-      setVerified(true);
-      return;
-    }
-    setVerified(false);
-    return;
-  };
+  function genererChiffreAleatoire() {
+    return Math.floor(Math.random() * 9) + 1;
+  }
   const find = () => {
     if (form.current.username.value === "") {
       setAlert({ type: "warning", message: t("alert.3") });
@@ -65,11 +61,13 @@ export default function CompteLost() {
   };
   const valider = (e) => {
     e.preventDefault();
-    if (!verified) {
+    if (form.current.c.value !== a + b) {
       setAlert({
         type: "error",
         message: "Erreur du captcha",
       });
+      setA(genererChiffreAleatoire());
+      setB(genererChiffreAleatoire());
       return;
     }
     setLoading(true);
@@ -92,7 +90,11 @@ export default function CompteLost() {
             message: err.response.data.error ?? "Erreur de connexion!",
           });
         })
-        .finally(() => setLoading(false));
+        .finally(() => {
+          setLoading(false);
+          setA(genererChiffreAleatoire());
+        setB(genererChiffreAleatoire());
+        });
     } else {
       axios({
         method: "POST",
@@ -171,10 +173,17 @@ export default function CompteLost() {
           )}
           {userFind && (
             <div className="col-div">
-              <ReCAPTCHA
-                sitekey="6LdYHkMlAAAAAEU62b7unG0Pno8wvdorIrgqy_Uz"
-                onChange={verify}
-              />
+              <div className="row-div" style={{
+              gap: "10px",
+              alignItems: "center",
+              justifyContent: "center",
+            }}>
+              <input type="number" name="a" style={{width: 50}} disabled className="input" value={a} readOnly />
+              {" + "}
+              <input type="number" name="b" style={{width: 50}} disabled value={b} className="input" readOnly />
+              {" = "}
+              <input type="number" className="input" name="c" style={{width: 50}} />
+            </div>
             </div>
           )}
           <div className="col-div">

@@ -1,33 +1,36 @@
-import React, { useRef, useContext, useState, useEffect } from "react";
-import { ActContext } from "../App";
+import { PersonAdd, PersonAddRounded } from "@mui/icons-material";
+import { LoadingButton } from "@mui/lab";
 import {
-  ThemeProvider,
-  TextField,
   Autocomplete,
+  Button,
   Checkbox,
   FormControlLabel,
   FormGroup,
-  Button,
+  TextField,
+  ThemeProvider,
 } from "@mui/material";
-import { LoadingButton } from "@mui/lab";
-import { PersonAdd, PersonAddRounded } from "@mui/icons-material";
-import { theme } from "./theme";
-import { lieu } from "./lieu";
 import axios from "axios";
-import ReCAPTCHA from "react-google-recaptcha";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router";
+import { ActContext } from "../App";
+import { lieu } from "./lieu";
+import { theme } from "./theme";
 
 const Asterisk = () => <span style={{ color: "red" }}>*</span>;
 
 export default function Inscription() {
   const { server, setAlert, user, t } = useContext(ActContext);
   const form = useRef();
-  const [verified, setVerified] = useState(false);
+  const [a, setA] = useState(genererChiffreAleatoire());
+  const [b, setB] = useState(genererChiffreAleatoire());
   const [loading, setLoading] = useState(false);
   const [lang, setLang] = useState("Malgache");
   const [nationalite, setNationalite] = useState("Madagascar");
   const [region, setRegion] = useState("ANALAMANGA");
   const [role, setRole] = useState("Membre potentiel de TERAKA");
+  function genererChiffreAleatoire() {
+    return Math.floor(Math.random() * 9) + 1;
+  }
   const [is_pg, setIspg] = useState("Oui");
   const [commune, setCommune] = useState("");
   const navigate = useNavigate();
@@ -250,14 +253,7 @@ export default function Inscription() {
     t("question.2"),
     t("question.3"),
   ];
-  const verify = (value) => {
-    if (value) {
-      setVerified(true);
-      return;
-    }
-    setVerified(false);
-    return;
-  };
+
   const submit = (e) => {
     e.preventDefault();
     const f = form.current;
@@ -314,11 +310,13 @@ export default function Inscription() {
       });
       return;
     }
-    if (!verified) {
+    if (f.c.value !== a + b) {
       setAlert({
         type: "error",
         message: "Erreur du captcha",
       });
+      setA(genererChiffreAleatoire());
+      setB(genererChiffreAleatoire());
       return;
     }
     const data = {
@@ -357,7 +355,11 @@ export default function Inscription() {
           message: err.response.data.error || "Erreur de connexion!",
         });
       })
-      .finally(() => setLoading(false));
+      .finally(() => {
+        setLoading(false);
+        setA(genererChiffreAleatoire());
+        setB(genererChiffreAleatoire());
+      });
   };
   useEffect(() => {
     setCommune("");
@@ -678,10 +680,17 @@ export default function Inscription() {
             </ThemeProvider>
           </div>
           <div className="col-div">
-            <ReCAPTCHA
-              sitekey="6LdYHkMlAAAAAEU62b7unG0Pno8wvdorIrgqy_Uz"
-              onChange={verify}
-            />
+            <div className="row-div" style={{
+              gap: "10px",
+              alignItems: "center",
+              justifyContent: "center",
+            }}>
+              <input type="number" name="a" style={{width: 50}} disabled className="input" value={a} readOnly />
+              {" + "}
+              <input type="number" name="b" style={{width: 50}} disabled value={b} className="input" readOnly />
+              {" = "}
+              <input type="number" className="input" name="c" style={{width: 50}} />
+            </div>
           </div>
           <div className="col-div">
             <ThemeProvider theme={theme}>
