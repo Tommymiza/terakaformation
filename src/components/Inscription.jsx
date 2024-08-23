@@ -310,15 +310,6 @@ export default function Inscription() {
       });
       return;
     }
-    if (f.c.value.toString() !== (a + b).toString()) {
-      setAlert({
-        type: "error",
-        message: "Erreur du captcha",
-      });
-      setA(genererChiffreAleatoire());
-      setB(genererChiffreAleatoire());
-      return;
-    }
     const data = {
       nom: f.nom.value,
       prenom: f.prenom.value,
@@ -678,19 +669,6 @@ export default function Inscription() {
                 />
               </FormGroup>
             </ThemeProvider>
-          </div>
-          <div className="col-div">
-            <div className="row-div" style={{
-              gap: "10px",
-              alignItems: "center",
-              justifyContent: "center",
-            }}>
-              <input type="number" name="a" style={{width: 50}} disabled className="input" value={a} readOnly />
-              {" + "}
-              <input type="number" name="b" style={{width: 50}} disabled value={b} className="input" readOnly />
-              {" = "}
-              <input type="number" className="input" name="c" style={{width: 50}} />
-            </div>
           </div>
           <div className="col-div">
             <ThemeProvider theme={theme}>
