@@ -310,7 +310,7 @@ export default function Inscription() {
       });
       return;
     }
-    if (f.c.value !== a + b) {
+    if (f.c.value.toString() !== (a + b).toString()) {
       setAlert({
         type: "error",
         message: "Erreur du captcha",
