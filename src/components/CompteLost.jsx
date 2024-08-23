@@ -61,15 +61,6 @@ export default function CompteLost() {
   };
   const valider = (e) => {
     e.preventDefault();
-    if (form.current.c.value.toString() !== (a + b).toString()) {
-      setAlert({
-        type: "error",
-        message: "Erreur du captcha",
-      });
-      setA(genererChiffreAleatoire());
-      setB(genererChiffreAleatoire());
-      return;
-    }
     setLoading(true);
     if (quest === "qst") {
       axios({
@@ -169,21 +160,6 @@ export default function CompteLost() {
             <div className="col-div" style={inputStyle}>
               <label htmlFor="qst">{Qsts[userFind.question]}</label>
               <input type="text" name="qst" id="qst" required />
-            </div>
-          )}
-          {userFind && (
-            <div className="col-div">
-              <div className="row-div" style={{
-              gap: "10px",
-              alignItems: "center",
-              justifyContent: "center",
-            }}>
-              <input type="number" name="a" style={{width: 50}} disabled className="input" value={a} readOnly />
-              {" + "}
-              <input type="number" name="b" style={{width: 50}} disabled value={b} className="input" readOnly />
-              {" = "}
-              <input type="number" className="input" name="c" style={{width: 50}} />
-            </div>
             </div>
           )}
           <div className="col-div">
