@@ -61,7 +61,7 @@ export default function CompteLost() {
   };
   const valider = (e) => {
     e.preventDefault();
-    if (form.current.c.value !== a + b) {
+    if (form.current.c.value.toString() !== (a + b).toString()) {
       setAlert({
         type: "error",
         message: "Erreur du captcha",
