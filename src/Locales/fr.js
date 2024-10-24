@@ -1,5 +1,9 @@
 export const fr = {
   tooltip: "Complétez d'abord le chapitre I",
+  home: {
+    head: "Bienvenue au centre d'apprentissage TERAKA",
+    description: "Le site web est gratuit et sans engagement",
+  },
   login: {
     titre: ["Connexion", "Inscription", "Mot de passe oublié"],
     label: [

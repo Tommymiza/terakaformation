@@ -1,5 +1,9 @@
 export const mg = {
   tooltip: "Iangaviana ianao hamita ny andininy voalohany",
+  home: {
+    head: "Tongasoa eto amin'ny ivo toeram-piofanana TERAKA",
+    description: "Maimaim-poana ny tranonkala ary tsy misy adidy",
+  },
   login: {
     titre: ["Hiditra", "Hamorona Kaonty", "Adino ny teny miafina"],
     label: [

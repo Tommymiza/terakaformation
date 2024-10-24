@@ -1,5 +1,9 @@
 export const en = {
   tooltip: "Complete the first chapiter",
+  home: {
+    head: "Welcome to TERAKA Learning Center",
+    description: "The website is free and without obligation.",
+  },
   login: {
     titre: ["Login", "Sign up", "Forgot password"],
     label: [
