@@ -1,4 +1,5 @@
 import { CircularProgress, ThemeProvider } from "@mui/material";
+import { inject } from "@vercel/analytics";
 import axios from "axios";
 import i18n from "i18next";
 import React, { createContext, useEffect, useState } from "react";
@@ -43,6 +44,7 @@ function App() {
   const navigate = useNavigate();
   const location = useLocation();
   const { t } = useTranslation();
+  inject();
   useEffect(() => {
     let timeout = null;
     if (alert) {
