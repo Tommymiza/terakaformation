@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+# Formation TERAKA
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Centre d'apprentissage en ligne TERAKA (formation.teraka.org).
 
-## Available Scripts
+React 19 · TypeScript · Vite · MUI · i18next · React Router
 
-In the project directory, you can run:
+## Démarrer
 
-### `npm start`
+```bash
+cp .env.example .env   # puis renseigner VITE_API_URL (URL de terakaback)
+npm install
+npm run dev            # http://localhost:3000
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+| Script              | Rôle                                         |
+| ------------------- | -------------------------------------------- |
+| `npm run dev`       | serveur de développement                     |
+| `npm run build`     | vérification TypeScript + build dans `build/` |
+| `npm run preview`   | sert le build localement                     |
+| `npm run typecheck` | vérification TypeScript seule                |
+| `npm run lint`      | ESLint                                       |
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Structure
 
-### `npm test`
+```
+src/
+  main.tsx                 point d'entrée (providers : thème, alertes, auth, routeur)
+  App.tsx                  routes et mise en page
+  lib/                     api (axios + jeton), i18n, stockage local, thème MUI
+  components/              éléments partagés (Navbar, fil d'Ariane, alertes…)
+  features/
+    auth/                  connexion, inscription, mot de passe oublié/réinitialisation
+      AuthProvider.tsx     utilisateur connecté, login/logout/refreshUser
+      guards.tsx           RequireAuth / GuestOnly
+    formation/
+      data/catalog.ts      SOURCE UNIQUE : chapitres, leçons, ordre, déblocage, URL
+      data/quizzes.ts      QCM par leçon
+      lessons/             contenu de chaque leçon (uniquement le contenu)
+      components/          pied de leçon (note + « Suite »), QCM, barre de progression
+      hooks/               progression d'une leçon, notes moyennes
+      pages/               catalogue, chapitre, leçon
+  locales/                 traductions fr / en / mg
+  styles/                  SCSS globaux
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Ajouter une leçon
 
-### `npm run build`
+1. Créer `src/features/formation/lessons/LessonXYZ.tsx` (contenu seul).
+2. Ajouter son titre et ses textes dans `src/locales/*.ts`.
+3. La déclarer dans `src/features/formation/data/catalog.ts` (et son QCM dans `quizzes.ts`).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+La notation, le bouton « Suite / Terminer », la navigation vers la leçon suivante,
+le verrouillage des chapitres et le fil d'Ariane en découlent automatiquement.

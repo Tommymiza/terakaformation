@@ -1,0 +1,60 @@
+/* Ordre des couches : les styles MUI (couche "mui") restent surchargeables
+   par les utilitaires Tailwind. */
+@layer theme, base, mui, components, utilities;
+
+@import "tailwindcss";
+@import "./lesson.css";
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("./OpenSans-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+
+@theme {
+  --font-sans: "Open Sans", ui-sans-serif, system-ui, sans-serif;
+
+  /* Verts TERAKA : 500 = ancien --active, 900 = ancien --theme */
+  --color-brand-50: #f3f6f1;
+  --color-brand-100: #e3ebdf;
+  --color-brand-200: #c7d6c0;
+  --color-brand-300: #a5bb9b;
+  --color-brand-400: #879f7d;
+  --color-brand-500: #728b6b;
+  --color-brand-600: #5a7154;
+  --color-brand-700: #475a43;
+  --color-brand-800: #3a4937;
+  --color-brand-900: #313d2f;
+  --color-brand-950: #1b231a;
+
+  /* Sable (dégradé des emails TERAKA) */
+  --color-sand-50: #fbf8f1;
+  --color-sand-100: #f5eedd;
+  --color-sand-200: #ebdcb9;
+  --color-sand-300: #decba4;
+  --color-sand-400: #cdb07a;
+
+  --shadow-card:
+    0 1px 2px rgb(27 35 26 / 0.06), 0 4px 16px rgb(27 35 26 / 0.06);
+  --shadow-card-hover:
+    0 2px 4px rgb(27 35 26 / 0.08), 0 12px 32px rgb(27 35 26 / 0.12);
+}
+
+@layer base {
+  html {
+    @apply bg-brand-50 text-brand-950 antialiased;
+  }
+  body {
+    @apply min-h-screen font-sans;
+  }
+  ::selection {
+    @apply bg-brand-200;
+  }
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
